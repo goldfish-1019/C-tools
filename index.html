@@ -739,12 +739,16 @@ int main() {
                         method: 'POST', headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ instances: { prompt: "Educational computer science diagram: " + prompt }, parameters: { sampleCount: 1 } })
                     });
-                    if (!res.ok) throw new Error(`API Error: ${res.status}`);
+                    if (!res.ok) {
+                        const errData = await res.json().catch(()=>({}));
+                        throw new Error(errData.error?.message || `API Error: ${res.status}`);
+                    }
                     const data = await res.json();
                     if(!data.predictions) throw new Error("Invalid response");
                     return `data:image/png;base64,${data.predictions[0].bytesBase64Encoded}`;
                 } else {
-                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${currentKey}`;
+                    // Switched to universally available 1.5-flash for public AI Studio API keys
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${currentKey}`;
                     const contents = chatHistory.slice(-6).map(m => ({ role: m.role, parts: [{ text: m.text }] }));
                     contents.push({ role: "user", parts: [{ text: prompt }] });
                     
@@ -755,13 +759,16 @@ int main() {
                             systemInstruction: { parts: [{ text: personas[botPersonaSelect.value] || personas.friendly }] }
                         })
                     });
-                    if (!res.ok) throw new Error(`API Error: ${res.status}`);
+                    if (!res.ok) {
+                        const errData = await res.json().catch(()=>({}));
+                        throw new Error(errData.error?.message || `API Error: ${res.status}`);
+                    }
                     const data = await res.json();
                     if(!data.candidates) throw new Error("Invalid response");
                     return data.candidates[0].content.parts[0].text;
                 }
             } catch (err) {
-                if (retryCount < 4) {
+                if (retryCount < 2) { // Reduced retries to avoid long hangs on bad keys
                     await new Promise(r => setTimeout(r, Math.pow(2, retryCount) * 1000));
                     return fetchAIResponse(prompt, isImage, currentKey, retryCount + 1);
                 }
@@ -805,7 +812,9 @@ int main() {
                 }
             } catch (err) {
                 document.getElementById('typingIndicator').classList.add('hidden');
-                chatBox.insertAdjacentHTML('beforeend', `<div class="text-center text-red-500 text-xs my-2 font-bold"><i class="fa-solid fa-triangle-exclamation"></i> API Error. If on GitHub, verify your API key is correct.</div>`);
+                // Dynamically display the exact API error returned by Google
+                chatBox.insertAdjacentHTML('beforeend', `<div class="text-center text-red-500 text-xs my-2 font-bold bg-red-50 p-2 rounded-lg border border-red-200"><i class="fa-solid fa-triangle-exclamation"></i> Error: ${escapeHTML(err.message)}</div>`);
+                scrollChat();
             } finally {
                 document.getElementById('sendBtn').disabled = false;
                 userInput.focus();
@@ -821,6 +830,7 @@ int main() {
     </script>
 </body>
 </html>
+
 
 
 
