@@ -33,109 +33,54 @@
     <style>
         /* --- Dynamic Theme Variables --- */
         :root {
-            --bg-body: #f8fafc;
-            --bg-panel: #ffffff;
-            --bg-sidebar: #ffffff;
-            --bg-input: #f8fafc;
-            --border-color: #e2e8f0;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --shadow-panel: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --glass-blur: blur(0px);
-            --user-bubble: #1e293b;
-            --user-text: #ffffff;
-            --bot-bubble: #ffffff;
+            --bg-body: #f8fafc; --bg-panel: #ffffff; --bg-sidebar: #ffffff; --bg-input: #f8fafc;
+            --border-color: #e2e8f0; --text-main: #1e293b; --text-muted: #64748b;
+            --shadow-panel: 0 1px 2px 0 rgb(0 0 0 / 0.05); --glass-blur: blur(0px);
+            --user-bubble: #1e293b; --user-text: #ffffff; --bot-bubble: #ffffff;
         }
 
-        /* --- Dark Mode --- */
         [data-theme="dark"] {
-            --bg-body: #0f172a;
-            --bg-panel: #1e293b;
-            --bg-sidebar: #1e293b;
-            --bg-input: #0f172a;
-            --border-color: #334155;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --shadow-panel: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-            --glass-blur: blur(0px);
-            --user-bubble: #0d9488;
-            --user-text: #ffffff;
-            --bot-bubble: #334155;
+            --bg-body: #0f172a; --bg-panel: #1e293b; --bg-sidebar: #1e293b; --bg-input: #0f172a;
+            --border-color: #334155; --text-main: #f8fafc; --text-muted: #94a3b8;
+            --shadow-panel: 0 4px 6px -1px rgba(0, 0, 0, 0.5); --glass-blur: blur(0px);
+            --user-bubble: #0d9488; --user-text: #ffffff; --bot-bubble: #334155;
         }
 
-        /* --- Liquid Glass Mode --- */
         [data-theme="liquid-glass"] {
-            --bg-body: transparent;
-            --bg-panel: rgba(255, 255, 255, 0.35);
-            --bg-sidebar: rgba(255, 255, 255, 0.25);
-            --bg-input: rgba(255, 255, 255, 0.5);
-            --border-color: rgba(255, 255, 255, 0.4);
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --shadow-panel: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            --glass-blur: blur(24px);
-            --user-bubble: rgba(15, 23, 42, 0.85);
-            --user-text: #ffffff;
+            --bg-body: transparent; --bg-panel: rgba(255, 255, 255, 0.35); --bg-sidebar: rgba(255, 255, 255, 0.25);
+            --bg-input: rgba(255, 255, 255, 0.5); --border-color: rgba(255, 255, 255, 0.4);
+            --text-main: #0f172a; --text-muted: #475569; --shadow-panel: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --glass-blur: blur(24px); --user-bubble: rgba(15, 23, 42, 0.85); --user-text: #ffffff;
             --bot-bubble: rgba(255, 255, 255, 0.6);
         }
 
         /* --- Applied Theme Classes --- */
         body { background-color: var(--bg-body); color: var(--text-main); transition: all 0.4s ease; }
-        
-        .theme-panel {
-            background: var(--bg-panel); border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            color: var(--text-main); transition: all 0.4s ease;
-        }
-
-        .theme-sidebar {
-            background: var(--bg-sidebar); border-right: 1px solid var(--border-color);
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            transition: all 0.4s ease;
-        }
-
+        .theme-panel { background: var(--bg-panel); border: 1px solid var(--border-color); box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); color: var(--text-main); transition: all 0.4s ease; }
+        .theme-sidebar { background: var(--bg-sidebar); border-right: 1px solid var(--border-color); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); transition: all 0.4s ease; }
         .theme-input { background: var(--bg-input); border-color: var(--border-color); color: var(--text-main); }
         .theme-text { color: var(--text-main); }
         .theme-text-muted { color: var(--text-muted); }
         .theme-border { border-color: var(--border-color); }
-
         .bubble-user { background: var(--user-bubble); color: var(--user-text); }
         .bubble-bot { background: var(--bot-bubble); border: 1px solid var(--border-color); color: var(--text-main); }
 
         /* --- Animated Liquid Gradient Background --- */
-        .glass-bg-mesh {
-            position: fixed; inset: 0; z-index: -1;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            overflow: hidden; opacity: 0; transition: opacity 0.5s ease;
-        }
+        .glass-bg-mesh { position: fixed; inset: 0; z-index: -1; background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); overflow: hidden; opacity: 0; transition: opacity 0.5s ease; }
         [data-theme="liquid-glass"] .glass-bg-mesh { opacity: 1; }
-        
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(40px, -60px) scale(1.2); }
-            66% { transform: translate(-30px, 30px) scale(0.8); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
+        @keyframes blob { 0% { transform: translate(0px, 0px) scale(1); } 33% { transform: translate(40px, -60px) scale(1.2); } 66% { transform: translate(-30px, 30px) scale(0.8); } 100% { transform: translate(0px, 0px) scale(1); } }
         .animate-blob { animation: blob 8s infinite alternate ease-in-out; }
         .animation-delay-2000 { animation-delay: 2s; }
         .animation-delay-4000 { animation-delay: 4s; }
 
-        /* --- Custom Scrollbar --- */
+        /* --- Custom Scrollbar & Markdown --- */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #64748b; }
 
-        /* --- Markdown Styles --- */
-        .markdown-body pre {
-            background-color: #0f172a; color: #e2e8f0; padding: 1rem;
-            border-radius: 0.5rem; overflow-x: auto; margin: 0.75rem 0;
-            font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; border: 1px solid #334155;
-        }
-        .markdown-body code {
-            background-color: rgba(125,125,125,0.2); color: #ef4444; padding: 0.125rem 0.25rem;
-            border-radius: 0.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;
-        }
+        .markdown-body pre { background-color: #0f172a; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; border: 1px solid #334155; }
+        .markdown-body code { background-color: rgba(125,125,125,0.2); color: #ef4444; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; }
         .markdown-body pre code { background-color: transparent; color: inherit; padding: 0; }
         .markdown-body p { margin-bottom: 0.75rem; }
         .markdown-body ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.75rem; }
@@ -159,7 +104,7 @@
 </head>
 <body class="h-screen overflow-hidden flex flex-col font-sans" data-theme="default">
 
-    <!-- Animated Liquid Background (Hidden outside Liquid Glass theme) -->
+    <!-- Animated Liquid Background -->
     <div class="glass-bg-mesh">
         <div class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-purple-300/40 rounded-full mix-blend-multiply filter blur-[80px] animate-blob"></div>
         <div class="absolute top-[20%] right-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-cyan-300/40 rounded-full mix-blend-multiply filter blur-[80px] animate-blob animation-delay-2000"></div>
@@ -181,7 +126,7 @@
                 <div class="flex items-center space-x-2 sm:space-x-3">
                     
                     <!-- Theme Selector -->
-                    <div class="flex items-center bg-white/10 rounded-lg border border-white/20 p-1 px-2 hover:bg-white/20 transition">
+                    <div class="flex items-center bg-white/10 rounded-lg border border-white/20 p-1 px-2 hover:bg-white/20 transition hidden sm:flex">
                         <i class="fa-solid fa-palette text-sm mr-2 text-ktu-100"></i>
                         <select id="themeSelect" onchange="changeTheme()" class="bg-transparent text-sm font-medium border-none py-1 focus:ring-0 cursor-pointer outline-none text-white [&>option]:text-black">
                             <option value="default">Light Mode</option>
@@ -190,21 +135,22 @@
                         </select>
                     </div>
 
+                    <!-- API Key Setting (Crucial for GitHub Pages) -->
+                    <button onclick="openModal('apiKeyModal')" class="p-2 sm:px-3 sm:py-2 rounded-lg bg-yellow-500/20 hover:bg-yellow-500/40 border border-yellow-500/50 transition flex items-center space-x-2 shadow-md text-yellow-300" title="Set API Key for GitHub Host">
+                        <i class="fa-solid fa-key"></i>
+                        <span class="hidden lg:inline text-sm font-bold">API Key</span>
+                    </button>
+
                     <!-- Mini Game Button -->
                     <button onclick="openModal('gameModal')" class="p-2 sm:px-3 sm:py-2 rounded-lg bg-orange-500 hover:bg-orange-400 transition flex items-center space-x-2 shadow-md">
                         <i class="fa-solid fa-gamepad"></i>
-                        <span class="hidden lg:inline text-sm font-bold">Mini-Game</span>
+                        <span class="hidden lg:inline text-sm font-bold">Game</span>
                     </button>
 
                     <!-- Compiler Button -->
                     <button onclick="openModal('compilerModal')" class="p-2 sm:px-3 sm:py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 transition flex items-center space-x-2 shadow-md">
                         <i class="fa-solid fa-terminal"></i>
-                        <span class="hidden lg:inline text-sm font-bold">Live Compiler</span>
-                    </button>
-
-                    <!-- Author Button -->
-                    <button onclick="openModal('aboutModal')" class="p-2 sm:px-3 sm:py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center space-x-2">
-                        <i class="fa-solid fa-user-astronaut"></i>
+                        <span class="hidden lg:inline text-sm font-bold">Compiler</span>
                     </button>
                 </div>
             </div>
@@ -304,11 +250,14 @@
                         <p class="text-sm leading-relaxed mb-3 theme-text">
                             Welcome! As requested, my equations and terminology are strictly synchronized with the <strong>KTU 2024 Scheme Kerala Syllabus</strong>.
                         </p>
+                        <div class="bg-yellow-50 border border-yellow-200 text-yellow-800 p-3 rounded-lg text-xs mb-3">
+                            <i class="fa-solid fa-triangle-exclamation mr-1"></i> <strong>Hosting on GitHub Pages?</strong><br>
+                            Click the <i class="fa-solid fa-key"></i> <strong>API Key</strong> button in the top menu to securely save your free Gemini API key locally to enable the chat!
+                        </div>
                         <ul class="text-sm theme-text space-y-2">
                             <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Ask 4-module specific questions.</li>
                             <li><i class="fa-solid fa-terminal text-emerald-500 mr-2"></i>Execute code live using the <strong>Compiler</strong> (Wandbox engine).</li>
                             <li><i class="fa-solid fa-gamepad text-orange-500 mr-2"></i>Take a break with the high-quality <strong>Mini-Game</strong>.</li>
-                            <li><i class="fa-solid fa-moon text-blue-500 mr-2"></i>Switch to <strong>Dark Mode</strong> in the top menu.</li>
                         </ul>
                     </div>
                 </div>
@@ -342,7 +291,40 @@
 
     <!-- ================= MODALS ================= -->
 
-    <!-- C Compiler Fullscreen Modal (Wandbox API - Error 401 Fixed) -->
+    <!-- API Key Setting Modal -->
+    <div id="apiKeyModal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-300 border border-slate-200" id="apiKeyContent">
+            <div class="bg-slate-800 text-white px-5 py-4 flex justify-between items-center">
+                <div class="font-bold flex items-center"><i class="fa-solid fa-key text-yellow-400 mr-2"></i> Configure API Key</div>
+                <button onclick="closeModal('apiKeyModal', 'apiKeyContent')" class="text-white/70 hover:text-white transition"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="p-6">
+                <p class="text-sm text-slate-600 mb-4">
+                    To run this AI platform on GitHub Pages (or any public host), you must provide your own free Gemini API key. Keys are saved securely in your browser's local storage.
+                </p>
+                
+                <div class="mb-5 bg-blue-50 border border-blue-100 p-3 rounded-lg">
+                    <label class="block text-xs font-bold text-blue-800 mb-2 uppercase tracking-wide">1. Get a Free Key</label>
+                    <div class="flex">
+                        <input type="text" readonly value="https://aistudio.google.com/app/apikey" class="flex-1 bg-white border border-blue-200 rounded-l-md px-3 py-2 text-xs text-slate-600 focus:outline-none" id="apiUrlToCopy">
+                        <button onclick="copyApiUrl()" id="copyBtn" class="bg-blue-600 hover:bg-blue-700 border border-blue-600 rounded-r-md px-4 py-2 text-xs font-bold text-white transition whitespace-nowrap">Copy Link</button>
+                    </div>
+                    <p class="text-[10px] text-blue-600 mt-1">Copy & paste this link in a new browser tab.</p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">2. Enter Your Key</label>
+                    <input type="password" id="keyInput" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-ktu-500 focus:outline-none" placeholder="Paste your AIzaSy... key here">
+                </div>
+                
+                <div class="flex justify-end mt-6">
+                    <button onclick="saveApiKey()" class="bg-ktu-600 hover:bg-ktu-700 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-md transition">Save Key</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- C Compiler Fullscreen Modal (Wandbox API) -->
     <div id="compilerModal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-md z-50 flex items-center justify-center p-2 sm:p-6 opacity-0 transition-opacity duration-300">
         <div class="bg-slate-50 w-full h-full max-w-7xl rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-white/20 transform scale-95 transition-transform duration-300" id="compilerContent">
             
@@ -365,7 +347,6 @@
             </div>
 
             <div class="flex-1 flex flex-col md:flex-row overflow-hidden bg-slate-800">
-                <!-- Left: Editor & Stdin -->
                 <div class="flex-1 flex flex-col border-r border-slate-700 md:w-1/2">
                     <div class="bg-slate-800 px-3 py-1.5 text-xs font-semibold text-slate-300 flex justify-between border-b border-slate-700">
                         <span>main.c</span> <i class="fa-solid fa-code"></i>
@@ -384,14 +365,11 @@ int main() {
     }
     return 0;
 }</textarea>
-                    <!-- Stdin Panel -->
                     <div class="h-32 border-t border-slate-700 bg-[#0f172a] flex flex-col">
                         <div class="bg-slate-800 px-3 py-1.5 text-xs font-semibold text-slate-300">Standard Input (stdin)</div>
                         <textarea id="cStdin" spellcheck="false" class="flex-1 w-full bg-transparent text-emerald-400 font-mono text-sm p-3 focus:outline-none resize-none" placeholder="Enter test cases here (e.g., 5)...">5</textarea>
                     </div>
                 </div>
-
-                <!-- Right: Output -->
                 <div class="flex-1 flex flex-col md:w-1/2 bg-[#0f172a]">
                     <div class="bg-slate-800 px-3 py-1.5 text-xs font-semibold text-slate-300 flex items-center space-x-2 border-b border-slate-700">
                         <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
@@ -416,10 +394,7 @@ int main() {
 
             <div class="p-4 flex flex-col items-center">
                 <div class="mb-3 text-sm font-semibold text-slate-300"><i class="fa-solid fa-hand-pointer mr-1"></i> Click Game or Spacebar to Jump</div>
-                
-                <!-- Game Canvas (288x512 is standard Flappy Bird aspect ratio) -->
                 <canvas id="flappyCanvas" width="288" height="400" class="cursor-pointer"></canvas>
-                
                 <div class="mt-4 flex space-x-4 w-full">
                     <button id="startGameBtn" onclick="initGame()" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg font-bold shadow transition">Start Game</button>
                 </div>
@@ -427,24 +402,59 @@ int main() {
         </div>
     </div>
 
-    <!-- About Author Modal -->
-    <div id="aboutModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300" id="aboutModalContent">
-            <button onclick="closeModal('aboutModal', 'aboutModalContent')" class="absolute top-4 right-4 text-white/80 hover:text-white bg-black/20 rounded-full w-8 h-8 flex items-center justify-center transition z-10"><i class="fa-solid fa-xmark"></i></button>
-            <div class="bg-gradient-to-br from-slate-800 to-ktu-900 h-32"></div>
-            <div class="px-6 pb-6 pt-0 text-center relative">
-                <div class="w-24 h-24 bg-white rounded-full mx-auto -mt-12 p-1 shadow-lg border border-slate-100"><img src="https://ui-avatars.com/api/?name=Jiyon+Sebastian&background=0d9488&color=fff&size=150&bold=true" class="rounded-full w-full h-full object-cover"></div>
-                <h2 class="text-2xl font-bold text-slate-800 mt-3">Jiyon Sebastian</h2>
-                <p class="text-xs font-bold text-ktu-600 uppercase mb-4">Lead Developer</p>
-                <div class="bg-slate-50 rounded-xl p-4 text-sm text-slate-600 text-left shadow-inner border border-slate-100">KTU 2024 Scheme Platform. Includes dynamic theming, intelligent syllabus-bound AI tutoring, a Live execution engine (Wandbox GCC), and a high-quality Canvas arcade game.</div>
-            </div>
-        </div>
-    </div>
-
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
         // --- Core Variables ---
-        const apiKey = ""; // API key mapped by environment
+        // MANDATORY: Environment injected key. Do not modify this const string logic directly.
+        const apiKey = ""; 
+
+        // Safely fetch key from local storage if running on GitHub pages
+        function getEffectiveApiKey() {
+            return apiKey || localStorage.getItem('local_gemini_api_key') || "";
+        }
+
+        function saveApiKey() {
+            const key = document.getElementById('keyInput').value.trim();
+            const saveBtn = document.querySelector('button[onclick="saveApiKey()"]');
+            if(key) {
+                localStorage.setItem('local_gemini_api_key', key);
+                closeModal('apiKeyModal', 'apiKeyContent');
+                appendMessage("🔑 **Success!** API Key saved locally. You can now use the chat features.", false);
+            } else {
+                const originalText = saveBtn.innerText;
+                saveBtn.innerText = "Please enter a key!";
+                saveBtn.classList.replace('bg-ktu-600', 'bg-red-500');
+                saveBtn.classList.replace('hover:bg-ktu-700', 'hover:bg-red-600');
+                setTimeout(() => {
+                    saveBtn.innerText = originalText;
+                    saveBtn.classList.replace('bg-red-500', 'bg-ktu-600');
+                    saveBtn.classList.replace('hover:bg-red-600', 'hover:bg-ktu-700');
+                }, 2000);
+            }
+        }
+
+        function copyApiUrl() {
+            const urlInput = document.getElementById('apiUrlToCopy');
+            const copyBtn = document.getElementById('copyBtn');
+            urlInput.select();
+            urlInput.setSelectionRange(0, 99999);
+            try {
+                document.execCommand('copy');
+                copyBtn.innerText = "Copied!";
+                copyBtn.classList.replace('bg-blue-600', 'bg-green-600');
+                copyBtn.classList.replace('border-blue-600', 'border-green-600');
+                copyBtn.classList.replace('hover:bg-blue-700', 'hover:bg-green-700');
+                setTimeout(() => {
+                    copyBtn.innerText = "Copy Link";
+                    copyBtn.classList.replace('bg-green-600', 'bg-blue-600');
+                    copyBtn.classList.replace('border-green-600', 'border-blue-600');
+                    copyBtn.classList.replace('hover:bg-green-700', 'hover:bg-blue-700');
+                }, 2000);
+            } catch(e) {
+                copyBtn.innerText = "Failed";
+            }
+        }
+
         let chatHistory = [];
 
         // Remembering user instruction specifically referencing Kerala Syllabus
@@ -466,13 +476,19 @@ int main() {
 
         marked.setOptions({ breaks: true, gfm: true });
 
+        // On Load checks
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedKey = localStorage.getItem('local_gemini_api_key');
+            if(savedKey) { document.getElementById('keyInput').value = savedKey; }
+        });
+
         // --- 1. Dynamic Theme System ---
         function changeTheme() {
             const theme = document.getElementById('themeSelect').value;
             document.body.setAttribute('data-theme', theme);
         }
 
-        // --- 2. Live C Compiler Engine (Wandbox API - Error 401 Fixed) ---
+        // --- 2. Live C Compiler Engine (Wandbox API) ---
         async function runCProgram() {
             const code = document.getElementById('cEditor').value;
             const stdin = document.getElementById('cStdin').value;
@@ -489,16 +505,12 @@ int main() {
             outputBox.innerHTML = '<span class="text-blue-400">Connecting to Wandbox GCC Compiler...</span>\n';
 
             try {
-                // Fetch to Wandbox API. Extremely stable, completely free, no API keys, no 401 errors.
                 const response = await fetch('https://wandbox.org/api/compile.json', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        compiler: 'gcc-head-c',
-                        code: code,
-                        stdin: stdin || '',
-                        options: 'warning,gnu++1y',
-                        'compiler-option-raw': '-O2'
+                        compiler: 'gcc-head-c', code: code, stdin: stdin || '',
+                        options: 'warning,gnu++1y', 'compiler-option-raw': '-O2'
                     })
                 });
 
@@ -507,32 +519,15 @@ int main() {
                 const result = await response.json();
                 let outputHTML = '';
 
-                // Handle Compilation Errors/Warnings
-                if (result.compiler_error) {
-                    outputHTML += `<span class="text-yellow-500 font-bold">Compiler Logs:\n</span><span class="text-yellow-400">${escapeHTML(result.compiler_error)}</span>\n\n`;
-                }
+                if (result.compiler_error) outputHTML += `<span class="text-yellow-500 font-bold">Compiler Logs:\n</span><span class="text-yellow-400">${escapeHTML(result.compiler_error)}</span>\n\n`;
+                if (result.program_output) outputHTML += `<span class="text-white">${escapeHTML(result.program_output)}</span>`;
+                if (result.program_error) outputHTML += `\n<span class="text-red-400">Runtime Error: ${escapeHTML(result.program_error)}</span>`;
+                if (!result.program_output && !result.program_error && result.status === "0") outputHTML += '<span class="text-slate-400">Program executed successfully, but printed no output.</span>';
                 
-                // Handle Standard Output
-                if (result.program_output) {
-                    outputHTML += `<span class="text-white">${escapeHTML(result.program_output)}</span>`;
-                }
-                
-                // Handle Runtime Errors
-                if (result.program_error) {
-                    outputHTML += `\n<span class="text-red-400">Runtime Error: ${escapeHTML(result.program_error)}</span>`;
-                }
-
-                // Empty successful execution
-                if (!result.program_output && !result.program_error && result.status === "0") {
-                    outputHTML += '<span class="text-slate-400">Program executed successfully, but printed no output.</span>';
-                }
-                
-                // Status Badge
                 const statusColor = result.status === "0" ? "emerald" : "red";
                 outputHTML += `\n\n<span class="text-${statusColor}-500 font-bold text-xs border border-${statusColor}-500/30 bg-${statusColor}-500/10 px-2 py-1 rounded">Process finished with exit code ${result.status}</span>`;
                 
                 outputBox.innerHTML = outputHTML;
-
             } catch (error) {
                 outputBox.innerHTML = `<span class="text-red-500">Error connecting to compiler backend: ${error.message}</span>`;
             } finally {
@@ -550,20 +545,11 @@ int main() {
         let pipes = [];
         let reqID;
 
-        // Load High Quality Network Assets
-        const bgImg = new Image();
-        bgImg.src = "https://cdn.jsdelivr.net/gh/samuelcust/flappy-bird-assets@master/sprites/background-day.png";
-        
-        const birdImg = new Image();
-        birdImg.src = "https://cdn.jsdelivr.net/gh/samuelcust/flappy-bird-assets@master/sprites/yellowbird-midflap.png";
-        
-        const pipeImg = new Image();
-        pipeImg.src = "https://cdn.jsdelivr.net/gh/samuelcust/flappy-bird-assets@master/sprites/pipe-green.png";
+        const bgImg = new Image(); bgImg.src = "https://cdn.jsdelivr.net/gh/samuelcust/flappy-bird-assets@master/sprites/background-day.png";
+        const birdImg = new Image(); birdImg.src = "https://cdn.jsdelivr.net/gh/samuelcust/flappy-bird-assets@master/sprites/yellowbird-midflap.png";
+        const pipeImg = new Image(); pipeImg.src = "https://cdn.jsdelivr.net/gh/samuelcust/flappy-bird-assets@master/sprites/pipe-green.png";
+        const baseImg = new Image(); baseImg.src = "https://cdn.jsdelivr.net/gh/samuelcust/flappy-bird-assets@master/sprites/base.png";
 
-        const baseImg = new Image();
-        baseImg.src = "https://cdn.jsdelivr.net/gh/samuelcust/flappy-bird-assets@master/sprites/base.png";
-
-        // Controls
         cvs.addEventListener("mousedown", jumpBird);
         window.addEventListener("keydown", (e) => {
             if(e.code === "Space" && document.getElementById('gameModal').classList.contains('opacity-100')) {
@@ -571,10 +557,7 @@ int main() {
             }
         });
 
-        function jumpBird() {
-            if(!gameActive) return;
-            bird.velocity = bird.jump;
-        }
+        function jumpBird() { if(!gameActive) return; bird.velocity = bird.jump; }
 
         function initGame() {
             bird.y = 150; bird.velocity = 0; pipes = []; score = 0; frames = 0; gameActive = true;
@@ -584,57 +567,34 @@ int main() {
         }
 
         function drawGame() {
-            // Draw Background Image
             if(bgImg.complete) ctx.drawImage(bgImg, 0, 0, cvs.width, cvs.height);
             else { ctx.fillStyle = "#70c5ce"; ctx.fillRect(0, 0, cvs.width, cvs.height); }
 
-            // Draw Base/Ground
-            const baseHeight = 50;
-            const baseY = cvs.height - baseHeight;
+            const baseHeight = 50; const baseY = cvs.height - baseHeight;
             
             if(!gameActive) {
                 if(baseImg.complete) ctx.drawImage(baseImg, 0, baseY, cvs.width, baseHeight);
                 ctx.fillStyle = "#fff"; ctx.font = "bold 20px Arial"; ctx.strokeStyle = "#000"; ctx.lineWidth = 3;
-                
-                const txt = "Click to Play!";
-                ctx.strokeText(txt, 75, cvs.height/2); ctx.fillText(txt, 75, cvs.height/2);
-                
-                const bTxt = `Best Score: ${bestScore}`;
-                ctx.strokeText(bTxt, 80, cvs.height/2 + 30); ctx.fillText(bTxt, 80, cvs.height/2 + 30);
+                ctx.strokeText("Click to Play!", 75, cvs.height/2); ctx.fillText("Click to Play!", 75, cvs.height/2);
+                ctx.strokeText(`Best Score: ${bestScore}`, 80, cvs.height/2 + 30); ctx.fillText(`Best Score: ${bestScore}`, 80, cvs.height/2 + 30);
                 return;
             }
 
-            // Draw Pipes
             for(let i=0; i<pipes.length; i++) {
                 let p = pipes[i];
                 if(pipeImg.complete) {
-                    // Top pipe (Requires flipping the image context)
-                    ctx.save();
-                    ctx.translate(p.x, p.top);
-                    ctx.scale(1, -1);
-                    ctx.drawImage(pipeImg, 0, 0, p.w, 320); // 320 is native sprite height
-                    ctx.restore();
-
-                    // Bottom pipe
+                    ctx.save(); ctx.translate(p.x, p.top); ctx.scale(1, -1); ctx.drawImage(pipeImg, 0, 0, p.w, 320); ctx.restore();
                     ctx.drawImage(pipeImg, p.x, cvs.height - baseHeight - p.bottom, p.w, 320);
                 } else {
-                    ctx.fillStyle = "#228B22";
-                    ctx.fillRect(p.x, 0, p.w, p.top);
-                    ctx.fillRect(p.x, cvs.height - baseHeight - p.bottom, p.w, p.bottom);
+                    ctx.fillStyle = "#228B22"; ctx.fillRect(p.x, 0, p.w, p.top); ctx.fillRect(p.x, cvs.height - baseHeight - p.bottom, p.w, p.bottom);
                 }
             }
 
-            // Draw Base over pipes
             if(baseImg.complete) ctx.drawImage(baseImg, 0, baseY, cvs.width, baseHeight);
 
-            // Draw Bird
-            if(birdImg.complete) {
-                ctx.drawImage(birdImg, bird.x, bird.y, bird.w, bird.h);
-            } else {
-                ctx.fillStyle = "yellow"; ctx.fillRect(bird.x, bird.y, bird.w, bird.h);
-            }
+            if(birdImg.complete) ctx.drawImage(birdImg, bird.x, bird.y, bird.w, bird.h);
+            else { ctx.fillStyle = "yellow"; ctx.fillRect(bird.x, bird.y, bird.w, bird.h); }
 
-            // Draw Score
             ctx.fillStyle = "#fff"; ctx.font = "bold 40px Arial"; ctx.strokeStyle = "#000"; ctx.lineWidth = 4;
             ctx.strokeText(score, cvs.width/2 - 15, 60); ctx.fillText(score, cvs.width/2 - 15, 60);
         }
@@ -643,11 +603,8 @@ int main() {
             if(!gameActive) return;
             const baseHeight = 50;
             
-            // Bird Physics
-            bird.velocity += bird.gravity;
-            bird.y += bird.velocity;
+            bird.velocity += bird.gravity; bird.y += bird.velocity;
 
-            // Generate Pipes
             if(frames % 100 === 0) {
                 let pipeWidth = 52, gap = 110;
                 let topH = Math.random() * (cvs.height - baseHeight - gap - 80) + 20; 
@@ -655,51 +612,31 @@ int main() {
                 pipes.push({ x: cvs.width, w: pipeWidth, top: topH, bottom: bottomH, passed: false });
             }
 
-            // Move and Check Pipes
             for(let i=0; i<pipes.length; i++) {
-                let p = pipes[i];
-                p.x -= 2; // Speed
-
-                // Collision Detection
-                // Adjust hitbox slightly smaller than sprite for better gameplay feel
+                let p = pipes[i]; p.x -= 2; 
                 let bx = bird.x + 2, by = bird.y + 2, bw = bird.w - 4, bh = bird.h - 4;
                 if(bx + bw > p.x && bx < p.x + p.w) {
-                    if(by < p.top || by + bh > cvs.height - baseHeight - p.bottom) {
-                        gameOver();
-                    }
+                    if(by < p.top || by + bh > cvs.height - baseHeight - p.bottom) gameOver();
                 }
-
-                // Score update
-                if(p.x + p.w < bird.x && !p.passed) {
-                    score++; p.passed = true;
-                }
+                if(p.x + p.w < bird.x && !p.passed) { score++; p.passed = true; }
             }
 
-            // Remove off-screen pipes
             pipes = pipes.filter(p => p.x + p.w > 0);
 
-            // Floor/Ceiling collision
-            if(bird.y + bird.h >= cvs.height - baseHeight || bird.y <= 0) {
-                gameOver();
-            }
-
+            if(bird.y + bird.h >= cvs.height - baseHeight || bird.y <= 0) gameOver();
             frames++;
         }
 
-        function gameOver() {
-            gameActive = false;
-            if(score > bestScore) bestScore = score;
-        }
+        function gameOver() { gameActive = false; if(score > bestScore) bestScore = score; }
 
         function gameLoop() {
             updateGame(); drawGame();
             if(gameActive) reqID = requestAnimationFrame(gameLoop);
-            else drawGame(); // Draw final state
+            else drawGame(); 
         }
         
-        // Ensure static screen draws once images load
         bgImg.onload = () => drawGame();
-        setTimeout(drawGame, 500); // Fallback draw
+        setTimeout(drawGame, 500);
 
         // --- 4. Modal Controls ---
         function openModal(modalId) {
@@ -718,14 +655,13 @@ int main() {
             const content = document.getElementById(contentId);
             if (content) { content.classList.remove('scale-100'); content.classList.add('scale-95'); }
             setTimeout(() => { modal.classList.add('hidden'); }, 300);
-            
             if(modalId === 'gameModal') { gameActive = false; }
         }
 
         window.onclick = function(event) {
-            if (event.target.id === 'aboutModal') closeModal('aboutModal', 'aboutModalContent');
             if (event.target.id === 'compilerModal') closeModal('compilerModal', 'compilerContent');
             if (event.target.id === 'gameModal') closeModal('gameModal', 'gameContent');
+            if (event.target.id === 'apiKeyModal') closeModal('apiKeyModal', 'apiKeyContent');
         }
 
         // --- 5. Syllabus Progress ---
@@ -795,19 +731,20 @@ int main() {
         function scrollChat() { chatBox.scrollTop = chatBox.scrollHeight; }
         function escapeHTML(str) { return str.replace(/[&<>'"]/g, t => ({ '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;' }[t] || t)); }
 
-        async function fetchAIResponse(prompt, isImage, retryCount = 0) {
+        async function fetchAIResponse(prompt, isImage, currentKey, retryCount = 0) {
             try {
                 if (isImage) {
-                    const url = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${currentKey}`;
                     const res = await fetch(url, {
                         method: 'POST', headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ instances: { prompt: "Educational computer science diagram: " + prompt }, parameters: { sampleCount: 1 } })
                     });
-                    if (!res.ok) throw new Error('API Error');
+                    if (!res.ok) throw new Error(`API Error: ${res.status}`);
                     const data = await res.json();
+                    if(!data.predictions) throw new Error("Invalid response");
                     return `data:image/png;base64,${data.predictions[0].bytesBase64Encoded}`;
                 } else {
-                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${currentKey}`;
                     const contents = chatHistory.slice(-6).map(m => ({ role: m.role, parts: [{ text: m.text }] }));
                     contents.push({ role: "user", parts: [{ text: prompt }] });
                     
@@ -818,14 +755,15 @@ int main() {
                             systemInstruction: { parts: [{ text: personas[botPersonaSelect.value] || personas.friendly }] }
                         })
                     });
-                    if (!res.ok) throw new Error('API Error');
+                    if (!res.ok) throw new Error(`API Error: ${res.status}`);
                     const data = await res.json();
+                    if(!data.candidates) throw new Error("Invalid response");
                     return data.candidates[0].content.parts[0].text;
                 }
             } catch (err) {
                 if (retryCount < 4) {
                     await new Promise(r => setTimeout(r, Math.pow(2, retryCount) * 1000));
-                    return fetchAIResponse(prompt, isImage, retryCount + 1);
+                    return fetchAIResponse(prompt, isImage, currentKey, retryCount + 1);
                 }
                 throw err;
             }
@@ -835,6 +773,13 @@ int main() {
             e.preventDefault();
             const msg = userInput.value.trim();
             if (!msg) return;
+
+            // GitHub Pages BYOK Validation Check
+            const currentKey = getEffectiveApiKey();
+            if (!currentKey) {
+                openModal('apiKeyModal');
+                return;
+            }
 
             const isImgMode = botPersonaSelect.value === 'image_gen';
             
@@ -849,7 +794,7 @@ int main() {
             scrollChat();
 
             try {
-                const response = await fetchAIResponse(msg, isImgMode);
+                const response = await fetchAIResponse(msg, isImgMode, currentKey);
                 document.getElementById('typingIndicator').classList.add('hidden');
                 
                 if (isImgMode) {
@@ -860,7 +805,7 @@ int main() {
                 }
             } catch (err) {
                 document.getElementById('typingIndicator').classList.add('hidden');
-                chatBox.insertAdjacentHTML('beforeend', `<div class="text-center text-red-500 text-xs my-2 font-bold"><i class="fa-solid fa-triangle-exclamation"></i> API Request Failed. Please check connectivity.</div>`);
+                chatBox.insertAdjacentHTML('beforeend', `<div class="text-center text-red-500 text-xs my-2 font-bold"><i class="fa-solid fa-triangle-exclamation"></i> API Error. If on GitHub, verify your API key is correct.</div>`);
             } finally {
                 document.getElementById('sendBtn').disabled = false;
                 userInput.focus();
@@ -876,6 +821,8 @@ int main() {
     </script>
 </body>
 </html>
+
+
 
 
 ```
