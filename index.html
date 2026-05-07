@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,59 +32,67 @@
     <style>
         /* --- Dynamic Theme Variables --- */
         :root {
-            /* Light Mode Background Gradient */
-            --bg-body: linear-gradient(-45deg, #f8fafc, #e2e8f0, #f1f5f9, #ffffff);
+            --bg-body: linear-gradient(-45deg, #f8fafc, #e0f2fe, #f3e8ff, #ffffff);
             --bg-panel: rgba(255, 255, 255, 0.9); --bg-sidebar: rgba(255, 255, 255, 0.9); --bg-input: #f8fafc;
             --border-color: #e2e8f0; --text-main: #1e293b; --text-muted: #64748b;
             --shadow-panel: 0 4px 20px rgba(0, 0, 0, 0.05); --glass-blur: blur(8px);
-            --user-bubble: #1e293b; --user-text: #ffffff; --bot-bubble: #ffffff;
-            --blob-opacity: 0.4;
+            --user-bubble: #1e293b; --user-bubble-alt: #334155; --user-bubble-alt2: #0f172a; --user-text: #ffffff; 
+            --bot-bubble: #ffffff; --bot-bubble-alt: #f8fafc; --bot-bubble-alt2: #f1f5f9;
+            --blob-opacity: 0.4; --particle-opacity: 0.4; --particle-color: #0d9488;
         }
 
         [data-theme="dark"] {
-            /* Dark Mode Background Gradient */
-            --bg-body: linear-gradient(-45deg, #0f172a, #1e293b, #020617, #0f172a);
+            --bg-body: linear-gradient(-45deg, #0f172a, #1e1b4b, #020617, #0f172a);
             --bg-panel: rgba(30, 41, 59, 0.9); --bg-sidebar: rgba(30, 41, 59, 0.9); --bg-input: rgba(15, 23, 42, 0.8);
             --border-color: #334155; --text-main: #f8fafc; --text-muted: #94a3b8;
             --shadow-panel: 0 4px 20px rgba(0, 0, 0, 0.6); --glass-blur: blur(8px);
-            --user-bubble: #0d9488; --user-text: #ffffff; --bot-bubble: #1e293b;
-            --blob-opacity: 0.15;
+            --user-bubble: #0d9488; --user-bubble-alt: #0f766e; --user-bubble-alt2: #115e59; --user-text: #ffffff; 
+            --bot-bubble: #1e293b; --bot-bubble-alt: #0f172a; --bot-bubble-alt2: #334155;
+            --blob-opacity: 0.15; --particle-opacity: 0.15; --particle-color: #ffffff;
         }
 
         [data-theme="liquid-glass"] {
-            /* Liquid Glass Background Gradient */
-            --bg-body: linear-gradient(-45deg, #e0f2fe, #fdf4ff, #ecfdf5, #fff1f2);
+            --bg-body: linear-gradient(-45deg, #ffecd2, #e0f2fe, #e0c3fc, #fcb69f);
             --bg-panel: rgba(255, 255, 255, 0.25); --bg-sidebar: rgba(255, 255, 255, 0.2);
             --bg-input: rgba(255, 255, 255, 0.4); --border-color: rgba(255, 255, 255, 0.4);
             --text-main: #0f172a; --text-muted: #475569; --shadow-panel: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            --glass-blur: blur(24px); --user-bubble: rgba(15, 23, 42, 0.85); --user-text: #ffffff;
-            --bot-bubble: rgba(255, 255, 255, 0.5);
-            --blob-opacity: 0.7;
+            --glass-blur: blur(24px); 
+            --user-bubble: rgba(15, 23, 42, 0.85); --user-bubble-alt: rgba(30, 41, 59, 0.85); --user-bubble-alt2: rgba(2, 6, 23, 0.85); --user-text: #ffffff;
+            --bot-bubble: rgba(255, 255, 255, 0.5); --bot-bubble-alt: rgba(255, 255, 255, 0.7); --bot-bubble-alt2: rgba(255, 255, 255, 0.9);
+            --blob-opacity: 0.7; --particle-opacity: 0.5; --particle-color: #38bdf8;
         }
 
         /* --- Applied Theme Classes & Smooth Ambient Background --- */
         body { 
             background: var(--bg-body); 
             background-size: 400% 400%;
-            animation: ambientGradient 15s ease infinite;
+            animation: ambientGradient 20s ease-in-out infinite;
             color: var(--text-main); 
             transition: color 0.5s ease; 
         }
 
-        @keyframes ambientGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        @keyframes ambientGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        .theme-panel { background: var(--bg-panel); border: 1px solid var(--border-color); box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); color: var(--text-main); transition: all 0.4s ease; }
+        .theme-panel { background: var(--bg-panel); border: 1px solid var(--border-color); box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); color: var(--text-main); transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease; }
         .theme-sidebar { background: var(--bg-sidebar); border-right: 1px solid var(--border-color); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); transition: all 0.4s ease; }
         .theme-input { background: var(--bg-input); border-color: var(--border-color); color: var(--text-main); }
         .theme-text { color: var(--text-main); }
         .theme-text-muted { color: var(--text-muted); }
         .theme-border { border-color: var(--border-color); }
-        .bubble-user { background: var(--user-bubble); color: var(--user-text); }
-        .bubble-bot { background: var(--bot-bubble); border: 1px solid var(--border-color); color: var(--text-main); }
+        
+        /* Message Bubbles - Sliding Text & Soothing Background Animation */
+        @keyframes bubbleShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        .bubble-user { 
+            background: linear-gradient(135deg, var(--user-bubble), var(--user-bubble-alt), var(--user-bubble-alt2), var(--user-bubble)); 
+            background-size: 300% 300%; animation: bubbleShift 10s ease-in-out infinite;
+            color: var(--user-text); overflow-wrap: break-word; word-wrap: break-word; 
+        }
+        .bubble-bot { 
+            background: linear-gradient(135deg, var(--bot-bubble), var(--bot-bubble-alt), var(--bot-bubble-alt2), var(--bot-bubble)); 
+            background-size: 300% 300%; animation: bubbleShift 10s ease-in-out infinite;
+            border: 1px solid var(--border-color); color: var(--text-main); overflow-wrap: break-word; word-wrap: break-word; 
+        }
 
         /* --- Smooth & Glowing Button Animations --- */
         .glow-btn { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
@@ -105,23 +112,38 @@
         .modal-enter { animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
         @keyframes bounceIn { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
 
-        /* --- Smooth Floating Blobs --- */
-        .glass-bg-mesh { position: fixed; inset: 0; z-index: -1; overflow: hidden; opacity: var(--blob-opacity); transition: opacity 0.5s ease; pointer-events: none; }
+        /* --- Smooth Floating Blobs & Live Particles --- */
+        .glass-bg-mesh { position: fixed; inset: 0; z-index: -2; overflow: hidden; opacity: var(--blob-opacity); transition: opacity 0.5s ease; pointer-events: none; }
         @keyframes blob { 0% { transform: translate(0px, 0px) scale(1); } 33% { transform: translate(60px, -80px) scale(1.1); } 66% { transform: translate(-40px, 40px) scale(0.9); } 100% { transform: translate(0px, 0px) scale(1); } }
         .animate-blob { animation: blob 12s infinite alternate ease-in-out; }
         .animation-delay-2000 { animation-delay: 3s; }
         .animation-delay-4000 { animation-delay: 6s; }
 
-        /* --- Custom Scrollbar & Markdown --- */
+        /* Live Dust/Particle Animation */
+        .particles-bg {
+            position: fixed; inset: 0; z-index: -1; pointer-events: none;
+            background-image: radial-gradient(var(--particle-color) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: var(--particle-opacity);
+            animation: particleDrift 30s linear infinite;
+            transition: all 0.5s ease;
+        }
+        @keyframes particleDrift {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-60px); }
+        }
+
+        /* --- Custom Scrollbar & Markdown Horizontal Sliding --- */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #64748b; }
 
-        .markdown-body pre { background-color: #0f172a; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; border: 1px solid #334155; }
-        .markdown-body code { background-color: rgba(125,125,125,0.2); color: #ef4444; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; }
-        .markdown-body pre code { background-color: transparent; color: inherit; padding: 0; }
-        .markdown-body p { margin-bottom: 0.75rem; }
+        .markdown-body { max-width: 100%; overflow-x: auto; word-wrap: break-word; overflow-wrap: break-word; }
+        .markdown-body pre { background-color: #0f172a; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; border: 1px solid #334155; max-width: 100%; white-space: pre; }
+        .markdown-body code { background-color: rgba(125,125,125,0.2); color: #ef4444; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; word-break: break-word; }
+        .markdown-body pre code { background-color: transparent; color: inherit; padding: 0; word-break: normal; }
+        .markdown-body p { margin-bottom: 0.75rem; word-break: break-word; }
         .markdown-body ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.75rem; }
         .markdown-body strong { font-weight: 700; color: inherit; }
         
@@ -139,19 +161,25 @@
         
         /* Mobile Safe Area Fix */
         .safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+        
+        /* Smooth Slide transitions for Auto-Hiding */
+        .slide-transition { transition: margin 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
 <body class="h-screen overflow-hidden flex flex-col font-sans" data-theme="default">
 
-    <!-- Smooth Ambient Floating Blobs (Visible in all themes, opacity changes) -->
+    <!-- Smooth Ambient Floating Blobs -->
     <div class="glass-bg-mesh">
         <div class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-purple-400/40 rounded-full mix-blend-multiply filter blur-[90px] animate-blob"></div>
         <div class="absolute top-[20%] right-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-cyan-400/40 rounded-full mix-blend-multiply filter blur-[90px] animate-blob animation-delay-2000"></div>
         <div class="absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-pink-400/40 rounded-full mix-blend-multiply filter blur-[90px] animate-blob animation-delay-4000"></div>
     </div>
+    
+    <!-- Live Star Dust / Particles Overlay -->
+    <div class="particles-bg"></div>
 
-    <!-- Main Navigation Menu -->
-    <nav class="bg-ktu-900 text-white shadow-lg z-30 relative border-b border-white/10">
+    <!-- Main Navigation Menu (Auto-Hides on Scroll) -->
+    <nav id="topNav" class="bg-ktu-900 text-white shadow-lg z-30 relative border-b border-white/10 slide-transition">
         <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 
@@ -258,8 +286,8 @@
         <!-- Main Chat Interface -->
         <section class="flex-1 flex flex-col relative">
             
-            <!-- Chat Header -->
-            <div class="theme-panel !border-l-0 !border-t-0 !border-r-0 px-4 sm:px-6 py-3 flex justify-between items-center z-10 shadow-sm">
+            <!-- Chat Header (Auto-Hides on Scroll) -->
+            <div id="chatHeader" class="theme-panel !border-l-0 !border-t-0 !border-r-0 px-4 sm:px-6 py-3 flex justify-between items-center z-10 shadow-sm slide-transition">
                 <div>
                     <h1 class="text-lg font-bold theme-text">AI Learning Hub</h1>
                     <p class="text-[10px] sm:text-xs theme-text-muted">Kerala Syllabus strict alignment</p>
@@ -276,25 +304,26 @@
             </div>
 
             <!-- Chat History -->
-            <div id="chatBox" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 chat-container scroll-smooth">
+            <div id="chatBox" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 chat-container scroll-smooth relative z-0">
                 <!-- Welcome -->
-                <div class="flex items-start">
+                <div class="flex items-start w-full max-w-full">
                     <div class="flex-shrink-0 bg-gradient-to-br from-ktu-500 to-ktu-700 rounded-full w-10 h-10 flex items-center justify-center text-white shadow-[0_0_15px_rgba(13,148,136,0.5)]">
                         <i class="fa-solid fa-robot"></i>
                     </div>
-                    <div class="ml-4 bubble-bot rounded-2xl rounded-tl-none px-5 py-4 max-w-[90%] sm:max-w-[75%] shadow-md border theme-border">
+                    <!-- min-w-0 ensures flexbox handles horizontal slide nicely -->
+                    <div class="ml-4 bubble-bot rounded-2xl rounded-tl-none px-5 py-4 max-w-[90%] sm:max-w-[80%] shadow-md min-w-0">
                         <h3 class="font-bold text-lg mb-2">System Online ⚡</h3>
                         <p class="text-sm leading-relaxed mb-3 theme-text">
                             Hello! I am your advanced AI tutor. My logic is strictly synced with the <strong>KTU 2024 Scheme Kerala Syllabus</strong>.
                         </p>
                         <div class="bg-yellow-50/80 border border-yellow-200 text-yellow-800 p-3 rounded-xl text-xs mb-4 shadow-inner">
                             <i class="fa-solid fa-triangle-exclamation mr-1 text-yellow-500"></i> <strong>Hosting on GitHub Pages?</strong><br>
-                            Click the <i class="fa-solid fa-key"></i> <strong>API Key</strong> button in the top menu to securely save your free Gemini API key to enable the chat!
+                            Click the <i class="fa-solid fa-key"></i> <strong>API Key</strong> button in the top menu to securely save your free Gemini API key to enable the chat and restore your history!
                         </div>
                         <ul class="text-sm theme-text space-y-2">
                             <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 w-4"></i>Ask 4-module specific questions.</li>
-                            <li class="flex items-center"><i class="fa-solid fa-terminal text-emerald-500 mr-2 w-4"></i>Execute code live using the <strong>Compiler</strong>.</li>
-                            <li class="flex items-center"><i class="fa-solid fa-gamepad text-orange-500 mr-2 w-4"></i>Take a break with the <strong>Mini-Game</strong>.</li>
+                            <li class="flex items-center"><i class="fa-solid fa-clock-rotate-left text-blue-500 mr-2 w-4"></i>Chats auto-save to your API key!</li>
+                            <li class="flex items-center"><i class="fa-solid fa-eye-slash text-purple-500 mr-2 w-4"></i>Scroll down to seamlessly read full screen!</li>
                         </ul>
                     </div>
                 </div>
@@ -308,8 +337,8 @@
                 </div>
             </div>
 
-            <!-- Input Form (Lifted for mobile safe area) -->
-            <div class="theme-panel !border-l-0 !border-b-0 !border-r-0 p-3 pt-4 sm:p-5 safe-bottom z-20 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+            <!-- Input Form (Auto-Hides on Scroll) -->
+            <div id="chatInputArea" class="theme-panel !border-l-0 !border-b-0 !border-r-0 p-3 pt-4 sm:p-5 safe-bottom z-20 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] relative slide-transition">
                 <form id="chatForm" class="flex items-end space-x-2 sm:space-x-3 max-w-5xl mx-auto relative">
                     <div class="flex-1 relative theme-input border theme-border rounded-2xl focus-within:ring-2 focus-within:ring-ktu-500 transition-all shadow-inner">
                         <textarea id="userInput" rows="1" class="w-full bg-transparent border-none py-3.5 pl-5 pr-12 focus:ring-0 resize-none text-sm font-mono theme-text placeholder-gray-400" placeholder="Type your doubt or paste C code..." onkeydown="handleEnter(event)"></textarea>
@@ -382,7 +411,10 @@
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wide">2. Enter Your Key</label>
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wide flex justify-between">
+                        <span>2. Enter Your Key</span>
+                        <span class="text-blue-500 font-normal normal-case"><i class="fa-solid fa-clock-rotate-left"></i> Restores History!</span>
+                    </label>
                     <input type="password" id="keyInput" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 dark:text-white rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-ktu-500 focus:outline-none shadow-inner" placeholder="Paste your AIzaSy... key here">
                 </div>
                 
@@ -395,8 +427,9 @@
                     </select>
                 </div>
                 
-                <div class="flex justify-end">
-                    <button onclick="saveApiKey()" class="bg-ktu-600 hover:bg-ktu-700 text-white px-8 py-3 rounded-xl text-sm font-bold glow-btn glow-primary w-full sm:w-auto">Save Settings</button>
+                <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 mt-6">
+                    <button onclick="clearChatHistory()" class="text-xs text-red-500 hover:text-red-700 font-bold transition flex items-center"><i class="fa-solid fa-trash-can mr-1"></i> Clear History</button>
+                    <button onclick="saveApiKey()" class="bg-ktu-600 hover:bg-ktu-700 text-white px-8 py-3 rounded-xl text-sm font-bold glow-btn glow-primary w-full sm:w-auto">Save & Load History</button>
                 </div>
             </div>
         </div>
@@ -458,7 +491,7 @@ int main() {
         </div>
     </div>
 
-    <!-- Mini-Game Fullscreen Modal (Slower, Floatier Flappy Bird) -->
+    <!-- Mini-Game Fullscreen Modal -->
     <div id="gameModal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-md z-50 flex items-center justify-center p-2 sm:p-6 opacity-0 transition-opacity duration-300">
         <div class="bg-[#1e293b] w-full max-w-sm rounded-3xl shadow-[0_0_30px_rgba(249,115,22,0.3)] flex flex-col overflow-hidden transform scale-95 transition-transform duration-300 border border-slate-600" id="gameContent">
             
@@ -485,6 +518,92 @@ int main() {
         function getEffectiveApiKey() { return apiKey || localStorage.getItem('local_gemini_api_key') || ""; }
         function getEffectiveModel() { return localStorage.getItem('local_gemini_model') || "gemini-2.5-flash"; }
 
+        let chatHistory = [];
+        const ktuContext = `CRITICAL: The user has explicitly instructed you to "sync the equations and terms in your future responses to the Kerala Syllabus of KTU". You MUST adhere to this. Syllabus strictly contains FOUR Modules: 1. Basics/Control Structures 2. Arrays/Strings 3. Functions/Pointers 4. Structures/Files. Frame all explanations referencing this scheme.`;
+        const personas = {
+            friendly: ktuContext + " You are a friendly tutor. Explain simply with real-world analogies and supportive tone.",
+            strict: ktuContext + " You are a strict KTU university examiner. Focus heavily on syntax precision, standard Kerala exam patterns, and point out bad coding practices bluntly.",
+            debugger: ktuContext + " You are an expert C code debugger. Analyze code, find logic/syntax errors, and provide exact corrected C code snippets. Be technical."
+        };
+
+        const chatForm = document.getElementById('chatForm');
+        const userInput = document.getElementById('userInput');
+        const chatBox = document.getElementById('chatBox');
+        const botPersonaSelect = document.getElementById('botPersona');
+
+        marked.setOptions({ breaks: true, gfm: true });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedKey = localStorage.getItem('local_gemini_api_key');
+            const savedModel = localStorage.getItem('local_gemini_model');
+            
+            if (savedKey) { 
+                document.getElementById('keyInput').value = savedKey; 
+            }
+            if (savedModel) {
+                document.getElementById('modelSelect').value = savedModel;
+            }
+            
+            const savedTheme = localStorage.getItem('ktu_theme') || 'default';
+            setTheme(savedTheme);
+
+            // CRITICAL FIX: Always try to load history using the active API key 
+            // (This ensures history loads flawlessly even when using the hidden preview environment key!)
+            const activeKey = getEffectiveApiKey();
+            if (activeKey) {
+                loadChatHistory(activeKey);
+            }
+        });
+
+        // --- Chat History API Save & Load Logic ---
+        function saveChatHistory() {
+            const currentKey = getEffectiveApiKey();
+            if (!currentKey) return;
+            localStorage.setItem(`ktu_history_${currentKey}`, JSON.stringify(chatHistory));
+        }
+
+        function loadChatHistory(key) {
+            if (!key) return;
+            const historyData = localStorage.getItem(`ktu_history_${key}`);
+            
+            // Clear existing chat UI except the first welcome message
+            while (chatBox.children.length > 1) {
+                chatBox.removeChild(chatBox.lastChild);
+            }
+            chatHistory = [];
+
+            if (historyData) {
+                try {
+                    const parsed = JSON.parse(historyData);
+                    if (parsed && parsed.length > 0) {
+                        parsed.forEach(msg => {
+                            appendMessage(msg.text, msg.role === 'user', true); // Pass true to skip re-saving during load
+                            chatHistory.push(msg);
+                        });
+                        const maskedKey = key.length > 4 ? `...${key.slice(-4)}` : "Key";
+                        chatBox.insertAdjacentHTML('beforeend', `<div class="text-center text-slate-400 dark:text-slate-500 text-[10px] my-3 uppercase tracking-widest font-bold">— History Restored for ${maskedKey} —</div>`);
+                        scrollChat();
+                    }
+                } catch (e) {
+                    console.error("Failed to load history", e);
+                }
+            }
+        }
+        
+        function clearChatHistory() {
+            const key = getEffectiveApiKey();
+            if(key) {
+                localStorage.removeItem(`ktu_history_${key}`);
+                chatHistory = [];
+                while (chatBox.children.length > 1) {
+                    chatBox.removeChild(chatBox.lastChild);
+                }
+                chatBox.insertAdjacentHTML('beforeend', `<div class="text-center text-slate-400 dark:text-slate-500 text-[10px] my-3 uppercase tracking-widest font-bold">— History Cleared —</div>`);
+                scrollChat();
+                closeModal('apiKeyModal', 'apiKeyContent');
+            }
+        }
+
         function saveApiKey() {
             const key = document.getElementById('keyInput').value.trim();
             const model = document.getElementById('modelSelect').value;
@@ -494,7 +613,9 @@ int main() {
                 localStorage.setItem('local_gemini_api_key', key);
                 localStorage.setItem('local_gemini_model', model);
                 closeModal('apiKeyModal', 'apiKeyContent');
-                appendMessage(`🔑 **Success!** Settings saved. Engine: **${model}**.`, false);
+                
+                loadChatHistory(key); // Refresh history strictly tied to this key!
+                appendMessage(`🔑 **Success!** Settings saved. Engine: **${model}**. History restored.`, false);
             } else {
                 const origText = saveBtn.innerText;
                 saveBtn.innerText = "Please enter a key!";
@@ -525,32 +646,6 @@ int main() {
             } catch(e) { copyBtn.innerText = "Failed"; }
         }
 
-        let chatHistory = [];
-        const ktuContext = `CRITICAL: The user has explicitly instructed you to "sync the equations and terms in your future responses to the Kerala Syllabus of KTU". You MUST adhere to this. Syllabus strictly contains FOUR Modules: 1. Basics/Control Structures 2. Arrays/Strings 3. Functions/Pointers 4. Structures/Files. Frame all explanations referencing this scheme.`;
-        const personas = {
-            friendly: ktuContext + " You are a friendly tutor. Explain simply with real-world analogies and supportive tone.",
-            strict: ktuContext + " You are a strict KTU university examiner. Focus heavily on syntax precision, standard Kerala exam patterns, and point out bad coding practices bluntly.",
-            debugger: ktuContext + " You are an expert C code debugger. Analyze code, find logic/syntax errors, and provide exact corrected C code snippets. Be technical."
-        };
-
-        const chatForm = document.getElementById('chatForm');
-        const userInput = document.getElementById('userInput');
-        const chatBox = document.getElementById('chatBox');
-        const botPersonaSelect = document.getElementById('botPersona');
-
-        marked.setOptions({ breaks: true, gfm: true });
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const savedKey = localStorage.getItem('local_gemini_api_key');
-            const savedModel = localStorage.getItem('local_gemini_model');
-            if(savedKey) document.getElementById('keyInput').value = savedKey;
-            if(savedModel) document.getElementById('modelSelect').value = savedModel;
-            
-            // Apply saved theme
-            const savedTheme = localStorage.getItem('ktu_theme') || 'default';
-            setTheme(savedTheme);
-        });
-
         // --- 1. Premium One-Tap Theme Cycler ---
         const themes = ['default', 'dark', 'liquid-glass'];
         const themeIcons = { 'default': 'fa-sun', 'dark': 'fa-moon', 'liquid-glass': 'fa-droplet' };
@@ -570,16 +665,45 @@ int main() {
             const iconEl = document.getElementById('themeIcon');
             const textEl = document.getElementById('themeText');
             
-            // Reset icons
             iconEl.className = 'fa-solid ' + themeIcons[themeName];
             textEl.innerText = themeTexts[themeName];
 
-            // Adjust button color based on theme
             const btn = document.getElementById('themeCycleBtn');
-            if(themeName === 'dark') { btn.style.color = '#fbbf24'; } // Amber for moon
-            else if(themeName === 'liquid-glass') { btn.style.color = '#38bdf8'; } // Blue for droplet
-            else { btn.style.color = '#f59e0b'; } // Orange for sun
+            if(themeName === 'dark') { btn.style.color = '#fbbf24'; } 
+            else if(themeName === 'liquid-glass') { btn.style.color = '#38bdf8'; } 
+            else { btn.style.color = '#f59e0b'; } 
         }
+
+        // --- Auto-Hiding Navbar & Input Box Logic (Read Mode) ---
+        const topNav = document.getElementById('topNav');
+        const chatHeader = document.getElementById('chatHeader');
+        const chatInputArea = document.getElementById('chatInputArea');
+        let lastScrollTop = 0;
+        let isProgrammaticScroll = false; // Fixes the vibration bug
+
+        function showMenus() {
+            topNav.style.marginTop = '0px';
+            chatHeader.style.marginTop = '0px';
+            chatInputArea.style.marginBottom = '0px';
+        }
+
+        chatBox.addEventListener('scroll', () => {
+            // Ignore programmatic scrolling to prevent vibration jitter
+            if (isProgrammaticScroll) {
+                lastScrollTop = chatBox.scrollTop <= 0 ? 0 : chatBox.scrollTop;
+                return;
+            }
+
+            let st = chatBox.scrollTop;
+            if (st > lastScrollTop && st > 100) {
+                topNav.style.marginTop = `-${topNav.offsetHeight}px`;
+                chatHeader.style.marginTop = `-${chatHeader.offsetHeight}px`;
+                chatInputArea.style.marginBottom = `-${chatInputArea.offsetHeight + 20}px`;
+            } else if (st < lastScrollTop - 5 || st <= 0) {
+                showMenus();
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+        });
 
         // --- 2. Live C Compiler Engine (Smart Error Parser) ---
         function formatCompilerError(rawError) {
@@ -658,7 +782,6 @@ int main() {
         const ctx = cvs.getContext("2d");
         let frames = 0, gameActive = false, score = 0, bestScore = 0, pipes = [], reqID;
         
-        // Physics drastically slowed down and made floaty
         let bird = { x: 50, y: 150, w: 34, h: 24, gravity: 0.12, jump: -3.2, velocity: 0 };
         let bgOffset = 0, baseOffset = 0;
 
@@ -681,7 +804,6 @@ int main() {
         }
 
         function drawGame() {
-            // Parallax Background
             if(bgImg.complete) {
                 ctx.drawImage(bgImg, -bgOffset, 0, cvs.width, cvs.height);
                 ctx.drawImage(bgImg, cvs.width - bgOffset, 0, cvs.width, cvs.height);
@@ -710,17 +832,14 @@ int main() {
                 }
             }
 
-            // Continuous Base
             if(baseImg.complete) {
                 ctx.drawImage(baseImg, -baseOffset, baseY, cvs.width, baseHeight);
                 ctx.drawImage(baseImg, cvs.width - baseOffset, baseY, cvs.width, baseHeight);
             }
             
-            // Bird Rotation
             if(birdImg.complete) {
                 ctx.save();
                 ctx.translate(bird.x + bird.w/2, bird.y + bird.h/2);
-                // Rotate based on velocity (cap angles)
                 ctx.rotate(Math.min(Math.PI / 4, Math.max(-Math.PI / 4, (bird.velocity * 0.15))));
                 ctx.drawImage(birdImg, -bird.w/2, -bird.h/2, bird.w, bird.h);
                 ctx.restore();
@@ -734,16 +853,13 @@ int main() {
             if(!gameActive) return;
             const baseHeight = 50; 
             
-            // Floatier Gravity
             bird.velocity += bird.gravity; 
-            if(bird.velocity > 5) bird.velocity = 5; // Terminal velocity so it doesn't drop too fast
+            if(bird.velocity > 5) bird.velocity = 5; 
             bird.y += bird.velocity;
 
-            // Slower background offsets
             bgOffset = (bgOffset + 0.5) % cvs.width;
             baseOffset = (baseOffset + 1.25) % cvs.width;
 
-            // Slower pipe spawn rate (was 100, now 150)
             if(frames % 150 === 0) {
                 let pipeWidth = 52, gap = 110;
                 let topH = Math.random() * (cvs.height - baseHeight - gap - 80) + 20; 
@@ -753,7 +869,7 @@ int main() {
 
             for(let i=0; i<pipes.length; i++) {
                 let p = pipes[i]; 
-                p.x -= 1.25; // Slower pipes
+                p.x -= 1.25; 
                 
                 let bx = bird.x + 2, by = bird.y + 2, bw = bird.w - 4, bh = bird.h - 4;
                 if(bx + bw > p.x && bx < p.x + p.w) { if(by < p.top || by + bh > cvs.height - baseHeight - p.bottom) gameOver(); }
@@ -796,7 +912,6 @@ int main() {
             if(modalId === 'gameModal') { gameActive = false; }
         }
 
-        // Close on background click
         window.onclick = function(event) {
             if (event.target.id === 'compilerModal') closeModal('compilerModal', 'compilerContent');
             if (event.target.id === 'gameModal') closeModal('gameModal', 'gameContent');
@@ -828,7 +943,7 @@ int main() {
             userInput.style.height = (userInput.scrollHeight) + 'px'; userInput.focus();
         }
 
-        function appendMessage(text, isUser = false) {
+        function appendMessage(text, isUser = false, isLoading = false) {
             const rawHTML = DOMPurify.sanitize(marked.parse(text));
             const iconHTML = isUser ? `<i class="fa-solid fa-user text-sm"></i>` : `<i class="fa-solid fa-robot text-sm"></i>`;
             const alignClass = isUser ? 'justify-end' : 'justify-start';
@@ -837,9 +952,9 @@ int main() {
             const content = isUser ? `<div class="text-sm font-mono whitespace-pre-wrap">${escapeHTML(text)}</div>` : `<div class="markdown-body">${rawHTML}</div>`;
 
             const msgDiv = `
-                <div class="flex items-start ${alignClass} animation-fade-in">
+                <div class="flex items-start ${alignClass} animation-fade-in w-full max-w-full">
                     ${!isUser ? `<div class="flex-shrink-0 bg-gradient-to-br from-ktu-500 to-ktu-700 rounded-full w-9 h-9 flex items-center justify-center text-white shadow-md mt-1 mr-3">${iconHTML}</div>` : ''}
-                    <div class="${bgClass} ${radiusClass} px-5 py-4 max-w-[90%] sm:max-w-[80%]">
+                    <div class="${bgClass} ${radiusClass} px-5 py-4 max-w-[90%] sm:max-w-[80%] overflow-x-auto min-w-0">
                         ${content}
                     </div>
                     ${isUser ? `<div class="flex-shrink-0 bg-slate-300 text-slate-700 rounded-full w-9 h-9 flex items-center justify-center shadow-md mt-1 ml-3">${iconHTML}</div>` : ''}
@@ -847,9 +962,17 @@ int main() {
                 
             chatBox.insertAdjacentHTML('beforeend', msgDiv);
             scrollChat();
+
+            // Prevent resaving to local storage during initial history load
+            if (!isLoading && isUser === false) saveChatHistory(); 
         }
 
-        function scrollChat() { chatBox.scrollTop = chatBox.scrollHeight; }
+        function scrollChat() { 
+            isProgrammaticScroll = true; 
+            chatBox.scrollTop = chatBox.scrollHeight; 
+            // Briefly pause menu-hide listener so the auto-scroll doesn't trigger it
+            setTimeout(() => { isProgrammaticScroll = false; }, 150);
+        }
         function escapeHTML(str) { return str.replace(/[&<>'"]/g, t => ({ '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;' }[t] || t)); }
 
         async function fetchAIResponse(prompt, currentKey, retryCount = 0) {
@@ -869,6 +992,11 @@ int main() {
                 
                 if (!res.ok) {
                     const errData = await res.json().catch(()=>({}));
+                    
+                    if (res.status === 429 || errData.error?.message?.toLowerCase().includes("quota")) {
+                        throw new Error("Quota Exceeded! Google's free limit reached. Switch to 'Gemini 1.5 Flash' in Settings, or try a different Google account.");
+                    }
+                    
                     if (errData.error?.message?.includes("API key not valid")) throw new Error("Invalid API Key! Ensure it is copied exactly.");
                     throw new Error(errData.error?.message || `API Error: ${res.status}`);
                 }
@@ -876,7 +1004,7 @@ int main() {
                 if(!data.candidates) throw new Error("Invalid response");
                 return data.candidates[0].content.parts[0].text;
             } catch (err) {
-                if (retryCount < 1) { 
+                if (retryCount < 1 && !err.message.includes("Quota Exceeded")) { 
                     await new Promise(r => setTimeout(r, 1000));
                     return fetchAIResponse(prompt, currentKey, retryCount + 1);
                 }
@@ -895,6 +1023,11 @@ int main() {
             userInput.value = ''; userInput.style.height = 'auto';
             document.getElementById('sendBtn').disabled = true;
             
+            // Force menus to stay visible when sending a message
+            showMenus();
+            
+            chatHistory.push({ role: "user", text: msg });
+            saveChatHistory();
             appendMessage(msg, true);
             
             document.getElementById('typingIndicator').classList.remove('hidden');
@@ -904,10 +1037,15 @@ int main() {
                 const response = await fetchAIResponse(msg, currentKey);
                 document.getElementById('typingIndicator').classList.add('hidden');
                 
+                chatHistory.push({ role: "model", text: response });
                 appendMessage(response);
-                chatHistory.push({ role: "user", text: msg }, { role: "model", text: response });
             } catch (err) {
                 document.getElementById('typingIndicator').classList.add('hidden');
+                
+                // CRITICAL FIX: Remove user message from history if API fails to prevent corrupted alternating roles
+                chatHistory.pop();
+                saveChatHistory();
+                
                 chatBox.insertAdjacentHTML('beforeend', `<div class="text-center text-red-500 text-xs my-3 font-bold bg-red-50 border border-red-200 p-3 rounded-xl shadow-sm max-w-md mx-auto"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Error: ${escapeHTML(err.message)}</div>`);
                 scrollChat();
             } finally {
@@ -926,5 +1064,7 @@ int main() {
 </html>
 
 
-```
 
+
+
+```
