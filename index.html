@@ -115,7 +115,6 @@
             transform: translateZ(0); 
         }
         
-        /* Dedicated class for Floating UI that text scrolls UNDER */
         .liquid-nav {
             background: var(--bg-panel); border-bottom: 1px solid var(--border-color);
             box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter);
@@ -173,9 +172,8 @@
             100% { transform: translate(0px, 0px) scale(1) rotate(360deg); } 
         }
         .animate-blob { animation: blob 25s infinite alternate ease-in-out; transform: translateZ(0); will-change: transform; }
-        .animation-delay-2000 { animation-delay: 5s; }
-        .animation-delay-4000 { animation-delay: 10s; }
-        .animation-delay-6000 { animation-delay: 15s; }
+        .animation-delay-2000 { animation-delay: 3s; }
+        .animation-delay-4000 { animation-delay: 6s; }
 
         .particles-bg {
             position: fixed; inset: 0; z-index: -1; pointer-events: none;
@@ -223,7 +221,7 @@
         .markdown-body th, .markdown-body td { border: 1px solid var(--border-color); padding: 0.75rem; text-align: left; }
         .markdown-body th { background-color: rgba(125,125,125,0.15); backdrop-filter: blur(5px); }
         
-        /* Mobile Safe Area Fixes */
+        .chat-container { height: 0; flex: 1 1 auto; scroll-behavior: smooth; }
         .safe-bottom { padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); }
         
         /* --- GPU Accelerated Slide Transitions (Zero Lag) --- */
@@ -233,26 +231,19 @@
             transform: translateZ(0); 
         }
         
-        /* Floating Glass Input Pill */
+        /* Floating Glass Input Pill - Focus Expansion */
         .glass-pill {
             background: var(--bg-panel); border: 1px solid var(--border-color);
             box-shadow: 0 10px 30px rgba(0,0,0,0.1), inset 0 2px 5px rgba(255,255,255,0.5), inset 0 -2px 5px rgba(0,0,0,0.05);
             backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter);
-            border-radius: 2rem; overflow: hidden; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            will-change: border-radius, transform;
+            border-radius: 2rem; overflow: hidden; 
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease, border-radius 0.5s ease;
+            will-change: transform, box-shadow;
         }
-        .glass-pill:focus-within { transform: scale(1.01) translateY(-2px); box-shadow: 0 15px 40px rgba(0,0,0,0.15), inset 0 2px 5px rgba(255,255,255,0.6), inset 0 0 0 1px var(--particle-color); }
-        
-        /* Dynamic Liquid Morph Physics During Scroll */
-        @keyframes liquidWobble {
-            0% { border-radius: 2rem; transform: scaleY(0.97) scaleX(1.01); }
-            33% { border-radius: 2.5rem 1.5rem 2.5rem 1.5rem / 1.5rem 2.5rem 1.5rem 2.5rem; transform: scaleY(1.01) scaleX(0.98); }
-            66% { border-radius: 1.5rem 2.5rem 1.5rem 2.5rem / 2.5rem 1.5rem 2.5rem 1.5rem; transform: scaleY(0.98) scaleX(1.02); }
-            100% { border-radius: 2rem; transform: scaleY(0.99) scaleX(1.01); }
-        }
-        .liquid-scrolling .glass-pill {
-            animation: liquidWobble 0.6s infinite alternate ease-in-out;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15), inset 0 4px 15px rgba(255,255,255,0.6), inset 0 -4px 10px rgba(0,0,0,0.05);
+        .glass-pill:focus-within { 
+            transform: scale(1.03) translateY(-4px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), inset 0 2px 5px rgba(255,255,255,0.6), inset 0 0 0 1px var(--particle-color); 
+            border-radius: 1.5rem;
         }
         
         /* Custom Liquid Glass Persona Selector */
@@ -468,7 +459,7 @@
                 </div>
             </div>
 
-            <!-- Floating Glass Input Pill (Absolute bottom) -->
+            <!-- Floating Glass Input Pill (Absolute bottom, Expands on touch) -->
             <div id="chatInputArea" class="absolute bottom-0 w-full p-4 sm:p-6 safe-bottom z-30 slide-transition">
                 <form id="chatForm" class="flex items-end space-x-2 sm:space-x-3 max-w-5xl mx-auto relative glass-pill">
                     <div class="flex-1 relative transition-all">
@@ -714,6 +705,7 @@
                 localStorage.setItem('local_gemini_api_key', key);
                 localStorage.setItem('local_gemini_model', model);
                 closeModal('apiKeyModal', 'apiKeyContent');
+                alert("API Key & Model Saved Successfully."); 
             } else {
                 const saveBtn = document.querySelector('button[onclick="saveApiKey()"]');
                 const origText = saveBtn.innerText;
@@ -830,7 +822,7 @@ CRITICAL FORMAT RULE 2: If asked to draw a circuit, MUST generate it using high-
             else { btn.style.color = '#f59e0b'; } 
         }
 
-        // --- GPU Accelerated Auto-Hide Read Mode (Touch Only) ---
+        // --- GPU Accelerated Auto-Hide Read Mode ---
         const topNav = document.getElementById('topNav'), chatHeader = document.getElementById('chatHeader'), chatInputArea = document.getElementById('chatInputArea');
         let isReadMode = false;
         
@@ -856,18 +848,6 @@ CRITICAL FORMAT RULE 2: If asked to draw a circuit, MUST generate it using high-
             const isInteractive = e.target.closest('button') || e.target.closest('a') || e.target.closest('.liquid-capsule') || e.target.closest('textarea') || e.target.closest('input') || e.target.closest('.markdown-body');
             if (!isInteractive) { setReadMode(!isReadMode); }
         });
-
-        // Dynamic Liquid Glass Scroll Physics
-        let scrollTimeout;
-        chatBox.addEventListener('scroll', () => {
-            if (!isReadMode) {
-                chatInputArea.classList.add('liquid-scrolling');
-            }
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                chatInputArea.classList.remove('liquid-scrolling');
-            }, 250);
-        }, { passive: true });
 
         // --- 2. MULTI-GAME ARCADE HUB ENGINE ---
         let currentGameMode = null;
@@ -1398,7 +1378,6 @@ CRITICAL FORMAT RULE 2: If asked to draw a circuit, MUST generate it using high-
     </script>
 </body>
 </html>
-
 
 
 ```
