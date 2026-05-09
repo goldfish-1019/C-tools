@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KTU S2 C-Tutor | Premium Edition</title>
+    <title>KTU S2 Network Theory | Premium Edition</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,8 +37,7 @@
             --bg-panel: rgba(255, 255, 255, 0.9); --bg-sidebar: rgba(255, 255, 255, 0.9); --bg-input: #f8fafc;
             --border-color: #e2e8f0; --text-main: #1e293b; --text-muted: #64748b;
             --shadow-panel: 0 4px 20px rgba(0, 0, 0, 0.05); --glass-blur: blur(8px);
-            --user-bubble: #1e293b; --user-bubble-alt: #334155; --user-bubble-alt2: #0f172a; --user-text: #ffffff; 
-            --bot-bubble: #ffffff; --bot-bubble-alt: #f8fafc; --bot-bubble-alt2: #f1f5f9;
+            --user-bubble: #1e293b; --user-text: #ffffff; --bot-bubble: #ffffff;
             --blob-opacity: 0.4; --particle-opacity: 0.4; --particle-color: #0d9488;
         }
 
@@ -46,8 +46,7 @@
             --bg-panel: rgba(30, 41, 59, 0.9); --bg-sidebar: rgba(30, 41, 59, 0.9); --bg-input: rgba(15, 23, 42, 0.8);
             --border-color: #334155; --text-main: #f8fafc; --text-muted: #94a3b8;
             --shadow-panel: 0 4px 20px rgba(0, 0, 0, 0.6); --glass-blur: blur(8px);
-            --user-bubble: #0d9488; --user-bubble-alt: #0f766e; --user-bubble-alt2: #115e59; --user-text: #ffffff; 
-            --bot-bubble: #1e293b; --bot-bubble-alt: #0f172a; --bot-bubble-alt2: #334155;
+            --user-bubble: #0d9488; --user-text: #ffffff; --bot-bubble: #1e293b;
             --blob-opacity: 0.15; --particle-opacity: 0.15; --particle-color: #ffffff;
         }
 
@@ -56,19 +55,16 @@
             --bg-panel: rgba(255, 255, 255, 0.25); --bg-sidebar: rgba(255, 255, 255, 0.2);
             --bg-input: rgba(255, 255, 255, 0.4); --border-color: rgba(255, 255, 255, 0.4);
             --text-main: #0f172a; --text-muted: #475569; --shadow-panel: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            --glass-blur: blur(24px); 
-            --user-bubble: rgba(15, 23, 42, 0.85); --user-bubble-alt: rgba(30, 41, 59, 0.85); --user-bubble-alt2: rgba(2, 6, 23, 0.85); --user-text: #ffffff;
-            --bot-bubble: rgba(255, 255, 255, 0.5); --bot-bubble-alt: rgba(255, 255, 255, 0.7); --bot-bubble-alt2: rgba(255, 255, 255, 0.9);
+            --glass-blur: blur(24px); --user-bubble: rgba(15, 23, 42, 0.85); --user-text: #ffffff;
+            --bot-bubble: rgba(255, 255, 255, 0.5);
             --blob-opacity: 0.7; --particle-opacity: 0.5; --particle-color: #38bdf8;
         }
 
         /* --- Applied Theme Classes & Smooth Ambient Background --- */
         body { 
-            background: var(--bg-body); 
-            background-size: 400% 400%;
+            background: var(--bg-body); background-size: 400% 400%;
             animation: ambientGradient 20s ease-in-out infinite;
-            color: var(--text-main); 
-            transition: color 0.5s ease; 
+            color: var(--text-main); transition: color 0.5s ease; 
         }
 
         @keyframes ambientGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
@@ -80,19 +76,8 @@
         .theme-text-muted { color: var(--text-muted); }
         .theme-border { border-color: var(--border-color); }
         
-        /* Message Bubbles - Sliding Text & Soothing Background Animation */
-        @keyframes bubbleShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        
-        .bubble-user { 
-            background: linear-gradient(135deg, var(--user-bubble), var(--user-bubble-alt), var(--user-bubble-alt2), var(--user-bubble)); 
-            background-size: 300% 300%; animation: bubbleShift 10s ease-in-out infinite;
-            color: var(--user-text); overflow-wrap: break-word; word-wrap: break-word; 
-        }
-        .bubble-bot { 
-            background: linear-gradient(135deg, var(--bot-bubble), var(--bot-bubble-alt), var(--bot-bubble-alt2), var(--bot-bubble)); 
-            background-size: 300% 300%; animation: bubbleShift 10s ease-in-out infinite;
-            border: 1px solid var(--border-color); color: var(--text-main); overflow-wrap: break-word; word-wrap: break-word; 
-        }
+        .bubble-user { background: var(--user-bubble); color: var(--user-text); overflow-wrap: break-word; word-wrap: break-word; }
+        .bubble-bot { background: var(--bot-bubble); border: 1px solid var(--border-color); color: var(--text-main); overflow-wrap: break-word; word-wrap: break-word; }
 
         /* --- Smooth & Glowing Button Animations --- */
         .glow-btn { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
@@ -108,7 +93,6 @@
         .glow-primary { box-shadow: 0 4px 15px rgba(13, 148, 136, 0.5); }
         .glow-primary:hover { box-shadow: 0 6px 20px rgba(13, 148, 136, 0.7); }
 
-        /* Modal Bouncy Entrance */
         .modal-enter { animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
         @keyframes bounceIn { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
 
@@ -119,19 +103,13 @@
         .animation-delay-2000 { animation-delay: 3s; }
         .animation-delay-4000 { animation-delay: 6s; }
 
-        /* Live Dust/Particle Animation */
         .particles-bg {
             position: fixed; inset: 0; z-index: -1; pointer-events: none;
             background-image: radial-gradient(var(--particle-color) 1px, transparent 1px);
-            background-size: 60px 60px;
-            opacity: var(--particle-opacity);
-            animation: particleDrift 30s linear infinite;
-            transition: all 0.5s ease;
+            background-size: 60px 60px; opacity: var(--particle-opacity);
+            animation: particleDrift 30s linear infinite; transition: all 0.5s ease;
         }
-        @keyframes particleDrift {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-60px); }
-        }
+        @keyframes particleDrift { 0% { transform: translateY(0); } 100% { transform: translateY(-60px); } }
 
         /* --- Custom Scrollbar & Markdown Horizontal Sliding --- */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -148,7 +126,10 @@
         .markdown-body strong { font-weight: 700; color: inherit; }
         
         .chat-container { height: calc(100vh - 230px); }
-        .terminal-output { background-color: #0f172a; color: #e2e8f0; font-family: 'JetBrains Mono', monospace; padding: 1rem; overflow-y: auto; height: 100%; white-space: pre-wrap; }
+        
+        .formula-card { background: rgba(15, 23, 42, 0.03); border: 1px solid rgba(15, 23, 42, 0.08); border-radius: 12px; padding: 16px; margin-bottom: 16px; transition: all 0.3s ease; }
+        [data-theme="dark"] .formula-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .formula-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
 
         .animation-fade-in { animation: fadeIn 0.4s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
@@ -159,26 +140,21 @@
 
         #flappyCanvas { border: 4px solid #fff; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); background-color: #70c5ce; }
         
-        /* Mobile Safe Area Fix */
         .safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
-        
-        /* Smooth Slide transitions for Auto-Hiding */
         .slide-transition { transition: margin 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
 <body class="h-screen overflow-hidden flex flex-col font-sans" data-theme="default">
 
-    <!-- Smooth Ambient Floating Blobs -->
+    <!-- Smooth Ambient Background Effects -->
     <div class="glass-bg-mesh">
         <div class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-purple-400/40 rounded-full mix-blend-multiply filter blur-[90px] animate-blob"></div>
         <div class="absolute top-[20%] right-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-cyan-400/40 rounded-full mix-blend-multiply filter blur-[90px] animate-blob animation-delay-2000"></div>
         <div class="absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-pink-400/40 rounded-full mix-blend-multiply filter blur-[90px] animate-blob animation-delay-4000"></div>
     </div>
-    
-    <!-- Live Star Dust / Particles Overlay -->
     <div class="particles-bg"></div>
 
-    <!-- Main Navigation Menu (Auto-Hides on Scroll) -->
+    <!-- Main Navigation Menu (Auto-Hides) -->
     <nav id="topNav" class="bg-ktu-900 text-white shadow-lg z-30 relative border-b border-white/10 slide-transition">
         <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -186,35 +162,31 @@
                 <div class="flex items-center space-x-3 cursor-pointer glow-btn" onclick="openModal('aboutModal')">
                     <img src="https://ui-avatars.com/api/?name=Jiyon+Sebastian&background=14b8a6&color=fff&size=100&bold=true" class="w-10 h-10 rounded-full border-2 border-ktu-500 shadow-[0_0_10px_rgba(20,184,166,0.6)]">
                     <div>
-                        <span class="font-bold text-lg sm:text-xl tracking-tight drop-shadow-md">KTU Pro Hub</span>
-                        <span class="block text-[10px] sm:text-xs text-ktu-100 -mt-1 opacity-90">S2 C-Tutor by Jiyon</span>
+                        <span class="font-bold text-lg sm:text-xl tracking-tight drop-shadow-md">KTU NetTutor</span>
+                        <span class="block text-[10px] sm:text-xs text-ktu-100 -mt-1 opacity-90">S2 Network Theory by Jiyon</span>
                     </div>
                 </div>
                 
                 <div class="flex items-center space-x-3 sm:space-x-4">
-                    
-                    <!-- One-Tap Theme Cycler -->
                     <button onclick="cycleTheme()" id="themeCycleBtn" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-lg bg-white/10 border border-white/20 flex items-center justify-center space-x-2 glow-btn glow-theme" title="Change Theme">
                         <i class="fa-solid fa-sun" id="themeIcon"></i>
                         <span class="hidden sm:inline text-sm font-bold" id="themeText">Light</span>
                     </button>
 
-                    <!-- API Key Setting -->
                     <button onclick="openModal('apiKeyModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-lg bg-yellow-500 border border-yellow-400 text-slate-900 flex items-center justify-center space-x-2 glow-btn glow-yellow" title="API Key Settings">
                         <i class="fa-solid fa-key"></i>
                         <span class="hidden sm:inline text-sm font-bold">API Key</span>
                     </button>
 
-                    <!-- Mini Game Button -->
                     <button onclick="openModal('gameModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-lg bg-orange-500 border border-orange-400 text-white flex items-center justify-center space-x-2 glow-btn glow-orange" title="Play Game">
                         <i class="fa-solid fa-gamepad"></i>
                         <span class="hidden sm:inline text-sm font-bold">Game</span>
                     </button>
 
-                    <!-- Compiler Button -->
-                    <button onclick="openModal('compilerModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-lg bg-emerald-500 border border-emerald-400 text-white flex items-center justify-center space-x-2 glow-btn glow-emerald" title="Open Compiler">
-                        <i class="fa-solid fa-terminal"></i>
-                        <span class="hidden sm:inline text-sm font-bold">Compiler</span>
+                    <!-- Exam Formula Vault Button -->
+                    <button onclick="openModal('formulaModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-lg bg-emerald-500 border border-emerald-400 text-white flex items-center justify-center space-x-2 glow-btn glow-emerald" title="Formula Vault">
+                        <i class="fa-solid fa-square-root-variable"></i>
+                        <span class="hidden sm:inline text-sm font-bold">Formulas</span>
                     </button>
                 </div>
             </div>
@@ -224,28 +196,28 @@
     <!-- Main Layout Grid -->
     <main class="flex-1 flex overflow-hidden relative z-10">
         
-        <!-- Left Sidebar (Syllabus & Boilerplates) -->
+        <!-- Left Sidebar (Syllabus & Quick Prompts) -->
         <aside class="hidden md:flex flex-col w-80 theme-sidebar overflow-y-auto z-10">
             <div class="p-5 theme-border border-b">
                 <h2 class="text-sm font-bold theme-text uppercase tracking-wider mb-4 flex items-center">
-                    <i class="fa-solid fa-list-check text-ktu-600 mr-2"></i> KTU 4-Module Syllabus
+                    <i class="fa-solid fa-network-wired text-ktu-600 mr-2"></i> KTU 4-Module Tracker
                 </h2>
                 <div class="space-y-4">
                     <label class="flex items-start space-x-3 cursor-pointer group">
                         <input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition">
-                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 1: Basics & Control</span>
+                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 1: Node/Mesh & Star-Delta</span>
                     </label>
                     <label class="flex items-start space-x-3 cursor-pointer group">
                         <input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition">
-                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 2: Arrays & Strings</span>
+                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 2: Network Theorems</span>
                     </label>
                     <label class="flex items-start space-x-3 cursor-pointer group">
                         <input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition">
-                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 3: Functions & Pointers</span>
+                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 3: Transients & Laplace</span>
                     </label>
                     <label class="flex items-start space-x-3 cursor-pointer group">
                         <input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition">
-                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 4: Structures & Files</span>
+                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 4: Two-Port Networks</span>
                     </label>
                 </div>
                 <div class="mt-6 pt-5 theme-border border-t">
@@ -261,23 +233,23 @@
                 </div>
             </div>
 
-            <!-- Code Snippets Library -->
+            <!-- Quick Exam Prompts -->
             <div class="p-5 flex-1">
                 <h2 class="text-sm font-bold theme-text uppercase tracking-wider mb-4 flex items-center">
-                    <i class="fa-solid fa-bolt text-yellow-500 mr-2 drop-shadow-sm"></i> Boilerplates
+                    <i class="fa-solid fa-bolt text-yellow-500 mr-2 drop-shadow-sm"></i> Quick Explanations
                 </h2>
                 <div class="space-y-3">
-                    <button onclick="insertSnippet('matrix')" class="w-full text-left px-4 py-3 text-sm theme-panel glow-btn rounded-xl flex justify-between items-center group">
-                        <span class="font-medium theme-text">2D Matrix Logic</span>
-                        <i class="fa-solid fa-arrow-right text-xs text-ktu-600 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
+                    <button onclick="insertSnippet('thevenin')" class="w-full text-left px-4 py-3 text-sm theme-panel glow-btn rounded-xl flex justify-between items-center group border-l-4 !border-l-blue-500">
+                        <span class="font-medium theme-text">Thevenin's Theorem Steps</span>
+                        <i class="fa-solid fa-arrow-right text-xs text-blue-500 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
                     </button>
-                    <button onclick="insertSnippet('recursion')" class="w-full text-left px-4 py-3 text-sm theme-panel glow-btn rounded-xl flex justify-between items-center group">
-                        <span class="font-medium theme-text">Recursion Function</span>
-                        <i class="fa-solid fa-arrow-right text-xs text-ktu-600 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
+                    <button onclick="insertSnippet('laplace')" class="w-full text-left px-4 py-3 text-sm theme-panel glow-btn rounded-xl flex justify-between items-center group border-l-4 !border-l-emerald-500">
+                        <span class="font-medium theme-text">Laplace Analysis Method</span>
+                        <i class="fa-solid fa-arrow-right text-xs text-emerald-500 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
                     </button>
-                    <button onclick="insertSnippet('file')" class="w-full text-left px-4 py-3 text-sm theme-panel glow-btn rounded-xl flex justify-between items-center group">
-                        <span class="font-medium theme-text">File System I/O</span>
-                        <i class="fa-solid fa-arrow-right text-xs text-ktu-600 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
+                    <button onclick="insertSnippet('twoport')" class="w-full text-left px-4 py-3 text-sm theme-panel glow-btn rounded-xl flex justify-between items-center group border-l-4 !border-l-purple-500">
+                        <span class="font-medium theme-text">Find Z-Parameters</span>
+                        <i class="fa-solid fa-arrow-right text-xs text-purple-500 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
                     </button>
                 </div>
             </div>
@@ -286,19 +258,19 @@
         <!-- Main Chat Interface -->
         <section class="flex-1 flex flex-col relative">
             
-            <!-- Chat Header (Auto-Hides on Scroll) -->
+            <!-- Chat Header -->
             <div id="chatHeader" class="theme-panel !border-l-0 !border-t-0 !border-r-0 px-4 sm:px-6 py-3 flex justify-between items-center z-10 shadow-sm slide-transition">
                 <div>
-                    <h1 class="text-lg font-bold theme-text">AI Learning Hub</h1>
-                    <p class="text-[10px] sm:text-xs theme-text-muted">Kerala Syllabus strict alignment</p>
+                    <h1 class="text-lg font-bold theme-text">AI Circuit Solver Hub</h1>
+                    <p class="text-[10px] sm:text-xs theme-text-muted">Network Theory • Kerala Syllabus aligned</p>
                 </div>
                 
                 <div class="flex items-center theme-input rounded-xl p-1 border theme-border shadow-inner">
                     <div class="pl-2 pr-1 theme-text-muted"><i class="fa-solid fa-microchip"></i></div>
                     <select id="botPersona" class="bg-transparent text-xs sm:text-sm font-semibold border-none py-1.5 pr-6 pl-1 focus:ring-0 cursor-pointer outline-none theme-text">
-                        <option value="friendly">🎓 Friendly AI Tutor</option>
-                        <option value="strict">👨‍🏫 Strict Examiner</option>
-                        <option value="debugger">🐛 Code Debugger</option>
+                        <option value="friendly">🎓 Friendly Tutor</option>
+                        <option value="strict">👨‍🏫 Strict KTU Examiner</option>
+                        <option value="debugger">🔍 Equation Debugger</option>
                     </select>
                 </div>
             </div>
@@ -308,22 +280,21 @@
                 <!-- Welcome -->
                 <div class="flex items-start w-full max-w-full">
                     <div class="flex-shrink-0 bg-gradient-to-br from-ktu-500 to-ktu-700 rounded-full w-10 h-10 flex items-center justify-center text-white shadow-[0_0_15px_rgba(13,148,136,0.5)]">
-                        <i class="fa-solid fa-robot"></i>
+                        <i class="fa-solid fa-network-wired"></i>
                     </div>
-                    <!-- min-w-0 ensures flexbox handles horizontal slide nicely -->
-                    <div class="ml-4 bubble-bot rounded-2xl rounded-tl-none px-5 py-4 max-w-[90%] sm:max-w-[80%] shadow-md min-w-0">
-                        <h3 class="font-bold text-lg mb-2">System Online ⚡</h3>
+                    <div class="ml-4 bubble-bot rounded-2xl rounded-tl-none px-5 py-4 max-w-[90%] sm:max-w-[80%] shadow-md border theme-border min-w-0">
+                        <h3 class="font-bold text-lg mb-2">Network Theory Engine Online ⚡</h3>
                         <p class="text-sm leading-relaxed mb-3 theme-text">
-                            Hello! I am your advanced AI tutor. My logic is strictly synced with the <strong>KTU 2024 Scheme Kerala Syllabus</strong>.
+                            Hello! I am your AI assistant specialized in solving circuits. My logic is strictly synced with the <strong>KTU 2024 Scheme Kerala Syllabus for Network Theory</strong>. 
                         </p>
                         <div class="bg-yellow-50/80 border border-yellow-200 text-yellow-800 p-3 rounded-xl text-xs mb-4 shadow-inner">
-                            <i class="fa-solid fa-triangle-exclamation mr-1 text-yellow-500"></i> <strong>Hosting on GitHub Pages?</strong><br>
-                            Click the <i class="fa-solid fa-key"></i> <strong>API Key</strong> button in the top menu to securely save your free Gemini API key to enable the chat and restore your history!
+                            <i class="fa-solid fa-triangle-exclamation mr-1 text-yellow-500"></i> <strong>First step:</strong><br>
+                            Click the <i class="fa-solid fa-key"></i> <strong>API Key</strong> button above to save your Gemini API key and activate the chat!
                         </div>
                         <ul class="text-sm theme-text space-y-2">
-                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 w-4"></i>Ask 4-module specific questions.</li>
-                            <li class="flex items-center"><i class="fa-solid fa-clock-rotate-left text-blue-500 mr-2 w-4"></i>Chats auto-save to your API key!</li>
-                            <li class="flex items-center"><i class="fa-solid fa-eye-slash text-purple-500 mr-2 w-4"></i>Scroll down to seamlessly read full screen!</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 w-4"></i>Ask me to solve Mesh/Nodal matrices.</li>
+                            <li class="flex items-center"><i class="fa-solid fa-square-root-variable text-emerald-500 mr-2 w-4"></i>Click <strong>Formulas</strong> for a full exam cheat sheet.</li>
+                            <li class="flex items-center"><i class="fa-solid fa-eye-slash text-purple-500 mr-2 w-4"></i>Scroll down to seamlessly hide menus while reading!</li>
                         </ul>
                     </div>
                 </div>
@@ -333,15 +304,15 @@
             <div id="typingIndicator" class="hidden px-6 pb-2">
                 <div class="theme-panel inline-flex items-center space-x-3 px-4 py-2 rounded-full shadow-md">
                     <i class="fa-solid fa-circle-notch fa-spin text-ktu-600"></i>
-                    <span class="font-medium text-sm theme-text" id="loadingText">Processing...</span>
+                    <span class="font-medium text-sm theme-text" id="loadingText">Solving Circuit...</span>
                 </div>
             </div>
 
-            <!-- Input Form (Auto-Hides on Scroll) -->
+            <!-- Input Form -->
             <div id="chatInputArea" class="theme-panel !border-l-0 !border-b-0 !border-r-0 p-3 pt-4 sm:p-5 safe-bottom z-20 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] relative slide-transition">
                 <form id="chatForm" class="flex items-end space-x-2 sm:space-x-3 max-w-5xl mx-auto relative">
                     <div class="flex-1 relative theme-input border theme-border rounded-2xl focus-within:ring-2 focus-within:ring-ktu-500 transition-all shadow-inner">
-                        <textarea id="userInput" rows="1" class="w-full bg-transparent border-none py-3.5 pl-5 pr-12 focus:ring-0 resize-none text-sm font-mono theme-text placeholder-gray-400" placeholder="Type your doubt or paste C code..." onkeydown="handleEnter(event)"></textarea>
+                        <textarea id="userInput" rows="1" class="w-full bg-transparent border-none py-3.5 pl-5 pr-12 focus:ring-0 resize-none text-sm font-mono theme-text placeholder-gray-400" placeholder="Ask a circuit doubt, paste node equations, etc..." onkeydown="handleEnter(event)"></textarea>
                         <button type="button" onclick="clearInput()" class="absolute right-3 top-3 opacity-40 hover:opacity-100 hover:text-red-500 theme-text transition p-1">
                             <i class="fa-solid fa-eraser"></i>
                         </button>
@@ -360,29 +331,21 @@
     <!-- "Very Humanly" About Author Modal -->
     <div id="aboutModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
         <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-500 border border-slate-200 dark:border-slate-700" id="aboutModalContent">
-            
             <button onclick="closeModal('aboutModal', 'aboutModalContent')" class="absolute top-4 right-4 text-white hover:text-red-400 bg-black/20 hover:bg-black/40 rounded-full w-8 h-8 flex items-center justify-center transition z-20"><i class="fa-solid fa-xmark"></i></button>
-            
-            <!-- Creative Header -->
             <div class="bg-gradient-to-br from-ktu-600 via-ktu-700 to-slate-900 h-36 relative overflow-hidden">
                 <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
-                <div class="absolute -bottom-10 -right-10 text-9xl text-white/10"><i class="fa-solid fa-code"></i></div>
+                <div class="absolute -bottom-10 -right-10 text-9xl text-white/10"><i class="fa-solid fa-network-wired"></i></div>
             </div>
-            
             <div class="px-8 pb-8 pt-0 text-center relative">
-                <!-- Glowing Avatar -->
                 <div class="w-28 h-28 mx-auto -mt-14 rounded-full p-1.5 bg-white dark:bg-slate-800 shadow-[0_0_20px_rgba(20,184,166,0.5)] relative z-10">
                     <img src="https://ui-avatars.com/api/?name=Jiyon+Sebastian&background=0d9488&color=fff&size=150&bold=true" class="rounded-full w-full h-full object-cover">
                 </div>
-                
                 <h2 class="text-2xl font-bold text-slate-800 dark:text-white mt-4">Hi, I'm Jiyon! 👋</h2>
                 <p class="text-xs font-bold text-ktu-500 uppercase tracking-widest mb-5">Creator & Developer</p>
-                
                 <div class="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-5 text-sm text-slate-600 dark:text-slate-300 text-left shadow-inner border border-slate-100 dark:border-slate-700 leading-relaxed">
-                    <p class="mb-3">I built this tool because learning C programming under the KTU syllabus can be genuinely tough. I wanted to create something that makes it easier, more interactive, and completely free for us S2 students.</p>
-                    <p>Whether you're struggling to debug a nested loop or trying to wrap your head around pointers, I hope this AI Hub helps you crush your exams. Happy coding! 🚀</p>
+                    <p class="mb-3">Network Theory under the KTU S2 syllabus is notoriously tricky. I built this AI Hub and Formula Vault to make solving circuits and understanding Laplace transforms much easier for us.</p>
+                    <p>Whether you're stuck on a Two-Port Network matrix or debugging Nodal equations, I hope this helps you absolutely crush your exams. Happy studying! 🚀</p>
                 </div>
-
                 <div class="mt-6 flex justify-center space-x-4">
                     <button onclick="closeModal('aboutModal', 'aboutModalContent')" class="bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white text-slate-800 px-6 py-2.5 rounded-xl font-bold transition glow-btn">Close Profile</button>
                 </div>
@@ -401,7 +364,6 @@
                 <p class="text-sm text-slate-600 dark:text-slate-400 mb-5">
                     To run this AI platform on GitHub Pages, provide your own free Gemini API key. Keys are saved securely in your browser.
                 </p>
-                
                 <div class="mb-5 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-4 rounded-xl shadow-inner">
                     <label class="block text-xs font-bold text-blue-800 dark:text-blue-300 mb-2 uppercase tracking-wide">1. Get a Free Key</label>
                     <div class="flex shadow-sm">
@@ -409,15 +371,10 @@
                         <button onclick="copyApiUrl()" id="copyBtn" class="bg-blue-600 hover:bg-blue-700 border border-blue-600 rounded-r-lg px-4 py-2.5 text-xs font-bold text-white transition whitespace-nowrap glow-btn">Copy Link</button>
                     </div>
                 </div>
-
                 <div class="mb-4">
-                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wide flex justify-between">
-                        <span>2. Enter Your Key</span>
-                        <span class="text-blue-500 font-normal normal-case"><i class="fa-solid fa-clock-rotate-left"></i> Restores History!</span>
-                    </label>
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wide">2. Enter Your Key</label>
                     <input type="password" id="keyInput" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 dark:text-white rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-ktu-500 focus:outline-none shadow-inner" placeholder="Paste your AIzaSy... key here">
                 </div>
-                
                 <div class="mb-6">
                     <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wide">3. Select AI Engine</label>
                     <select id="modelSelect" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 dark:text-white rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-ktu-500 focus:outline-none shadow-inner cursor-pointer">
@@ -426,72 +383,173 @@
                         <option value="gemini-1.5-flash-latest">Gemini 1.5 Flash (Safest Fallback)</option>
                     </select>
                 </div>
-                
-                <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 mt-6">
-                    <button onclick="clearChatHistory()" class="text-xs text-red-500 hover:text-red-700 font-bold transition flex items-center"><i class="fa-solid fa-trash-can mr-1"></i> Clear History</button>
-                    <button onclick="saveApiKey()" class="bg-ktu-600 hover:bg-ktu-700 text-white px-8 py-3 rounded-xl text-sm font-bold glow-btn glow-primary w-full sm:w-auto">Save & Load History</button>
+                <div class="flex justify-end">
+                    <button onclick="saveApiKey()" class="bg-ktu-600 hover:bg-ktu-700 text-white px-8 py-3 rounded-xl text-sm font-bold glow-btn glow-primary w-full sm:w-auto">Save Settings</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- C Compiler Fullscreen Modal (Wandbox API) -->
-    <div id="compilerModal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-md z-50 flex items-center justify-center p-0 sm:p-6 opacity-0 transition-opacity duration-300">
-        <div class="bg-slate-50 w-full h-full sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-white/20 transform scale-95 transition-transform duration-300" id="compilerContent">
+    <!-- KTU Formula Vault (Replaced Compiler) -->
+    <div id="formulaModal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-md z-50 flex items-center justify-center p-0 sm:p-6 opacity-0 transition-opacity duration-300">
+        <div class="theme-panel w-full h-full max-w-7xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-300" id="formulaContent">
             
-            <div class="bg-slate-900 text-white px-4 py-3 flex justify-between items-center border-b border-slate-700">
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-5 py-4 flex justify-between items-center shadow-md z-10">
                 <div class="flex items-center space-x-3">
-                    <i class="fa-solid fa-terminal text-emerald-400 text-xl"></i>
+                    <div class="bg-white/20 p-2 rounded-lg backdrop-blur-sm"><i class="fa-solid fa-square-root-variable text-xl"></i></div>
                     <div>
-                        <h2 class="font-bold text-base sm:text-lg tracking-wide">Live C Compiler</h2>
-                        <div class="text-[10px] text-emerald-400 font-mono"><i class="fa-solid fa-check"></i> Wandbox GCC Engine</div>
+                        <h2 class="font-bold text-lg tracking-wide">KTU Network Theory Formula Vault</h2>
+                        <div class="text-[10px] text-emerald-100 font-medium uppercase tracking-widest opacity-90">2024 Scheme Exam Cheat Sheet</div>
                     </div>
                 </div>
-                <div class="flex items-center space-x-3 sm:space-x-4">
-                    <button id="runCodeBtn" onclick="runCProgram()" class="bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-bold glow-btn glow-emerald flex items-center space-x-2">
-                        <i class="fa-solid fa-play text-xs"></i> <span class="hidden sm:inline">Compile & Run</span><span class="sm:hidden">Run</span>
-                    </button>
-                    <button onclick="closeModal('compilerModal', 'compilerContent')" class="text-slate-400 hover:text-white transition bg-slate-800 rounded-full w-10 h-10 flex justify-center items-center">
-                        <i class="fa-solid fa-xmark text-lg"></i>
-                    </button>
-                </div>
+                <button onclick="closeModal('formulaModal', 'formulaContent')" class="text-white/80 hover:text-white transition bg-black/20 hover:bg-black/40 rounded-full w-10 h-10 flex justify-center items-center"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
 
-            <div class="flex-1 flex flex-col md:flex-row overflow-hidden bg-slate-800">
-                <div class="flex-1 flex flex-col border-r border-slate-700 md:w-1/2">
-                    <div class="bg-slate-800 px-4 py-2 text-xs font-bold text-slate-300 flex justify-between border-b border-slate-700 tracking-wider">
-                        <span>main.c</span> <i class="fa-solid fa-code"></i>
+            <!-- Formula Grid Layout -->
+            <div class="flex-1 overflow-y-auto p-4 sm:p-8 bg-slate-50/50 dark:bg-slate-900/50 backdrop-blur-sm">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    
+                    <!-- Module 1: Star Delta -->
+                    <div class="formula-card">
+                        <h3 class="text-emerald-600 dark:text-emerald-400 font-bold mb-3 uppercase tracking-wider text-xs border-b border-emerald-200 dark:border-emerald-800 pb-2"><i class="fa-solid fa-draw-polygon mr-1"></i> Mod 1: Star-Delta Transform</h3>
+                        <div class="space-y-4 theme-text text-sm">
+                            <div>
+                                <p class="font-semibold text-slate-500 dark:text-slate-400 mb-1 text-xs">Delta to Star (Δ &rarr; Y)</p>
+                                <div class="bg-white dark:bg-slate-800 p-3 rounded-lg border theme-border font-mono text-xs shadow-inner">
+                                    R<sub>a</sub> = (R<sub>ab</sub> &times; R<sub>ca</sub>) / (R<sub>ab</sub> + R<sub>bc</sub> + R<sub>ca</sub>)<br>
+                                    R<sub>b</sub> = (R<sub>bc</sub> &times; R<sub>ab</sub>) / (R<sub>ab</sub> + R<sub>bc</sub> + R<sub>ca</sub>)<br>
+                                    R<sub>c</sub> = (R<sub>ca</sub> &times; R<sub>bc</sub>) / (R<sub>ab</sub> + R<sub>bc</sub> + R<sub>ca</sub>)
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-slate-500 dark:text-slate-400 mb-1 text-xs">Star to Delta (Y &rarr; Δ)</p>
+                                <div class="bg-white dark:bg-slate-800 p-3 rounded-lg border theme-border font-mono text-xs shadow-inner">
+                                    R<sub>ab</sub> = (R<sub>a</sub>R<sub>b</sub> + R<sub>b</sub>R<sub>c</sub> + R<sub>c</sub>R<sub>a</sub>) / R<sub>c</sub><br>
+                                    R<sub>bc</sub> = (R<sub>a</sub>R<sub>b</sub> + R<sub>b</sub>R<sub>c</sub> + R<sub>c</sub>R<sub>a</sub>) / R<sub>a</sub><br>
+                                    R<sub>ca</sub> = (R<sub>a</sub>R<sub>b</sub> + R<sub>b</sub>R<sub>c</sub> + R<sub>c</sub>R<sub>a</sub>) / R<sub>b</sub>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <textarea id="cEditor" spellcheck="false" class="flex-1 w-full bg-[#1e293b] text-blue-300 font-mono text-sm p-4 focus:outline-none resize-none shadow-inner">#include <stdio.h>
 
-int main() {
-    printf("KTU 2024 Scheme Compiler Ready!\n");
-    
-    // Intentionally broken code to test the Error Parser!
-    int num = 5
-    printf("Number is %d", num);
-    
-    return 0;
-}</textarea>
-                    <div class="h-32 sm:h-40 border-t border-slate-700 bg-[#0f172a] flex flex-col">
-                        <div class="bg-slate-800 px-4 py-2 text-xs font-bold text-slate-300 tracking-wider">STANDARD INPUT (STDIN)</div>
-                        <textarea id="cStdin" spellcheck="false" class="flex-1 w-full bg-transparent text-emerald-400 font-mono text-sm p-4 focus:outline-none resize-none shadow-inner" placeholder="Enter test cases here (e.g., 5)..."></textarea>
+                    <!-- Module 2: Theorems -->
+                    <div class="formula-card">
+                        <h3 class="text-blue-600 dark:text-blue-400 font-bold mb-3 uppercase tracking-wider text-xs border-b border-blue-200 dark:border-blue-800 pb-2"><i class="fa-solid fa-bolt mr-1"></i> Mod 2: Network Theorems</h3>
+                        <div class="space-y-4 theme-text text-sm">
+                            <div>
+                                <p class="font-semibold text-slate-500 dark:text-slate-400 mb-1 text-xs">Thevenin's Equivalent</p>
+                                <div class="bg-white dark:bg-slate-800 p-3 rounded-lg border theme-border font-mono text-xs shadow-inner mb-2">
+                                    V<sub>th</sub> = Open circuit voltage at terminals<br>
+                                    R<sub>th</sub> = Equivalent resistance (sources dead)
+                                </div>
+                                <p class="font-semibold text-slate-500 dark:text-slate-400 mb-1 text-xs">Norton's Equivalent</p>
+                                <div class="bg-white dark:bg-slate-800 p-3 rounded-lg border theme-border font-mono text-xs shadow-inner mb-2">
+                                    I<sub>n</sub> = Short circuit current at terminals<br>
+                                    R<sub>n</sub> = R<sub>th</sub>
+                                </div>
+                                <p class="font-semibold text-slate-500 dark:text-slate-400 mb-1 text-xs">Maximum Power Transfer</p>
+                                <div class="bg-white dark:bg-slate-800 p-3 rounded-lg border theme-border font-mono text-xs shadow-inner">
+                                    R<sub>L</sub> = R<sub>th</sub> (For DC)<br>
+                                    Z<sub>L</sub> = Z<sub>th</sub>* (Complex Conjugate for AC)<br>
+                                    P<sub>max</sub> = V<sub>th</sub>&sup2; / (4 &times; R<sub>th</sub>)
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="flex-1 flex flex-col md:w-1/2 bg-[#0f172a]">
-                    <div class="bg-slate-800 px-4 py-2 text-xs font-bold text-slate-300 flex items-center space-x-2 border-b border-slate-700 tracking-wider">
-                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        <span class="ml-2">CONSOLE OUTPUT</span>
+
+                    <!-- Module 3: Transients -->
+                    <div class="formula-card">
+                        <h3 class="text-orange-600 dark:text-orange-400 font-bold mb-3 uppercase tracking-wider text-xs border-b border-orange-200 dark:border-orange-800 pb-2"><i class="fa-solid fa-wave-square mr-1"></i> Mod 3: Transients & Laplace</h3>
+                        <div class="space-y-3 theme-text text-sm">
+                            <p class="font-semibold text-slate-500 dark:text-slate-400 mb-1 text-xs">Standard Initial Conditions</p>
+                            <div class="bg-white dark:bg-slate-800 p-3 rounded-lg border theme-border font-mono text-[11px] shadow-inner">
+                                Inductor: i<sub>L</sub>(0+) = i<sub>L</sub>(0-)<br>
+                                Capacitor: v<sub>c</sub>(0+) = v<sub>c</sub>(0-)
+                            </div>
+                            <p class="font-semibold text-slate-500 dark:text-slate-400 mb-1 text-xs">Laplace Transform Pairs</p>
+                            <table class="w-full text-left border-collapse font-mono text-[11px] bg-white dark:bg-slate-800 rounded-lg overflow-hidden border theme-border">
+                                <thead>
+                                    <tr class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+                                        <th class="p-2 border-b theme-border">f(t)</th>
+                                        <th class="p-2 border-b border-l theme-border">F(s)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="p-2 border-b theme-border">&delta;(t) Impulse</td><td class="p-2 border-b border-l theme-border">1</td></tr>
+                                    <tr><td class="p-2 border-b theme-border">u(t) Step</td><td class="p-2 border-b border-l theme-border">1/s</td></tr>
+                                    <tr><td class="p-2 border-b theme-border">t (Ramp)</td><td class="p-2 border-b border-l theme-border">1/s&sup2;</td></tr>
+                                    <tr><td class="p-2 border-b theme-border">e<sup>-at</sup></td><td class="p-2 border-b border-l theme-border">1/(s+a)</td></tr>
+                                    <tr><td class="p-2 theme-border">sin(&omega;t)</td><td class="p-2 border-l theme-border">&omega;/(s&sup2;+&omega;&sup2;)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div id="cOutput" class="terminal-output flex-1 p-5 shadow-inner"><span class="text-slate-500 italic">Click 'Run' to execute code. Output will appear here...</span></div>
+
+                    <!-- Module 4: Two-Port Z & Y -->
+                    <div class="formula-card">
+                        <h3 class="text-purple-600 dark:text-purple-400 font-bold mb-3 uppercase tracking-wider text-xs border-b border-purple-200 dark:border-purple-800 pb-2"><i class="fa-solid fa-border-all mr-1"></i> Mod 4: Two-Port (Z & Y)</h3>
+                        <div class="space-y-4 theme-text text-sm">
+                            <div>
+                                <p class="font-semibold text-slate-500 dark:text-slate-400 mb-1 text-xs">Z-Parameters (Open Circuit)</p>
+                                <div class="bg-white dark:bg-slate-800 p-3 rounded-lg border theme-border font-mono text-xs shadow-inner">
+                                    [V<sub>1</sub>] = [Z<sub>11</sub>  Z<sub>12</sub>] [I<sub>1</sub>]<br>
+                                    [V<sub>2</sub>] = [Z<sub>21</sub>  Z<sub>22</sub>] [I<sub>2</sub>]<br><br>
+                                    Z<sub>11</sub> = V<sub>1</sub>/I<sub>1</sub> | I<sub>2</sub>=0 (Driving-point)<br>
+                                    Z<sub>12</sub> = V<sub>1</sub>/I<sub>2</sub> | I<sub>1</sub>=0 (Transfer)
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-slate-500 dark:text-slate-400 mb-1 text-xs">Y-Parameters (Short Circuit)</p>
+                                <div class="bg-white dark:bg-slate-800 p-3 rounded-lg border theme-border font-mono text-xs shadow-inner">
+                                    [I<sub>1</sub>] = [Y<sub>11</sub>  Y<sub>12</sub>] [V<sub>1</sub>]<br>
+                                    [I<sub>2</sub>] = [Y<sub>21</sub>  Y<sub>22</sub>] [V<sub>2</sub>]<br><br>
+                                    Y<sub>11</sub> = I<sub>1</sub>/V<sub>1</sub> | V<sub>2</sub>=0 (Admittance)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 4: Two-Port T & h -->
+                    <div class="formula-card">
+                        <h3 class="text-pink-600 dark:text-pink-400 font-bold mb-3 uppercase tracking-wider text-xs border-b border-pink-200 dark:border-pink-800 pb-2"><i class="fa-solid fa-rectangle-list mr-1"></i> Mod 4: Two-Port (ABCD & h)</h3>
+                        <div class="space-y-4 theme-text text-sm">
+                            <div>
+                                <p class="font-semibold text-slate-500 dark:text-slate-400 mb-1 text-xs">ABCD Parameters (Transmission)</p>
+                                <div class="bg-white dark:bg-slate-800 p-3 rounded-lg border theme-border font-mono text-xs shadow-inner">
+                                    [V<sub>1</sub>] = [A  B] [ V<sub>2</sub>]<br>
+                                    [I<sub>1</sub>] = [C  D] [-I<sub>2</sub>]<br><br>
+                                    A = V<sub>1</sub>/V<sub>2</sub> | I<sub>2</sub>=0<br>
+                                    B = V<sub>1</sub>/-I<sub>2</sub> | V<sub>2</sub>=0
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-slate-500 dark:text-slate-400 mb-1 text-xs">h-Parameters (Hybrid)</p>
+                                <div class="bg-white dark:bg-slate-800 p-3 rounded-lg border theme-border font-mono text-xs shadow-inner">
+                                    [V<sub>1</sub>] = [h<sub>11</sub>  h<sub>12</sub>] [I<sub>1</sub>]<br>
+                                    [I<sub>2</sub>] = [h<sub>21</sub>  h<sub>22</sub>] [V<sub>2</sub>]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tips -->
+                    <div class="formula-card bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 !border-yellow-200 dark:!border-yellow-700/50">
+                        <h3 class="text-yellow-700 dark:text-yellow-400 font-bold mb-3 uppercase tracking-wider text-xs border-b border-yellow-200 dark:border-yellow-700/50 pb-2"><i class="fa-solid fa-lightbulb mr-1"></i> Exam Shortcuts</h3>
+                        <ul class="text-sm theme-text space-y-3 list-disc pl-4 marker:text-yellow-500 text-slate-700 dark:text-slate-300">
+                            <li><strong>Reciprocity Condition:</strong><br> <span class="font-mono text-xs">Z<sub>12</sub> = Z<sub>21</sub>, Y<sub>12</sub> = Y<sub>21</sub>, AD-BC = 1</span></li>
+                            <li><strong>Symmetry Condition:</strong><br> <span class="font-mono text-xs">Z<sub>11</sub> = Z<sub>22</sub>, Y<sub>11</sub> = Y<sub>22</sub>, A = D</span></li>
+                            <li>In mesh analysis, if a current source is shared between two meshes, form a <strong>Supermesh</strong>.</li>
+                            <li>In AC Transients, replace Inductor with <span class="font-mono text-xs">sL</span> and Capacitor with <span class="font-mono text-xs">1/sC</span> in Laplace domain.</li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Mini-Game Fullscreen Modal -->
+    <!-- Mini-Game Fullscreen Modal (Slower, Floatier Flappy Bird) -->
     <div id="gameModal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-md z-50 flex items-center justify-center p-2 sm:p-6 opacity-0 transition-opacity duration-300">
         <div class="bg-[#1e293b] w-full max-w-sm rounded-3xl shadow-[0_0_30px_rgba(249,115,22,0.3)] flex flex-col overflow-hidden transform scale-95 transition-transform duration-300 border border-slate-600" id="gameContent">
             
@@ -518,92 +576,6 @@ int main() {
         function getEffectiveApiKey() { return apiKey || localStorage.getItem('local_gemini_api_key') || ""; }
         function getEffectiveModel() { return localStorage.getItem('local_gemini_model') || "gemini-2.5-flash"; }
 
-        let chatHistory = [];
-        const ktuContext = `CRITICAL: The user has explicitly instructed you to "sync the equations and terms in your future responses to the Kerala Syllabus of KTU". You MUST adhere to this. Syllabus strictly contains FOUR Modules: 1. Basics/Control Structures 2. Arrays/Strings 3. Functions/Pointers 4. Structures/Files. Frame all explanations referencing this scheme.`;
-        const personas = {
-            friendly: ktuContext + " You are a friendly tutor. Explain simply with real-world analogies and supportive tone.",
-            strict: ktuContext + " You are a strict KTU university examiner. Focus heavily on syntax precision, standard Kerala exam patterns, and point out bad coding practices bluntly.",
-            debugger: ktuContext + " You are an expert C code debugger. Analyze code, find logic/syntax errors, and provide exact corrected C code snippets. Be technical."
-        };
-
-        const chatForm = document.getElementById('chatForm');
-        const userInput = document.getElementById('userInput');
-        const chatBox = document.getElementById('chatBox');
-        const botPersonaSelect = document.getElementById('botPersona');
-
-        marked.setOptions({ breaks: true, gfm: true });
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const savedKey = localStorage.getItem('local_gemini_api_key');
-            const savedModel = localStorage.getItem('local_gemini_model');
-            
-            if (savedKey) { 
-                document.getElementById('keyInput').value = savedKey; 
-            }
-            if (savedModel) {
-                document.getElementById('modelSelect').value = savedModel;
-            }
-            
-            const savedTheme = localStorage.getItem('ktu_theme') || 'default';
-            setTheme(savedTheme);
-
-            // CRITICAL FIX: Always try to load history using the active API key 
-            // (This ensures history loads flawlessly even when using the hidden preview environment key!)
-            const activeKey = getEffectiveApiKey();
-            if (activeKey) {
-                loadChatHistory(activeKey);
-            }
-        });
-
-        // --- Chat History API Save & Load Logic ---
-        function saveChatHistory() {
-            const currentKey = getEffectiveApiKey();
-            if (!currentKey) return;
-            localStorage.setItem(`ktu_history_${currentKey}`, JSON.stringify(chatHistory));
-        }
-
-        function loadChatHistory(key) {
-            if (!key) return;
-            const historyData = localStorage.getItem(`ktu_history_${key}`);
-            
-            // Clear existing chat UI except the first welcome message
-            while (chatBox.children.length > 1) {
-                chatBox.removeChild(chatBox.lastChild);
-            }
-            chatHistory = [];
-
-            if (historyData) {
-                try {
-                    const parsed = JSON.parse(historyData);
-                    if (parsed && parsed.length > 0) {
-                        parsed.forEach(msg => {
-                            appendMessage(msg.text, msg.role === 'user', true); // Pass true to skip re-saving during load
-                            chatHistory.push(msg);
-                        });
-                        const maskedKey = key.length > 4 ? `...${key.slice(-4)}` : "Key";
-                        chatBox.insertAdjacentHTML('beforeend', `<div class="text-center text-slate-400 dark:text-slate-500 text-[10px] my-3 uppercase tracking-widest font-bold">— History Restored for ${maskedKey} —</div>`);
-                        scrollChat();
-                    }
-                } catch (e) {
-                    console.error("Failed to load history", e);
-                }
-            }
-        }
-        
-        function clearChatHistory() {
-            const key = getEffectiveApiKey();
-            if(key) {
-                localStorage.removeItem(`ktu_history_${key}`);
-                chatHistory = [];
-                while (chatBox.children.length > 1) {
-                    chatBox.removeChild(chatBox.lastChild);
-                }
-                chatBox.insertAdjacentHTML('beforeend', `<div class="text-center text-slate-400 dark:text-slate-500 text-[10px] my-3 uppercase tracking-widest font-bold">— History Cleared —</div>`);
-                scrollChat();
-                closeModal('apiKeyModal', 'apiKeyContent');
-            }
-        }
-
         function saveApiKey() {
             const key = document.getElementById('keyInput').value.trim();
             const model = document.getElementById('modelSelect').value;
@@ -613,9 +585,7 @@ int main() {
                 localStorage.setItem('local_gemini_api_key', key);
                 localStorage.setItem('local_gemini_model', model);
                 closeModal('apiKeyModal', 'apiKeyContent');
-                
-                loadChatHistory(key); // Refresh history strictly tied to this key!
-                appendMessage(`🔑 **Success!** Settings saved. Engine: **${model}**. History restored.`, false);
+                appendMessage(`🔑 **Success!** Settings saved. Engine: **${model}**.`, false);
             } else {
                 const origText = saveBtn.innerText;
                 saveBtn.innerText = "Please enter a key!";
@@ -645,6 +615,42 @@ int main() {
                 }, 2000);
             } catch(e) { copyBtn.innerText = "Failed"; }
         }
+
+        let chatHistory = [];
+        
+        // KTU Context heavily pivoted to Network Theory S2 2024 Scheme
+        const ktuContext = `CRITICAL: The user has explicitly instructed you to "sync the equations and terms in your future responses to the Kerala Syllabus of KTU". You MUST adhere to this. 
+Subject: Network Theory (S2 B.Tech, 2024 Scheme). 
+Syllabus strictly contains FOUR Modules: 
+1. Basic Concepts, Nodal/Mesh Analysis, Source Transform, Star-Delta. 
+2. Network Theorems (Superposition, Thevenin, Norton, Max Power Transfer). 
+3. Transient Analysis (RL, RC, RLC) & Laplace Transforms. 
+4. Two-Port Networks (Z, Y, ABCD, h parameters). 
+Frame all explanations referencing this scheme. Ensure equations are readable text (e.g. V = I * R) or standard markdown. Use ASCII diagrams if explaining circuits.`;
+        
+        const personas = {
+            friendly: ktuContext + " You are a friendly tutor. Explain circuit analysis simply step-by-step. Use real-world analogies (water flow for current) and supportive tone.",
+            strict: ktuContext + " You are a strict KTU university examiner marking Network Theory papers. Focus heavily on sign conventions (KVL/KCL), standard Kerala exam solving steps, and point out common student mistakes bluntly.",
+            debugger: ktuContext + " You are an expert Circuit equation debugger. The user will give you raw mesh/nodal equations or matrices. You will verify if they are correct, find matrix formulation flaws, and provide the correct mathematical matrices."
+        };
+
+        const chatForm = document.getElementById('chatForm');
+        const userInput = document.getElementById('userInput');
+        const chatBox = document.getElementById('chatBox');
+        const botPersonaSelect = document.getElementById('botPersona');
+
+        marked.setOptions({ breaks: true, gfm: true });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedKey = localStorage.getItem('local_gemini_api_key');
+            const savedModel = localStorage.getItem('local_gemini_model');
+            if(savedKey) document.getElementById('keyInput').value = savedKey;
+            if(savedModel) document.getElementById('modelSelect').value = savedModel;
+            
+            // Apply saved theme
+            const savedTheme = localStorage.getItem('ktu_theme') || 'default';
+            setTheme(savedTheme);
+        });
 
         // --- 1. Premium One-Tap Theme Cycler ---
         const themes = ['default', 'dark', 'liquid-glass'];
@@ -679,103 +685,22 @@ int main() {
         const chatHeader = document.getElementById('chatHeader');
         const chatInputArea = document.getElementById('chatInputArea');
         let lastScrollTop = 0;
-        let isProgrammaticScroll = false; // Fixes the vibration bug
-
-        function showMenus() {
-            topNav.style.marginTop = '0px';
-            chatHeader.style.marginTop = '0px';
-            chatInputArea.style.marginBottom = '0px';
-        }
 
         chatBox.addEventListener('scroll', () => {
-            // Ignore programmatic scrolling to prevent vibration jitter
-            if (isProgrammaticScroll) {
-                lastScrollTop = chatBox.scrollTop <= 0 ? 0 : chatBox.scrollTop;
-                return;
-            }
-
             let st = chatBox.scrollTop;
             if (st > lastScrollTop && st > 100) {
+                // Scrolling down - seamlessly slide menus and input away
                 topNav.style.marginTop = `-${topNav.offsetHeight}px`;
                 chatHeader.style.marginTop = `-${chatHeader.offsetHeight}px`;
                 chatInputArea.style.marginBottom = `-${chatInputArea.offsetHeight + 20}px`;
             } else if (st < lastScrollTop - 5 || st <= 0) {
-                showMenus();
+                // Scrolling up - slide menus back instantly
+                topNav.style.marginTop = '0px';
+                chatHeader.style.marginTop = '0px';
+                chatInputArea.style.marginBottom = '0px';
             }
             lastScrollTop = st <= 0 ? 0 : st;
         });
-
-        // --- 2. Live C Compiler Engine (Smart Error Parser) ---
-        function formatCompilerError(rawError) {
-            const lines = rawError.split('\n');
-            let formattedHTML = '';
-            const regex = /(?:prog|main)\.c:(\d+):(\d+):\s*(error|warning|fatal error):\s*(.*)/i;
-            
-            for(let line of lines) {
-                const match = line.match(regex);
-                if (match) {
-                    const row = match[1], type = match[3].toLowerCase(), msg = match[4];
-                    const isErr = type.includes('error');
-                    const color = isErr ? 'text-red-400' : 'text-yellow-400';
-                    const icon = isErr ? '<i class="fa-solid fa-circle-xmark mr-1"></i>' : '<i class="fa-solid fa-triangle-exclamation mr-1"></i>';
-                    const border = isErr ? 'border-red-500' : 'border-yellow-500';
-                    const bgClass = isErr ? 'bg-red-900/30' : 'bg-yellow-900/30';
-                    
-                    formattedHTML += `
-                    <div class="${bgClass} p-3 rounded-lg mb-3 border-l-4 ${border} shadow-sm">
-                        <div class="${color} font-bold text-sm mb-1 uppercase tracking-wide flex items-center">${icon} ${type} on Line ${row}</div>
-                        <div class="text-white text-sm font-mono pl-5">${escapeHTML(msg)}</div>
-                    </div>`;
-                } 
-                else if (line.trim() !== '' && !line.includes("prog.c: In function")) {
-                    formattedHTML += `<div class="text-slate-400 font-mono text-xs ml-5 leading-tight mb-1">${escapeHTML(line).replace(/ /g, '&nbsp;')}</div>`;
-                }
-            }
-            return formattedHTML || `<span class="text-yellow-400">${escapeHTML(rawError)}</span>`;
-        }
-
-        async function runCProgram() {
-            const code = document.getElementById('cEditor').value;
-            const stdin = document.getElementById('cStdin').value;
-            const outputBox = document.getElementById('cOutput');
-            const runBtn = document.getElementById('runCodeBtn');
-
-            if (!code.trim()) { outputBox.innerHTML = '<span class="text-red-400 font-bold">Error: Source code cannot be empty.</span>'; return; }
-
-            runBtn.disabled = true;
-            runBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> <span class="hidden sm:inline">Executing...</span><span class="sm:hidden">Run</span>';
-            outputBox.innerHTML = '<span class="text-blue-400 animate-pulse">Connecting to Wandbox GCC Compiler...</span>\n';
-
-            try {
-                const response = await fetch('https://wandbox.org/api/compile.json', {
-                    method: 'POST', headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ compiler: 'gcc-head-c', code: code, stdin: stdin || '', options: 'warning,gnu++1y', 'compiler-option-raw': '-O2' })
-                });
-
-                if (!response.ok) throw new Error(`Execution Service Failed: Status ${response.status}`);
-                
-                const result = await response.json();
-                let outputHTML = '';
-
-                if (result.compiler_error) {
-                    outputHTML += `<div class="text-slate-300 font-bold mb-3 border-b border-slate-700 pb-1 uppercase tracking-wider text-xs">Compiler Diagnostics</div>`;
-                    outputHTML += formatCompilerError(result.compiler_error) + '\n';
-                }
-                
-                if (result.program_output) outputHTML += `<span class="text-white">${escapeHTML(result.program_output)}</span>`;
-                if (result.program_error) outputHTML += `\n<span class="text-red-400 font-bold">Runtime Error: ${escapeHTML(result.program_error)}</span>`;
-                if (!result.program_output && !result.program_error && result.status === "0") outputHTML += '<span class="text-slate-400">Program executed successfully, but printed no output.</span>';
-                
-                const statusColor = result.status === "0" ? "emerald" : "red";
-                outputHTML += `\n\n<div class="mt-5"><span class="text-${statusColor}-400 font-bold text-xs border border-${statusColor}-500/50 bg-${statusColor}-500/10 px-3 py-1.5 rounded-md shadow-sm">Process finished with exit code ${result.status}</span></div>`;
-                
-                outputBox.innerHTML = outputHTML;
-            } catch (error) { outputBox.innerHTML = `<span class="text-red-500 font-bold">Error connecting to compiler backend: ${error.message}</span>`; } 
-            finally {
-                runBtn.disabled = false;
-                runBtn.innerHTML = '<i class="fa-solid fa-play text-xs"></i> <span class="hidden sm:inline">Compile & Run</span><span class="sm:hidden">Run</span>';
-            }
-        }
 
         // --- 3. Slower, Floatier Flappy Bird Engine ---
         const cvs = document.getElementById("flappyCanvas");
@@ -913,7 +838,7 @@ int main() {
         }
 
         window.onclick = function(event) {
-            if (event.target.id === 'compilerModal') closeModal('compilerModal', 'compilerContent');
+            if (event.target.id === 'formulaModal') closeModal('formulaModal', 'formulaContent');
             if (event.target.id === 'gameModal') closeModal('gameModal', 'gameContent');
             if (event.target.id === 'apiKeyModal') closeModal('apiKeyModal', 'apiKeyContent');
             if (event.target.id === 'aboutModal') closeModal('aboutModal', 'aboutModalContent');
@@ -933,23 +858,24 @@ int main() {
         function handleEnter(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if(userInput.value.trim() !== '') chatForm.dispatchEvent(new Event('submit')); } }
         function clearInput() { userInput.value = ''; userInput.style.height = 'auto'; userInput.focus(); }
 
+        // Updated quick prompts for Network Theory
         function insertSnippet(type) {
             const snippets = {
-                matrix: "/* KTU Mod 2: 2D Matrix Logic */\n#include <stdio.h>\nint main() {\n    // Help me write code for matrix addition\n    return 0;\n}",
-                recursion: "/* KTU Mod 3: Recursion */\n#include <stdio.h>\nint fact(int n) {\n    if(n==0) return 1;\n    // complete logic\n}\n",
-                file: "/* KTU Mod 4: File Handling */\n#include <stdio.h>\nint main() {\n    FILE *fp = fopen(\"test.txt\", \"w\");\n    // How to write safely?\n    return 0;\n}"
+                thevenin: "Can you explain the step-by-step process to find Thevenin's Equivalent Circuit (Vth and Rth) for a network with both independent and dependent sources?",
+                laplace: "I need help with Module 3. How do I apply Laplace transform to solve a series RLC circuit with an initial voltage on the capacitor?",
+                twoport: "Explain how to find the Z-parameters (open-circuit impedance parameters) of a basic T-network. Include the matrix format."
             };
             userInput.value = snippets[type]; userInput.style.height = 'auto';
             userInput.style.height = (userInput.scrollHeight) + 'px'; userInput.focus();
         }
 
-        function appendMessage(text, isUser = false, isLoading = false) {
+        function appendMessage(text, isUser = false) {
             const rawHTML = DOMPurify.sanitize(marked.parse(text));
             const iconHTML = isUser ? `<i class="fa-solid fa-user text-sm"></i>` : `<i class="fa-solid fa-robot text-sm"></i>`;
             const alignClass = isUser ? 'justify-end' : 'justify-start';
             const bgClass = isUser ? 'bubble-user shadow-[0_4px_15px_rgba(0,0,0,0.1)]' : 'bubble-bot shadow-md border theme-border';
             const radiusClass = isUser ? 'rounded-2xl rounded-tr-none' : 'rounded-2xl rounded-tl-none';
-            const content = isUser ? `<div class="text-sm font-mono whitespace-pre-wrap">${escapeHTML(text)}</div>` : `<div class="markdown-body">${rawHTML}</div>`;
+            const content = isUser ? `<div class="text-sm font-mono whitespace-pre-wrap break-words">${escapeHTML(text)}</div>` : `<div class="markdown-body">${rawHTML}</div>`;
 
             const msgDiv = `
                 <div class="flex items-start ${alignClass} animation-fade-in w-full max-w-full">
@@ -962,17 +888,9 @@ int main() {
                 
             chatBox.insertAdjacentHTML('beforeend', msgDiv);
             scrollChat();
-
-            // Prevent resaving to local storage during initial history load
-            if (!isLoading && isUser === false) saveChatHistory(); 
         }
 
-        function scrollChat() { 
-            isProgrammaticScroll = true; 
-            chatBox.scrollTop = chatBox.scrollHeight; 
-            // Briefly pause menu-hide listener so the auto-scroll doesn't trigger it
-            setTimeout(() => { isProgrammaticScroll = false; }, 150);
-        }
+        function scrollChat() { chatBox.scrollTop = chatBox.scrollHeight; }
         function escapeHTML(str) { return str.replace(/[&<>'"]/g, t => ({ '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;' }[t] || t)); }
 
         async function fetchAIResponse(prompt, currentKey, retryCount = 0) {
@@ -1023,11 +941,6 @@ int main() {
             userInput.value = ''; userInput.style.height = 'auto';
             document.getElementById('sendBtn').disabled = true;
             
-            // Force menus to stay visible when sending a message
-            showMenus();
-            
-            chatHistory.push({ role: "user", text: msg });
-            saveChatHistory();
             appendMessage(msg, true);
             
             document.getElementById('typingIndicator').classList.remove('hidden');
@@ -1037,15 +950,10 @@ int main() {
                 const response = await fetchAIResponse(msg, currentKey);
                 document.getElementById('typingIndicator').classList.add('hidden');
                 
-                chatHistory.push({ role: "model", text: response });
                 appendMessage(response);
+                chatHistory.push({ role: "user", text: msg }, { role: "model", text: response });
             } catch (err) {
                 document.getElementById('typingIndicator').classList.add('hidden');
-                
-                // CRITICAL FIX: Remove user message from history if API fails to prevent corrupted alternating roles
-                chatHistory.pop();
-                saveChatHistory();
-                
                 chatBox.insertAdjacentHTML('beforeend', `<div class="text-center text-red-500 text-xs my-3 font-bold bg-red-50 border border-red-200 p-3 rounded-xl shadow-sm max-w-md mx-auto"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Error: ${escapeHTML(err.message)}</div>`);
                 scrollChat();
             } finally {
@@ -1062,9 +970,6 @@ int main() {
     </script>
 </body>
 </html>
-
-
-
 
 
 ```
