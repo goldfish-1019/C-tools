@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,54 +35,63 @@
     <style>
         /* --- Dynamic Theme Variables --- */
         :root {
-            --bg-body: linear-gradient(-45deg, #f8fafc, #e0f2fe, #f3e8ff, #ffffff);
-            --bg-panel: rgba(255, 255, 255, 0.9); --bg-sidebar: rgba(255, 255, 255, 0.9); --bg-input: #f8fafc;
-            --border-color: #e2e8f0; --text-main: #1e293b; --text-muted: #64748b;
-            --shadow-panel: 0 4px 20px rgba(0, 0, 0, 0.05); --glass-blur: blur(8px);
-            --user-bubble: #1e293b; --user-text: #ffffff; --bot-bubble: #ffffff;
-            --blob-opacity: 0.4; --particle-opacity: 0.4; --particle-color: #0d9488;
+            --bg-body: linear-gradient(-45deg, #fdfbfb, #e0f2fe, #f3e8ff, #ebedee);
+            --bg-panel: rgba(255, 255, 255, 0.6); --bg-sidebar: rgba(255, 255, 255, 0.6); --bg-input: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.5); --text-main: #1e293b; --text-muted: #64748b;
+            --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.05); --glass-blur: blur(16px);
+            --user-bubble: rgba(13, 148, 136, 0.8); --user-text: #ffffff; --bot-bubble: rgba(255, 255, 255, 0.5);
+            --blob-opacity: 0.6; --particle-opacity: 0.4; --particle-color: #0d9488;
         }
 
         [data-theme="dark"] {
-            --bg-body: linear-gradient(-45deg, #0f172a, #1e1b4b, #020617, #0f172a);
-            --bg-panel: rgba(30, 41, 59, 0.9); --bg-sidebar: rgba(30, 41, 59, 0.9); --bg-input: rgba(15, 23, 42, 0.8);
-            --border-color: #334155; --text-main: #f8fafc; --text-muted: #94a3b8;
-            --shadow-panel: 0 4px 20px rgba(0, 0, 0, 0.6); --glass-blur: blur(8px);
-            --user-bubble: #0d9488; --user-text: #ffffff; --bot-bubble: #1e293b;
-            --blob-opacity: 0.15; --particle-opacity: 0.15; --particle-color: #ffffff;
+            --bg-body: linear-gradient(-45deg, #0f172a, #1e1b4b, #020617, #082f49);
+            --bg-panel: rgba(15, 23, 42, 0.65); --bg-sidebar: rgba(15, 23, 42, 0.65); --bg-input: rgba(15, 23, 42, 0.5);
+            --border-color: rgba(255, 255, 255, 0.1); --text-main: #f8fafc; --text-muted: #94a3b8;
+            --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.5); --glass-blur: blur(16px);
+            --user-bubble: rgba(13, 148, 136, 0.6); --user-text: #ffffff; --bot-bubble: rgba(30, 41, 59, 0.6);
+            --blob-opacity: 0.2; --particle-opacity: 0.15; --particle-color: #ffffff;
         }
 
         [data-theme="liquid-glass"] {
             --bg-body: linear-gradient(-45deg, #ffecd2, #e0f2fe, #e0c3fc, #fcb69f);
-            --bg-panel: rgba(255, 255, 255, 0.25); --bg-sidebar: rgba(255, 255, 255, 0.2);
-            --bg-input: rgba(255, 255, 255, 0.4); --border-color: rgba(255, 255, 255, 0.4);
-            --text-main: #0f172a; --text-muted: #475569; --shadow-panel: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            --glass-blur: blur(24px); --user-bubble: rgba(15, 23, 42, 0.85); --user-text: #ffffff;
-            --bot-bubble: rgba(255, 255, 255, 0.5);
+            --bg-panel: rgba(255, 255, 255, 0.25); --bg-sidebar: rgba(255, 255, 255, 0.2); --bg-input: rgba(255, 255, 255, 0.2);
+            --border-color: rgba(255, 255, 255, 0.3); --text-main: #0f172a; --text-muted: #475569;
+            --shadow-panel: 0 8px 32px 0 rgba(31, 38, 135, 0.15); --glass-blur: blur(24px);
+            --user-bubble: rgba(15, 23, 42, 0.6); --user-text: #ffffff; --bot-bubble: rgba(255, 255, 255, 0.3);
             --blob-opacity: 0.7; --particle-opacity: 0.5; --particle-color: #38bdf8;
         }
 
         [data-theme="liquid-crystal"] {
-            /* Beautiful softly changing RGB background */
-            --bg-body: linear-gradient(-45deg, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff, #d0baff, #ffb3ff, #ffb3ba);
-            --bg-panel: rgba(255, 255, 255, 0.15); --bg-sidebar: rgba(255, 255, 255, 0.1);
-            --bg-input: rgba(255, 255, 255, 0.3); --border-color: rgba(255, 255, 255, 0.3);
-            --text-main: #0f172a; --text-muted: #475569; --shadow-panel: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-            --glass-blur: blur(30px); --user-bubble: rgba(15, 23, 42, 0.75); --user-text: #ffffff;
-            --bot-bubble: rgba(255, 255, 255, 0.4);
+            --bg-body: linear-gradient(-45deg, #ff9a9e, #fecfef, #fbc2eb, #a18cd1, #8fd3f4);
+            --bg-panel: rgba(255, 255, 255, 0.15); --bg-sidebar: rgba(255, 255, 255, 0.15); --bg-input: rgba(255, 255, 255, 0.15);
+            --border-color: rgba(255, 255, 255, 0.2); --text-main: #0f172a; --text-muted: #475569;
+            --shadow-panel: 0 8px 32px 0 rgba(31, 38, 135, 0.2); --glass-blur: blur(30px);
+            --user-bubble: rgba(15, 23, 42, 0.5); --user-text: #ffffff; --bot-bubble: rgba(255, 255, 255, 0.25);
             --blob-opacity: 0.8; --particle-opacity: 0.6; --particle-color: #ec4899;
         }
 
-        /* --- Applied Theme Classes & Smooth Ambient Background --- */
+        /* --- Applied Theme Classes & Slow Ambient Background --- */
+        body { 
+            background: var(--bg-body); background-size: 400% 400%;
+            animation: ambientGradient 45s ease-in-out infinite;
+            color: var(--text-main); transition: color 0.5s ease; 
+        }
+
+        @keyframes ambientGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        .theme-panel { background: var(--bg-panel); border: 1px solid var(--border-color); box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); color: var(--text-main); transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease; }
+        .theme-sidebar { background: var(--bg-sidebar); border-right: 1px solid var(--border-color); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); transition: all 0.4s ease; }
+        .theme-input { background: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-main); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-panel); }
         .theme-text { color: var(--text-main); }
         .theme-text-muted { color: var(--text-muted); }
         .theme-border { border-color: var(--border-color); }
         
-        .bubble-user { background: var(--user-bubble); color: var(--user-text); overflow-wrap: break-word; word-wrap: break-word; }
-        .bubble-bot { background: var(--bot-bubble); border: 1px solid var(--border-color); color: var(--text-main); overflow-wrap: break-word; word-wrap: break-word; }
+        /* Glassmorphic Chat Bubbles that reflect background colors */
+        .bubble-user { background: var(--user-bubble); color: var(--user-text); border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow-wrap: break-word; word-wrap: break-word; }
+        .bubble-bot { background: var(--bot-bubble); border: 1px solid var(--border-color); color: var(--text-main); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow-wrap: break-word; word-wrap: break-word; }
 
         /* --- Smooth & Glowing Button Animations --- */
-        .glow-btn { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); cursor: pointer; }
+        .glow-btn { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); cursor: pointer; will-change: transform; }
         .glow-btn:hover, .glow-btn:active { transform: translateY(-3px); }
         .glow-emerald { box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
         .glow-emerald:hover { box-shadow: 0 0 25px rgba(16, 185, 129, 0.7); }
@@ -99,37 +107,36 @@
         .modal-enter { animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
         @keyframes bounceIn { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
 
-        /* --- Smooth Floating Blobs & Live Particles --- */
+        /* --- Slow, Smooth Floating Blobs & Live Particles --- */
         .glass-bg-mesh { position: fixed; inset: 0; z-index: -2; overflow: hidden; opacity: var(--blob-opacity); transition: opacity 0.5s ease; pointer-events: none; }
         @keyframes blob { 0% { transform: translate(0px, 0px) scale(1); } 33% { transform: translate(60px, -80px) scale(1.1); } 66% { transform: translate(-40px, 40px) scale(0.9); } 100% { transform: translate(0px, 0px) scale(1); } }
-        .animate-blob { animation: blob 12s infinite alternate ease-in-out; }
-        .animation-delay-2000 { animation-delay: 3s; }
-        .animation-delay-4000 { animation-delay: 6s; }
+        .animate-blob { animation: blob 30s infinite alternate ease-in-out; will-change: transform; }
+        .animation-delay-2000 { animation-delay: 5s; }
+        .animation-delay-4000 { animation-delay: 10s; }
 
         .particles-bg {
             position: fixed; inset: 0; z-index: -1; pointer-events: none;
             background-image: radial-gradient(var(--particle-color) 1px, transparent 1px);
-            background-size: 60px 60px; opacity: var(--particle-opacity);
-            animation: particleDrift 30s linear infinite; transition: all 0.5s ease;
+            background-size: 80px 80px; opacity: var(--particle-opacity);
+            animation: particleDrift 45s linear infinite; transition: all 0.5s ease;
+            will-change: transform;
         }
-        @keyframes particleDrift { 0% { transform: translateY(0); } 100% { transform: translateY(-60px); } }
+        @keyframes particleDrift { 0% { transform: translateY(0); } 100% { transform: translateY(-80px); } }
 
         /* --- Custom Scrollbar & PERFECT ASCII CIRCUIT FORMATTING --- */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+        ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.8); }
 
         .markdown-body { max-width: 100%; overflow-x: auto; word-wrap: break-word; overflow-wrap: break-word; }
-        
-        /* THIS ENFORCES PERFECT ASCII ART CIRCUIT RENDERING */
         .markdown-body pre { 
-            background-color: #0f172a; color: #e2e8f0; padding: 1.25rem; 
+            background-color: rgba(15, 23, 42, 0.85); color: #e2e8f0; padding: 1.25rem; 
             border-radius: 0.75rem; overflow-x: auto; margin: 0.75rem 0; 
             font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; 
-            border: 1px solid #334155; max-width: 100%; 
+            border: 1px solid rgba(255,255,255,0.1); max-width: 100%; 
             white-space: pre !important; line-height: 1.3 !important;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3); backdrop-filter: blur(10px);
         }
         .markdown-body code { background-color: rgba(125,125,125,0.2); color: #ef4444; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; word-break: break-word; }
         .markdown-body pre code { background-color: transparent; color: inherit; padding: 0; word-break: normal; white-space: pre !important; }
@@ -140,8 +147,6 @@
         .markdown-body table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
         .markdown-body th, .markdown-body td { border: 1px solid var(--border-color); padding: 0.5rem; text-align: left; }
         .markdown-body th { background-color: rgba(125,125,125,0.1); }
-        
-        .chat-container { height: calc(100vh - 230px); }
         
         .formula-card { background: rgba(15, 23, 42, 0.03); border: 1px solid rgba(15, 23, 42, 0.08); border-radius: 12px; padding: 16px; margin-bottom: 16px; transition: all 0.3s ease; }
         [data-theme="dark"] .formula-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); }
@@ -154,14 +159,18 @@
         .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
         .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
 
-        /* Arcade Game Canvases */
-        .game-canvas { border: 4px solid #fff; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); background-color: #000; display: block; margin: 0 auto; max-width: 100%; touch-action: none; }
+        .game-canvas { border: 4px solid rgba(255,255,255,0.2); border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); background-color: #000; display: block; margin: 0 auto; max-width: 100%; touch-action: none; }
         
         .safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
-        .slide-transition { transition: margin 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        /* ZERO-JITTER LAYOUT CLASSES */
+        .transform-gpu { transform: translate3d(0, 0, 0); will-change: transform; }
+        .transition-transform-layout { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hide-nav { transform: translateY(-100%); }
+        .hide-input { transform: translateY(150%); }
     </style>
 </head>
-<body class="h-screen overflow-hidden flex flex-col font-sans" data-theme="default">
+<body class="h-screen w-screen overflow-hidden flex flex-col font-sans relative" data-theme="default">
 
     <!-- Smooth Ambient Background Effects -->
     <div class="glass-bg-mesh">
@@ -171,9 +180,9 @@
     </div>
     <div class="particles-bg"></div>
 
-    <!-- Main Navigation Menu (Auto-Hides on Scroll) -->
-    <nav id="topNav" class="bg-ktu-900 text-white shadow-lg z-30 relative border-b border-white/10 slide-transition">
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- MAIN NAVIGATION (ABSOLUTE LAYER - Fixes Scroll Jitter) -->
+    <nav id="topNav" class="absolute top-0 left-0 w-full z-40 theme-panel !border-none !rounded-none transition-transform-layout transform-gpu">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-white/10">
             <div class="flex justify-between h-16 items-center">
                 
                 <div class="flex items-center space-x-3 cursor-pointer glow-btn" onclick="openModal('aboutModal')" title="About Author">
@@ -185,26 +194,21 @@
                 </div>
                 
                 <div class="flex items-center space-x-2 sm:space-x-3">
-                    
-                    <!-- Theme Button -->
                     <button onclick="cycleTheme()" id="themeCycleBtn" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-lg bg-white/10 border border-white/20 flex items-center justify-center space-x-2 glow-btn glow-theme" title="Change Theme">
                         <i class="fa-solid fa-sun" id="themeIcon"></i>
                         <span class="hidden sm:inline text-sm font-bold" id="themeText">Light</span>
                     </button>
 
-                    <!-- API Key Settings -->
                     <button onclick="openModal('apiKeyModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-lg bg-yellow-500 border border-yellow-400 text-slate-900 flex items-center justify-center space-x-2 glow-btn glow-yellow" title="API Key Settings">
                         <i class="fa-solid fa-key"></i>
                         <span class="hidden sm:inline text-sm font-bold">API Key</span>
                     </button>
 
-                    <!-- Formula Vault -->
                     <button onclick="openModal('formulaModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-lg bg-emerald-500 border border-emerald-400 text-white flex items-center justify-center space-x-2 glow-btn glow-emerald" title="Formula Vault">
                         <i class="fa-solid fa-square-root-variable"></i>
                         <span class="hidden lg:inline text-sm font-bold">Formulas</span>
                     </button>
 
-                    <!-- Arcade Hub -->
                     <button onclick="openModal('arcadeHubModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-lg bg-orange-500 border border-orange-400 text-white flex items-center justify-center space-x-2 glow-btn glow-orange" title="Play Games">
                         <i class="fa-solid fa-gamepad"></i>
                         <span class="hidden lg:inline text-sm font-bold">Arcade</span>
@@ -214,51 +218,32 @@
         </div>
     </nav>
 
-    <!-- Main Layout Grid -->
-    <main class="flex-1 flex overflow-hidden relative z-10">
+    <!-- Main Layout Grid (Padded for absolute Nav) -->
+    <main class="flex-1 flex overflow-hidden relative z-10 pt-16 w-full h-full">
         
-        <!-- Left Sidebar (Syllabus & Quick Prompts) -->
-        <aside class="hidden md:flex flex-col w-80 theme-sidebar overflow-y-auto z-10">
+        <!-- Left Sidebar -->
+        <aside class="hidden md:flex flex-col w-80 theme-sidebar overflow-y-auto z-10 border-r theme-border">
             <div class="p-5 theme-border border-b">
                 <h2 class="text-sm font-bold theme-text uppercase tracking-wider mb-4 flex items-center">
                     <i class="fa-solid fa-network-wired text-ktu-600 mr-2"></i> KTU 4-Module Tracker
                 </h2>
                 <div class="space-y-4">
-                    <label class="flex items-start space-x-3 cursor-pointer group">
-                        <input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition">
-                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 1: Node/Mesh & Star-Delta</span>
-                    </label>
-                    <label class="flex items-start space-x-3 cursor-pointer group">
-                        <input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition">
-                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 2: Network Theorems</span>
-                    </label>
-                    <label class="flex items-start space-x-3 cursor-pointer group">
-                        <input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition">
-                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 3: Transients & Laplace</span>
-                    </label>
-                    <label class="flex items-start space-x-3 cursor-pointer group">
-                        <input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition">
-                        <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 4: Two-Port Networks</span>
-                    </label>
+                    <label class="flex items-start space-x-3 cursor-pointer group"><input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition"><span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 1: Node/Mesh & Star-Delta</span></label>
+                    <label class="flex items-start space-x-3 cursor-pointer group"><input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition"><span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 2: Network Theorems</span></label>
+                    <label class="flex items-start space-x-3 cursor-pointer group"><input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition"><span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 3: Transients & Laplace</span></label>
+                    <label class="flex items-start space-x-3 cursor-pointer group"><input type="checkbox" class="mt-1 form-checkbox h-4 w-4 text-ktu-600 rounded border-slate-300 focus:ring-ktu-500 transition"><span class="text-sm theme-text group-hover:text-ktu-600 transition-colors">Mod 4: Two-Port Networks</span></label>
                 </div>
                 <div class="mt-6 pt-5 theme-border border-t">
-                    <div class="flex justify-between mb-2">
-                        <span class="text-xs font-semibold theme-text-muted uppercase">Progress</span>
-                        <span class="text-xs font-bold text-ktu-600" id="progressText">0%</span>
-                    </div>
+                    <div class="flex justify-between mb-2"><span class="text-xs font-semibold theme-text-muted uppercase">Progress</span><span class="text-xs font-bold text-ktu-600" id="progressText">0%</span></div>
                     <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden shadow-inner">
-                        <div class="bg-gradient-to-r from-ktu-400 to-ktu-600 h-full rounded-full transition-all duration-700 ease-out relative" id="progressBar" style="width: 0%">
-                            <div class="absolute inset-0 bg-white/20 w-full h-full animate-pulse"></div>
-                        </div>
+                        <div class="bg-gradient-to-r from-ktu-400 to-ktu-600 h-full rounded-full transition-all duration-700 ease-out relative" id="progressBar" style="width: 0%"><div class="absolute inset-0 bg-white/20 w-full h-full animate-pulse"></div></div>
                     </div>
                 </div>
             </div>
 
             <!-- Quick Exam Prompts -->
             <div class="p-5 flex-1">
-                <h2 class="text-sm font-bold theme-text uppercase tracking-wider mb-4 flex items-center">
-                    <i class="fa-solid fa-bolt text-yellow-500 mr-2 drop-shadow-sm"></i> Quick Explanations
-                </h2>
+                <h2 class="text-sm font-bold theme-text uppercase tracking-wider mb-4 flex items-center"><i class="fa-solid fa-bolt text-yellow-500 mr-2 drop-shadow-sm"></i> Quick Explanations</h2>
                 <div class="space-y-3">
                     <button onclick="insertSnippet('circuit')" class="w-full text-left px-4 py-3 text-sm theme-panel glow-btn rounded-xl flex justify-between items-center group border-l-4 !border-l-orange-500">
                         <span class="font-medium theme-text">Draw Bridge Circuit (ASCII)</span>
@@ -276,16 +261,15 @@
             </div>
         </aside>
 
-        <!-- Main Chat Interface -->
-        <section class="flex-1 flex flex-col relative">
+        <!-- ZERO JITTER CHAT INTERFACE ARCHITECTURE -->
+        <section class="flex-1 relative w-full h-full overflow-hidden">
             
-            <!-- Chat Header -->
-            <div id="chatHeader" class="theme-panel !border-l-0 !border-t-0 !border-r-0 px-4 sm:px-6 py-3 flex justify-between items-center z-10 shadow-sm slide-transition">
+            <!-- Floating Chat Header -->
+            <div id="chatHeader" class="absolute top-0 left-0 w-full z-20 theme-panel !border-l-0 !border-t-0 !border-r-0 px-4 sm:px-6 py-3 flex justify-between items-center shadow-sm transition-transform-layout transform-gpu">
                 <div>
                     <h1 class="text-lg font-bold theme-text">AI Circuit Solver Hub</h1>
                     <p class="text-[10px] sm:text-xs theme-text-muted">Network Theory • Kerala Syllabus aligned</p>
                 </div>
-                
                 <div class="flex items-center theme-input rounded-xl p-1 border theme-border shadow-inner">
                     <div class="pl-2 pr-1 theme-text-muted"><i class="fa-solid fa-microchip"></i></div>
                     <select id="botPersona" class="bg-transparent text-xs sm:text-sm font-semibold border-none py-1.5 pr-6 pl-1 focus:ring-0 cursor-pointer outline-none theme-text">
@@ -296,20 +280,18 @@
                 </div>
             </div>
 
-            <!-- Chat History -->
-            <div id="chatBox" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 chat-container scroll-smooth relative z-0">
+            <!-- Absolute Scrollable Chat Box (Decoupled from headers to stop jitter) -->
+            <div id="chatBox" class="absolute inset-0 w-full h-full overflow-y-auto pt-[80px] pb-[120px] px-4 sm:px-6 z-10 scroll-smooth">
                 <!-- Welcome -->
-                <div class="flex items-start w-full max-w-full">
-                    <div class="flex-shrink-0 bg-gradient-to-br from-ktu-500 to-ktu-700 rounded-full w-10 h-10 flex items-center justify-center text-white shadow-[0_0_15px_rgba(13,148,136,0.5)]">
-                        <i class="fa-solid fa-network-wired"></i>
-                    </div>
-                    <div class="ml-4 bubble-bot rounded-2xl rounded-tl-none px-5 py-4 max-w-[90%] sm:max-w-[80%] shadow-md border theme-border min-w-0">
+                <div class="flex items-start w-full max-w-full mb-6">
+                    <div class="flex-shrink-0 bg-gradient-to-br from-ktu-500 to-ktu-700 rounded-full w-10 h-10 flex items-center justify-center text-white shadow-[0_0_15px_rgba(13,148,136,0.5)]"><i class="fa-solid fa-network-wired"></i></div>
+                    <div class="ml-4 bubble-bot rounded-2xl rounded-tl-none px-5 py-4 max-w-[90%] sm:max-w-[80%] shadow-lg border theme-border min-w-0">
                         <h3 class="font-bold text-lg mb-2">Network Theory Engine Online ⚡</h3>
                         <p class="text-sm leading-relaxed mb-3 theme-text">
-                            Hello! I am your AI assistant specialized in solving circuits. My logic is strictly synced with the <strong>KTU 2024 Scheme Kerala Syllabus for Network Theory</strong>. I will draw perfectly aligned ASCII circuits and completely avoid messy formatting.
+                            Hello! I am your AI assistant specialized in solving circuits. My logic is strictly synced with the <strong>KTU 2024 Scheme Kerala Syllabus for Network Theory</strong>. I draw beautifully aligned ASCII circuits and my text boxes softly reflect the background colors!
                         </p>
-                        <div class="bg-yellow-50/80 border border-yellow-200 text-yellow-800 p-3 rounded-xl text-xs mb-4 shadow-inner">
-                            <i class="fa-solid fa-triangle-exclamation mr-1 text-yellow-500"></i> <strong>First step:</strong><br>
+                        <div class="bg-yellow-50/70 border border-yellow-200 text-yellow-800 p-3 rounded-xl text-xs mb-4 shadow-inner">
+                            <i class="fa-solid fa-triangle-exclamation mr-1 text-yellow-600"></i> <strong>Hosting on GitHub Pages?</strong><br>
                             Click the <i class="fa-solid fa-key"></i> <strong>API Key</strong> button above to save your Gemini API key and activate the chat!
                         </div>
                         <ul class="text-sm theme-text space-y-2">
@@ -322,25 +304,25 @@
             </div>
 
             <!-- Loading Indicator -->
-            <div id="typingIndicator" class="hidden px-6 pb-2">
-                <div class="theme-panel inline-flex items-center space-x-3 px-4 py-2 rounded-full shadow-md">
+            <div id="typingIndicator" class="absolute bottom-[100px] left-6 z-20 hidden">
+                <div class="theme-panel inline-flex items-center space-x-3 px-4 py-2 rounded-full shadow-lg border theme-border backdrop-blur-xl">
                     <i class="fa-solid fa-circle-notch fa-spin text-ktu-600"></i>
                     <span class="font-medium text-sm theme-text" id="loadingText">Solving Circuit...</span>
                 </div>
             </div>
 
-            <!-- Input Form -->
-            <div id="chatInputArea" class="theme-panel !border-l-0 !border-b-0 !border-r-0 p-3 pt-4 sm:p-5 safe-bottom z-20 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] relative slide-transition">
-                <form id="chatForm" class="flex items-end space-x-2 sm:space-x-3 max-w-5xl mx-auto relative">
-                    <div class="flex-1 relative theme-input border theme-border rounded-2xl focus-within:ring-2 focus-within:ring-ktu-500 transition-all shadow-inner">
+            <!-- Floating Input Form -->
+            <div id="chatInputArea" class="absolute bottom-0 left-0 w-full z-20 p-3 pt-4 sm:p-5 safe-bottom transition-transform-layout transform-gpu">
+                <!-- A soft gradient to obscure text going behind the transparent box -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent dark:from-black/40 pointer-events-none z-[-1]"></div>
+                
+                <form id="chatForm" class="flex items-end space-x-2 sm:space-x-3 max-w-5xl mx-auto relative z-10">
+                    <div class="flex-1 relative theme-input rounded-2xl focus-within:ring-2 focus-within:ring-ktu-500 transition-all">
                         <textarea id="userInput" rows="1" class="w-full bg-transparent border-none py-3.5 pl-5 pr-12 focus:ring-0 resize-none text-sm font-mono theme-text placeholder-gray-400" placeholder="Ask a circuit doubt, request an ASCII diagram..." onkeydown="handleEnter(event)"></textarea>
-                        <button type="button" onclick="clearInput()" class="absolute right-3 top-3 opacity-40 hover:opacity-100 hover:text-red-500 theme-text transition p-1">
-                            <i class="fa-solid fa-eraser"></i>
-                        </button>
+                        <button type="button" onclick="clearInput()" class="absolute right-3 top-3 opacity-40 hover:opacity-100 hover:text-red-500 theme-text transition p-1"><i class="fa-solid fa-eraser"></i></button>
                     </div>
                     <button type="submit" id="sendBtn" class="bg-gradient-to-r from-ktu-600 to-ktu-700 text-white rounded-2xl px-5 py-3.5 flex items-center justify-center glow-btn glow-primary disabled:opacity-50 min-w-[50px] sm:min-w-[100px] h-[52px]">
-                        <i class="fa-solid fa-paper-plane sm:mr-2"></i>
-                        <span class="font-bold hidden sm:inline">Send</span>
+                        <i class="fa-solid fa-paper-plane sm:mr-2"></i><span class="font-bold hidden sm:inline">Send</span>
                     </button>
                 </form>
             </div>
@@ -349,7 +331,7 @@
 
     <!-- ================= MODALS ================= -->
 
-    <!-- "Very Humanly" About Author Modal -->
+    <!-- About Author Modal -->
     <div id="aboutModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
         <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-500 border border-slate-200 dark:border-slate-700" id="aboutContent">
             <button onclick="closeModal('aboutModal', 'aboutContent')" class="absolute top-4 right-4 text-white hover:text-red-400 bg-black/20 hover:bg-black/40 rounded-full w-8 h-8 flex items-center justify-center transition z-20"><i class="fa-solid fa-xmark"></i></button>
@@ -523,22 +505,15 @@
 
     <!-- Active Game Container Modal -->
     <div id="activeGameModal" class="hidden fixed inset-0 bg-black/95 backdrop-blur-lg z-[60] flex flex-col items-center justify-center p-0 opacity-0 transition-opacity duration-300">
-        <!-- Close Bar -->
         <div class="absolute top-0 w-full p-4 flex justify-between items-center z-50 bg-gradient-to-b from-black/80 to-transparent">
             <h2 id="activeGameTitle" class="text-white font-bold text-xl tracking-widest uppercase ml-4 text-shadow-md">Game</h2>
             <button onclick="closeActiveGame()" class="text-white/80 hover:text-white bg-white/10 hover:bg-red-500/80 rounded-full w-12 h-12 flex justify-center items-center transition-all border border-white/20"><i class="fa-solid fa-xmark text-2xl"></i></button>
         </div>
         
-        <!-- Game Canvases -->
         <div id="gameViewport" class="relative w-full h-full max-w-4xl max-h-[800px] flex items-center justify-center p-4">
-            
-            <!-- 1. Flappy Bird -->
             <canvas id="flappyCanvas" width="288" height="400" class="game-canvas hidden cursor-pointer"></canvas>
-            
-            <!-- 2. Neon Breakout -->
             <canvas id="breakoutCanvas" width="400" height="600" class="game-canvas hidden cursor-none"></canvas>
             
-            <!-- 3. 3D Runner Container -->
             <div id="runner3DContainer" class="hidden w-full h-full max-w-[800px] max-h-[600px] rounded-xl overflow-hidden shadow-[0_0_30px_rgba(6,182,212,0.4)] relative bg-slate-900">
                 <div id="runnerUI" class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm">
                     <h3 class="text-white text-3xl font-bold mb-4 drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]">3D NEON RUNNER</h3>
@@ -547,7 +522,6 @@
                 </div>
                 <div id="runnerScore" class="absolute top-4 right-4 z-10 text-white font-mono text-2xl font-bold drop-shadow-md hidden">0</div>
             </div>
-            
         </div>
     </div>
 
@@ -637,7 +611,7 @@ Ensure wires align perfectly using -, |, +, and standard symbols.`;
             setTheme(savedTheme);
         });
 
-        // --- 1. Theme Cycler & UI Scroll ---
+        // --- 1. Theme Cycler & UI Scroll Zero-Jitter ---
         const themes = ['default', 'dark', 'liquid-glass', 'liquid-crystal'];
         const themeIcons = { 'default': 'fa-sun', 'dark': 'fa-moon', 'liquid-glass': 'fa-droplet', 'liquid-crystal': 'fa-gem' };
         const themeTexts = { 'default': 'Light', 'dark': 'Dark', 'liquid-glass': 'Glass', 'liquid-crystal': 'Crystal' };
@@ -662,16 +636,29 @@ Ensure wires align perfectly using -, |, +, and standard symbols.`;
 
         const topNav = document.getElementById('topNav'), chatHeader = document.getElementById('chatHeader'), chatInputArea = document.getElementById('chatInputArea');
         let lastScrollTop = 0;
+        let isScrolling = false;
+        
+        // Zero-Jitter Scroll Listener using RequestAnimationFrame
         chatBox.addEventListener('scroll', () => {
-            let st = chatBox.scrollTop;
-            if (st > lastScrollTop && st > 100) {
-                topNav.style.marginTop = `-${topNav.offsetHeight}px`;
-                chatHeader.style.marginTop = `-${chatHeader.offsetHeight}px`;
-                chatInputArea.style.marginBottom = `-${chatInputArea.offsetHeight + 20}px`;
-            } else if (st < lastScrollTop - 5 || st <= 0) {
-                topNav.style.marginTop = '0px'; chatHeader.style.marginTop = '0px'; chatInputArea.style.marginBottom = '0px';
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    let st = chatBox.scrollTop;
+                    if (Math.abs(lastScrollTop - st) <= 5) { isScrolling = false; return; }
+                    
+                    if (st > lastScrollTop && st > 100) {
+                        topNav.classList.add('hide-nav');
+                        chatHeader.classList.add('hide-nav');
+                        chatInputArea.classList.add('hide-input');
+                    } else if (st < lastScrollTop || st <= 0) {
+                        topNav.classList.remove('hide-nav');
+                        chatHeader.classList.remove('hide-nav');
+                        chatInputArea.classList.remove('hide-input');
+                    }
+                    lastScrollTop = st <= 0 ? 0 : st;
+                    isScrolling = false;
+                });
+                isScrolling = true;
             }
-            lastScrollTop = st <= 0 ? 0 : st;
         });
 
         // --- 2. MULTI-GAME ARCADE HUB ENGINE ---
@@ -686,7 +673,6 @@ Ensure wires align perfectly using -, |, +, and standard symbols.`;
                 activeModal.classList.remove('hidden');
                 setTimeout(() => { activeModal.classList.add('opacity-100'); }, 10);
                 
-                // Hide all canvases first
                 document.getElementById('flappyCanvas').classList.add('hidden');
                 document.getElementById('breakoutCanvas').classList.add('hidden');
                 document.getElementById('runner3DContainer').classList.add('hidden');
@@ -717,10 +703,8 @@ Ensure wires align perfectly using -, |, +, and standard symbols.`;
             document.getElementById('activeGameModal').classList.remove('opacity-100');
             setTimeout(() => { document.getElementById('activeGameModal').classList.add('hidden'); }, 300);
             
-            // Force Stop all game loops to save memory!
             if (globalReqID) { cancelAnimationFrame(globalReqID); globalReqID = null; }
-            flappyActive = false;
-            breakoutActive = false;
+            flappyActive = false; breakoutActive = false;
             if(runner3dActive) stopRunner3D();
             currentGameMode = null;
         }
@@ -1012,7 +996,7 @@ Ensure wires align perfectly using -, |, +, and standard symbols.`;
             player.position.set(0, 0.5, 0);
             grid.position.z = 0;
             
-            // Clean up old obstacles
+            // Clean up old obstacles safely
             obstacles.forEach(o => {
                 if (o.geometry) o.geometry.dispose();
                 if (o.material) o.material.dispose();
@@ -1036,7 +1020,7 @@ Ensure wires align perfectly using -, |, +, and standard symbols.`;
         document.getElementById('runner3DContainer').addEventListener('touchend', () => { keys['ArrowLeft'] = false; keys['ArrowRight'] = false; });
 
         function startRunner3D() {
-            // Guarantee fresh start so it doesn't instantly lag/crash
+            // Guarantee fresh start
             player.position.set(0, 0.5, 0);
             obstacles.forEach(o => scene.remove(o));
             obstacles = [];
@@ -1094,11 +1078,9 @@ Ensure wires align perfectly using -, |, +, and standard symbols.`;
 
         function stopRunner3D() {
             runner3dActive = false;
-            if(renderer) renderer.dispose();
-            obstacles.forEach(o => scene.remove(o)); obstacles = [];
         }
 
-        // --- 4. Modal Controls (With Fixed Bouncy Animation IDs) ---
+        // --- 4. Modal Controls (With Bouncy Animation) ---
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.remove('hidden');
@@ -1128,7 +1110,6 @@ Ensure wires align perfectly using -, |, +, and standard symbols.`;
             if (event.target.id === 'apiKeyModal') closeModal('apiKeyModal', 'apiKeyContent');
             if (event.target.id === 'aboutModal') closeModal('aboutModal', 'aboutContent');
             if (event.target.id === 'arcadeHubModal') closeModal('arcadeHubModal', 'arcadeHubContent');
-            // activeGameModal handles closing via explicit close button to avoid accidental exits while playing
         }
 
         // --- 5. Syllabus Progress ---
@@ -1156,7 +1137,7 @@ Ensure wires align perfectly using -, |, +, and standard symbols.`;
         }
 
         function appendMessage(text, isUser = false) {
-            // Strip out LaTeX $ markers if the AI disobeys instructions
+            // Forcefully strip out any remaining LaTeX $ markers to keep it plain and clean
             let cleanText = text.replace(/\$\$/g, '').replace(/\$/g, '');
             const rawHTML = DOMPurify.sanitize(marked.parse(cleanText));
             
@@ -1255,7 +1236,6 @@ Ensure wires align perfectly using -, |, +, and standard symbols.`;
     </script>
 </body>
 </html>
-
 
 
 ```
