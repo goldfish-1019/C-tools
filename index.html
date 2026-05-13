@@ -37,7 +37,8 @@
     <style>
         /* --- Ultra-Premium Refractive Glass Theme Variables --- */
         :root {
-            --bg-body: linear-gradient(-45deg, #f8fafc, #e0f2fe, #f3e8ff, #ffffff);
+            --bg-body-1: linear-gradient(-45deg, #f8fafc, #e0f2fe, #f3e8ff, #ffffff);
+            --bg-body-2: linear-gradient(135deg, #ffffff, #e0f2fe, #f8fafc, #f3e8ff);
             --bg-panel: rgba(255, 255, 255, 0.45); 
             --bg-sidebar: rgba(255, 255, 255, 0.35); 
             --bg-input: rgba(255, 255, 255, 0.6);
@@ -47,11 +48,12 @@
             --glass-filter: blur(16px) saturate(150%);
             --user-bubble: rgba(13, 148, 136, 0.85); --user-text: #ffffff; 
             --bot-bubble: rgba(255, 255, 255, 0.65);
-            --blob-opacity: 0.6; --particle-opacity: 0.4; --particle-color: #0d9488;
+            --particle-opacity: 0.4; --particle-color: #0d9488;
         }
 
         [data-theme="dark"] {
-            --bg-body: linear-gradient(-45deg, #0f172a, #1e1b4b, #020617, #0f172a);
+            --bg-body-1: linear-gradient(-45deg, #0f172a, #1e1b4b, #020617, #0f172a);
+            --bg-body-2: linear-gradient(135deg, #020617, #0f172a, #1e1b4b, #0f172a);
             --bg-panel: rgba(15, 23, 42, 0.4); 
             --bg-sidebar: rgba(15, 23, 42, 0.3); 
             --bg-input: rgba(30, 41, 59, 0.5);
@@ -61,11 +63,12 @@
             --glass-filter: blur(20px) saturate(150%);
             --user-bubble: rgba(13, 148, 136, 0.7); --user-text: #ffffff; 
             --bot-bubble: rgba(30, 41, 59, 0.6);
-            --blob-opacity: 0.25; --particle-opacity: 0.2; --particle-color: #ffffff;
+            --particle-opacity: 0.2; --particle-color: #ffffff;
         }
 
         [data-theme="liquid-glass"] {
-            --bg-body: linear-gradient(-45deg, #ffecd2, #e0f2fe, #e0c3fc, #fcb69f);
+            --bg-body-1: linear-gradient(-45deg, #ffecd2, #e0f2fe, #e0c3fc, #fcb69f);
+            --bg-body-2: linear-gradient(135deg, #e0f2fe, #fcb69f, #ffecd2, #e0c3fc);
             --bg-panel: rgba(255, 255, 255, 0.15); 
             --bg-sidebar: rgba(255, 255, 255, 0.1);
             --bg-input: rgba(255, 255, 255, 0.3); 
@@ -75,11 +78,12 @@
             --glass-filter: blur(24px) saturate(200%); 
             --user-bubble: rgba(15, 23, 42, 0.85); --user-text: #ffffff;
             --bot-bubble: rgba(255, 255, 255, 0.35);
-            --blob-opacity: 0.8; --particle-opacity: 0.5; --particle-color: #38bdf8;
+            --particle-opacity: 0.5; --particle-color: #38bdf8;
         }
 
         [data-theme="liquid-crystal"] {
-            --bg-body: linear-gradient(-45deg, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff, #d0baff, #ffb3ff, #ffb3ba);
+            --bg-body-1: linear-gradient(-45deg, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff, #d0baff);
+            --bg-body-2: linear-gradient(135deg, #baffc9, #bae1ff, #ffb3ba, #ffffba, #d0baff, #ffdfba);
             --bg-panel: rgba(255, 255, 255, 0.1); 
             --bg-sidebar: rgba(255, 255, 255, 0.05);
             --bg-input: rgba(255, 255, 255, 0.25); 
@@ -89,43 +93,37 @@
             --glass-filter: blur(30px) saturate(250%); 
             --user-bubble: rgba(15, 23, 42, 0.75); --user-text: #ffffff;
             --bot-bubble: rgba(255, 255, 255, 0.25);
-            --blob-opacity: 0.95; --particle-opacity: 0.6; --particle-color: #ec4899;
+            --particle-opacity: 0.6; --particle-color: #ec4899;
         }
 
-        /* --- Global Smooth Background --- */
-        body { 
-            background: var(--bg-body); background-size: 400% 400%;
-            animation: ambientGradient 40s ease-in-out infinite;
-            color: var(--text-main); transition: color 0.5s ease; 
-            overflow: hidden; 
+        /* --- EXTREME GPU OPTIMIZED BACKGROUND --- */
+        body { background-color: var(--text-main); color: var(--text-main); transition: color 0.5s ease; overflow: hidden; }
+        
+        /* Opacity cross-fading is astronomically faster than animating background-position */
+        .bg-base-layer { position: fixed; inset: 0; z-index: -3; background: var(--bg-body-1); }
+        .bg-base-layer::after {
+            content: ""; position: absolute; inset: 0; background: var(--bg-body-2);
+            animation: optimizedFadeShift 15s infinite alternate ease-in-out;
         }
-        @keyframes ambientGradient { 
-            0% { background-position: 0% 50%; } 
-            25% { background-position: 50% 100%; }
-            50% { background-position: 100% 50%; } 
-            75% { background-position: 50% 0%; }
-            100% { background-position: 0% 50%; } 
-        }
+        @keyframes optimizedFadeShift { 0% { opacity: 0; } 100% { opacity: 1; } }
 
-        /* --- Advanced Hardware Accelerated Glass Panels --- */
+        /* --- Standardized Hardware Accelerated Glass Panels --- */
         .theme-panel { 
             background: var(--bg-panel); border: 1px solid var(--border-color); 
             box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter); 
             color: var(--text-main); transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease; 
-            transform: translateZ(0); 
         }
         
         .liquid-nav {
             background: var(--bg-panel); border-bottom: 1px solid var(--border-color);
             box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter);
-            color: var(--text-main); transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
-            transform: translateZ(0); will-change: transform;
+            color: var(--text-main); transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.4s ease;
+            will-change: transform;
         }
 
         .theme-sidebar { 
             background: var(--bg-sidebar); border-right: 1px solid var(--border-color); 
-            backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter); 
-            transition: all 0.4s ease; transform: translateZ(0); 
+            backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter); transition: all 0.4s ease; 
         }
         
         .theme-input { background: var(--bg-input); border-color: var(--border-color); color: var(--text-main); }
@@ -136,31 +134,39 @@
         .bubble-user { background: var(--user-bubble); color: var(--user-text); border: 1px solid rgba(255,255,255,0.1); box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter); overflow-wrap: break-word; word-wrap: break-word; }
         .bubble-bot { background: var(--bot-bubble); border: 1px solid var(--border-color); color: var(--text-main); box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter); overflow-wrap: break-word; word-wrap: break-word; }
 
-        /* --- SQUISH PHYSICS ENGINE (Optimized) --- */
-        .squish-btn { 
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease; 
-            cursor: pointer; will-change: transform; transform: translateZ(0); display: inline-flex;
-        }
-        .squish-btn:hover { transform: scale(1.05) translateZ(0); }
-        .squish-btn:active { transform: scale(0.92) translateZ(0); transition: transform 0.1s ease-out; }
+        /* --- SQUISH PHYSICS ENGINE (Optimized - removed translateZ spam) --- */
+        .squish-btn { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease; cursor: pointer; display: inline-flex; }
+        .squish-btn:hover { transform: scale(1.04); }
+        .squish-btn:active { transform: scale(0.94); transition: transform 0.1s ease-out; }
         
-        .squish-card { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease; will-change: transform; transform: translateZ(0); }
-        .squish-card:hover { transform: scale(1.02) translateY(-2px) translateZ(0); z-index: 10; box-shadow: var(--shadow-panel), 0 15px 30px rgba(0,0,0,0.1); }
-        .squish-card:active { transform: scale(0.98) translateZ(0); transition: transform 0.1s ease; }
+        .squish-card { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; }
+        .squish-card:hover { transform: scale(1.02) translateY(-2px); z-index: 10; box-shadow: var(--shadow-panel), 0 15px 30px rgba(0,0,0,0.1); }
+        .squish-card:active { transform: scale(0.98); transition: transform 0.1s ease; }
 
-        /* Bouncy Modal Entrance */
         .modal-enter { animation: modalBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
         @keyframes modalBounce { 0% { opacity: 0; transform: scale(0.8) translateY(20px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
 
-        /* --- Ambient Blobs & Particles (GPU Optimized) --- */
-        .glass-bg-mesh { position: fixed; inset: 0; z-index: -2; overflow: hidden; opacity: var(--blob-opacity); transition: opacity 0.5s ease; pointer-events: none; }
-        @keyframes blob { 
-            0% { transform: translate(0px, 0px) scale(1) rotate(0deg) translateZ(0); } 
-            33% { transform: translate(10vw, -15vh) scale(1.1) rotate(120deg) translateZ(0); } 
-            66% { transform: translate(-10vw, 15vh) scale(0.9) rotate(240deg) translateZ(0); } 
-            100% { transform: translate(0px, 0px) scale(1) rotate(360deg) translateZ(0); } 
+        /* --- ZERO-BLUR GPU OPTIMIZED BLOBS (Using Radial Gradients instead of heavy CSS blur filters) --- */
+        .glass-bg-mesh { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
+        
+        /* These replace blur-[120px] which crashed mobile GPUs. These look identical but render instantly. */
+        .blob-p { background: radial-gradient(circle closest-side, rgba(192, 132, 252, 0.4), transparent 100%); }
+        .blob-c { background: radial-gradient(circle closest-side, rgba(34, 211, 238, 0.4), transparent 100%); }
+        .blob-pi { background: radial-gradient(circle closest-side, rgba(244, 114, 182, 0.4), transparent 100%); }
+        .blob-e { background: radial-gradient(circle closest-side, rgba(52, 211, 153, 0.3), transparent 100%); }
+        
+        [data-theme="dark"] .blob-p { background: radial-gradient(circle closest-side, rgba(192, 132, 252, 0.15), transparent 100%); }
+        [data-theme="dark"] .blob-c { background: radial-gradient(circle closest-side, rgba(34, 211, 238, 0.15), transparent 100%); }
+        [data-theme="dark"] .blob-pi { background: radial-gradient(circle closest-side, rgba(244, 114, 182, 0.15), transparent 100%); }
+        [data-theme="dark"] .blob-e { background: radial-gradient(circle closest-side, rgba(52, 211, 153, 0.1), transparent 100%); }
+
+        @keyframes optimizedBlob { 
+            0% { transform: translate(0, 0) scale(1); } 
+            33% { transform: translate(15vw, -10vh) scale(1.1); } 
+            66% { transform: translate(-10vw, 15vh) scale(0.9); } 
+            100% { transform: translate(0, 0) scale(1); } 
         }
-        .animate-blob { animation: blob 25s infinite alternate ease-in-out; will-change: transform; }
+        .animate-blob { animation: optimizedBlob 30s infinite alternate ease-in-out; will-change: transform; }
         .animation-delay-2000 { animation-delay: 5s; }
         .animation-delay-4000 { animation-delay: 10s; }
         .animation-delay-6000 { animation-delay: 15s; }
@@ -169,23 +175,20 @@
             position: fixed; inset: 0; z-index: -1; pointer-events: none;
             background-image: radial-gradient(var(--particle-color) 1.5px, transparent 1.5px);
             background-size: 50px 50px; opacity: var(--particle-opacity);
-            animation: particleDrift 40s linear infinite; transition: all 0.5s ease; transform: translateZ(0);
+            animation: particleDrift 40s linear infinite; will-change: transform;
         }
-        @keyframes particleDrift { 0% { transform: translateY(0) translateZ(0); } 100% { transform: translateY(-50px) translateZ(0); } }
+        @keyframes particleDrift { 0% { transform: translateY(0); } 100% { transform: translateY(-50px); } }
 
         /* --- GPU Accelerated Floating Menu Scanner --- */
         .menu-highlight { position: relative; overflow: hidden; }
         .menu-highlight::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            content: ''; position: absolute; top: 0; left: 0; width: 40%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
             transform: skewX(-25deg) translateX(-300%); 
-            animation: menuSweep 15s infinite cubic-bezier(0.4, 0, 0.2, 1); 
+            animation: menuSweep 12s infinite ease-in-out; 
             pointer-events: none; z-index: 10; will-change: transform;
         }
-        @keyframes menuSweep { 
-            0%, 20% { transform: skewX(-25deg) translateX(-300%); } 
-            80%, 100% { transform: skewX(-25deg) translateX(400%); } 
-        }
+        @keyframes menuSweep { 0%, 20% { transform: skewX(-25deg) translateX(-300%); } 80%, 100% { transform: skewX(-25deg) translateX(400%); } }
 
         /* --- Custom Scrollbar & MARKDOWN FORMATTING --- */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -193,14 +196,13 @@
         ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.5); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.8); }
 
-        .markdown-body { max-width: 100%; overflow-x: auto; word-wrap: break-word; overflow-wrap: break-word; scroll-behavior: smooth; }
+        .markdown-body { max-width: 100%; overflow-x: auto; word-wrap: break-word; overflow-wrap: break-word; }
         .markdown-body pre { 
             background-color: rgba(15, 23, 42, 0.8); color: #e2e8f0; padding: 1.25rem; 
             border-radius: 1rem; overflow-x: auto; margin: 0.75rem 0; 
             font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; 
             border: 1px solid rgba(255,255,255,0.1); max-width: 100%; 
             white-space: pre !important; line-height: 1.3 !important; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
         }
         .markdown-body code { background-color: rgba(125,125,125,0.2); color: #ef4444; padding: 0.15rem 0.3rem; border-radius: 0.3rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; word-break: break-word; border: 1px solid rgba(125,125,125,0.1); }
         .markdown-body pre code { background-color: transparent; color: inherit; padding: 0; word-break: normal; white-space: pre !important; border: none; }
@@ -209,27 +211,23 @@
         .markdown-body strong { font-weight: 700; color: inherit; }
         .markdown-body table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; border-radius: 0.5rem; overflow: hidden; }
         .markdown-body th, .markdown-body td { border: 1px solid var(--border-color); padding: 0.75rem; text-align: left; }
-        .markdown-body th { background-color: rgba(125,125,125,0.15); backdrop-filter: blur(5px); }
+        .markdown-body th { background-color: rgba(125,125,125,0.15); }
         
-        /* Layout fixes for 100dvh mobile compliance */
-        .chat-container { height: 0; flex: 1 1 auto; scroll-behavior: smooth; }
+        .chat-container { height: 0; flex: 1 1 auto; overscroll-behavior-y: contain; -webkit-overflow-scrolling: touch; }
         .safe-bottom { padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); }
         
-        /* --- GPU Accelerated Slide Transitions --- */
         .slide-transition { 
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease; 
-            will-change: transform, opacity; transform: translateZ(0); 
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease; 
+            will-change: transform, opacity; 
         }
         
         /* --- Authentic Liquid Glass Input Pill --- */
         .glass-pill {
-            background: rgba(255, 255, 255, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.25); border: 1px solid rgba(255, 255, 255, 0.45);
             box-shadow: 0 10px 30px rgba(0,0,0,0.1), inset 0 2px 10px rgba(255,255,255,0.7), inset 0 -2px 5px rgba(0,0,0,0.1);
             backdrop-filter: blur(25px) saturate(200%); -webkit-backdrop-filter: blur(25px) saturate(200%);
             border-radius: 2rem; overflow: hidden; 
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-radius 0.4s ease, background 0.4s ease;
-            will-change: transform, box-shadow; transform: translateZ(0);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-radius 0.4s ease, background 0.4s ease;
         }
         [data-theme="dark"] .glass-pill {
             background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255, 255, 255, 0.15);
@@ -237,48 +235,50 @@
         }
         
         .glass-pill:focus-within { 
-            transform: scale(1.02) translateY(-4px) translateZ(0); 
+            transform: scale(1.02) translateY(-4px); 
             box-shadow: 0 20px 40px rgba(0,0,0,0.15), inset 0 2px 8px rgba(255,255,255,0.8), inset 0 0 0 1px var(--particle-color); 
             border-radius: 1.5rem; background: rgba(255, 255, 255, 0.35);
         }
         [data-theme="dark"] .glass-pill:focus-within { background: rgba(30, 41, 59, 0.7); }
         
-        /* Custom Liquid Glass Persona Selector */
         .liquid-capsule {
             background: var(--bg-input); border: 1px solid var(--border-color);
             box-shadow: inset 0 1px 2px rgba(255,255,255,0.5), inset 0 -1px 2px rgba(0,0,0,0.1);
             backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter);
-            border-radius: 999px; cursor: pointer; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 999px; cursor: pointer; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
         .liquid-dropdown {
             background: var(--bg-panel); border: 1px solid var(--border-color);
             box-shadow: 0 15px 40px rgba(0,0,0,0.2), inset 0 1px 2px rgba(255,255,255,0.5);
             backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter);
-            border-radius: 1rem; padding: 0.5rem; transform: translateZ(0);
+            border-radius: 1rem; padding: 0.5rem;
         }
-        .dropdown-item { padding: 0.75rem 1rem; border-radius: 0.75rem; cursor: pointer; transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .dropdown-item:hover { background: rgba(13,148,136,0.15); transform: scale(1.02) translateX(4px); }
+        .dropdown-item { padding: 0.75rem 1rem; border-radius: 0.75rem; cursor: pointer; transition: all 0.2s; }
+        .dropdown-item:hover { background: rgba(13,148,136,0.15); transform: translateX(4px); }
         [data-theme="dark"] .dropdown-item:hover { background: rgba(255,255,255,0.1); }
 
-        .animation-fade-in { animation: fadeIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .animation-fade-in { animation: fadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
         
         .game-canvas { border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); background-color: #000; display: block; margin: 0 auto; max-width: 100%; touch-action: none; }
     </style>
 </head>
 <body class="h-[100dvh] min-h-[100dvh] overflow-hidden flex flex-col font-sans" data-theme="default">
 
-    <!-- Ambient Refractive Backgrounds -->
+    <!-- Highly Optimized Base Background Layer -->
+    <div class="bg-base-layer"></div>
+
+    <!-- ZERO-BLUR Optimized Refractive Backgrounds -->
     <div class="glass-bg-mesh">
-        <div class="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-purple-400/50 rounded-full mix-blend-multiply filter blur-[120px] animate-blob"></div>
-        <div class="absolute top-[10%] right-[-20%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-cyan-400/50 rounded-full mix-blend-multiply filter blur-[120px] animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-[-20%] left-[10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-pink-400/50 rounded-full mix-blend-multiply filter blur-[120px] animate-blob animation-delay-4000"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-emerald-400/40 rounded-full mix-blend-multiply filter blur-[120px] animate-blob animation-delay-6000"></div>
+        <div class="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] blob-p animate-blob"></div>
+        <div class="absolute top-[10%] right-[-20%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] blob-c animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-[-20%] left-[10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] blob-pi animate-blob animation-delay-4000"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] blob-e animate-blob animation-delay-6000"></div>
     </div>
     <div class="particles-bg"></div>
 
-    <!-- Main Navigation Menu (Fixed absolute top for scroll-under effect) -->
+    <!-- Main Navigation Menu -->
     <nav id="topNav" class="fixed top-0 left-0 w-full text-white z-40 slide-transition menu-highlight liquid-nav">
         <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex justify-between h-16 items-center">
@@ -292,7 +292,7 @@
                 </div>
                 
                 <div class="flex items-center space-x-2 sm:space-x-3">
-                    <button onclick="cycleTheme()" id="themeCycleBtn" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl bg-white/10 border border-white/20 flex items-center justify-center space-x-2 squish-btn glow-theme text-white" title="Change Theme">
+                    <button onclick="cycleTheme()" id="themeCycleBtn" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl bg-white/10 border border-white/20 flex items-center justify-center space-x-2 squish-btn text-white" title="Change Theme">
                         <i class="fa-solid fa-sun drop-shadow-md" id="themeIcon"></i>
                         <span class="hidden sm:inline text-sm font-bold" id="themeText">Light</span>
                     </button>
@@ -839,43 +839,16 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
             }
         }
 
-        // --- Custom Auto-Minimizing Persona Dropdown ---
-        function togglePersonaMenu() {
-            const dropdown = document.getElementById('personaDropdown');
-            const icon = document.getElementById('personaIcon');
-            if(dropdown.style.opacity === '1') {
-                dropdown.style.opacity = '0';
-                dropdown.style.pointerEvents = 'none';
-                dropdown.style.transform = 'scale(0.95)';
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                dropdown.style.opacity = '1';
-                dropdown.style.pointerEvents = 'auto';
-                dropdown.style.transform = 'scale(1)';
-                icon.style.transform = 'rotate(-180deg)';
-                
-                // Auto close after 5 seconds if no interaction
-                clearTimeout(menuTimeout);
-                menuTimeout = setTimeout(() => {
-                    if(dropdown.style.opacity === '1') togglePersonaMenu();
-                }, 5000);
-            }
-        }
-
         function setPersona(id, label) {
             currentPersona = id;
             document.getElementById('personaLabel').innerText = label;
-            togglePersonaMenu(); // Immediately minimize after selection
-        }
-
-        // Close persona menu if clicking outside
-        document.addEventListener('click', (e) => {
-            const isClickInside = e.target.closest('.relative.z-50');
+            
             const dropdown = document.getElementById('personaDropdown');
-            if (!isClickInside && dropdown.style.opacity === '1') {
-                togglePersonaMenu();
-            }
-        });
+            dropdown.style.display = 'none';
+            setTimeout(() => { dropdown.style.display = ''; }, 100);
+            
+            document.activeElement.blur();
+        }
 
         // --- 1. Premium One-Tap Theme Cycler ---
         const themes = ['default', 'dark', 'liquid-glass', 'liquid-crystal'];
@@ -900,22 +873,22 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
             else { btn.style.color = '#f59e0b'; } 
         }
 
-        // --- GPU Accelerated Auto-Hide Read Mode (Touch Only) ---
+        // --- GPU Accelerated Auto-Hide Read Mode (RAF Optimized) ---
         const topNav = document.getElementById('topNav'), chatHeader = document.getElementById('chatHeader'), chatInputArea = document.getElementById('chatInputArea');
         let isReadMode = false;
         
         function setReadMode(active) {
             isReadMode = active;
             if (active) {
-                topNav.style.transform = 'translateY(-100%)';
-                chatHeader.style.transform = 'translateY(calc(-100% - 64px))';
-                chatInputArea.style.transform = 'translateY(150%)';
+                topNav.style.transform = 'translate3d(0, -100%, 0)';
+                chatHeader.style.transform = 'translate3d(0, calc(-100% - 64px), 0)';
+                chatInputArea.style.transform = 'translate3d(0, 150%, 0)';
                 chatInputArea.style.opacity = '0';
                 chatInputArea.style.pointerEvents = 'none';
             } else {
-                topNav.style.transform = 'translateY(0)';
-                chatHeader.style.transform = 'translateY(0)';
-                chatInputArea.style.transform = 'translateY(0)';
+                topNav.style.transform = 'translate3d(0, 0, 0)';
+                chatHeader.style.transform = 'translate3d(0, 0, 0)';
+                chatInputArea.style.transform = 'translate3d(0, 0, 0)';
                 chatInputArea.style.opacity = '1';
                 chatInputArea.style.pointerEvents = 'auto';
             }
@@ -925,6 +898,24 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
             const isInteractive = e.target.closest('button') || e.target.closest('a') || e.target.closest('.liquid-capsule') || e.target.closest('textarea') || e.target.closest('input') || e.target.closest('.markdown-body');
             if (!isInteractive) { setReadMode(!isReadMode); }
         });
+
+        let isScrolling = false;
+        let lastScrollTop = 0;
+        chatBox.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    let st = chatBox.scrollTop;
+                    if (st > lastScrollTop && st > 50) {
+                        if(!isReadMode) setReadMode(true);
+                    } else if (st < lastScrollTop - 5 || st <= 0) {
+                        if(isReadMode) setReadMode(false);
+                    }
+                    lastScrollTop = st <= 0 ? 0 : st;
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        }, { passive: true });
 
         // --- 2. MULTI-GAME ARCADE HUB ENGINE ---
         let currentGameMode = null;
@@ -1320,7 +1311,7 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
         }
 
         window.onclick = function(event) {
-            if (event.target.id === 'vaultModal') closeModal('vaultModal', 'vaultContent');
+            if (event.target.id === 'formulaModal') closeModal('formulaModal', 'formulaContent');
             if (event.target.id === 'apiKeyModal') closeModal('apiKeyModal', 'apiKeyContent');
             if (event.target.id === 'aboutModal') closeModal('aboutModal', 'aboutContent');
             if (event.target.id === 'notesModal') closeModal('notesModal', 'notesContent');
@@ -1378,7 +1369,12 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
             scrollChat();
         }
 
-        function scrollChat() { chatBox.scrollTop = chatBox.scrollHeight; }
+        function scrollChat() { 
+            window.requestAnimationFrame(() => {
+                chatBox.scrollTop = chatBox.scrollHeight; 
+            });
+        }
+        
         function escapeHTML(str) { return str.replace(/[&<>'"]/g, t => ({ '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;' }[t] || t)); }
 
         async function fetchAIResponse(prompt, currentKey, retryCount = 0) {
