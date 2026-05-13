@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +38,6 @@
     <style>
         /* --- Ultra-Premium Refractive Glass Theme Variables --- */
         :root {
-            /* Light Theme */
             --bg-body-1: linear-gradient(-45deg, #f8fafc, #e0f2fe, #f3e8ff, #ffffff);
             --bg-body-2: linear-gradient(135deg, #ffffff, #e0f2fe, #f8fafc, #f3e8ff);
             --glass-bg-start: rgba(255, 255, 255, 0.5);
@@ -54,7 +54,6 @@
         }
 
         [data-theme="dark"] {
-            /* Obsidian Smoked Glass Theme */
             --bg-body-1: linear-gradient(-45deg, #0f172a, #1e1b4b, #020617, #0f172a);
             --bg-body-2: linear-gradient(135deg, #020617, #0f172a, #1e1b4b, #0f172a);
             --glass-bg-start: rgba(30, 41, 59, 0.6);
@@ -71,7 +70,6 @@
         }
 
         [data-theme="liquid-glass"] {
-            /* High Refraction Water Theme */
             --bg-body-1: linear-gradient(-45deg, #ffecd2, #e0f2fe, #e0c3fc, #fcb69f);
             --bg-body-2: linear-gradient(135deg, #e0f2fe, #fcb69f, #ffecd2, #e0c3fc);
             --glass-bg-start: rgba(255, 255, 255, 0.25);
@@ -88,7 +86,6 @@
         }
 
         [data-theme="liquid-crystal"] {
-            /* Prismatic RGB Theme */
             --bg-body-1: linear-gradient(-45deg, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff, #d0baff);
             --bg-body-2: linear-gradient(135deg, #baffc9, #bae1ff, #ffb3ba, #ffffba, #d0baff, #ffdfba);
             --glass-bg-start: rgba(255, 255, 255, 0.15);
@@ -150,7 +147,7 @@
         .squish-btn:hover { transform: scale3d(1.05, 1.05, 1); }
         .squish-btn:active { transform: scale3d(0.92, 0.92, 1); transition: transform 0.1s ease-out; }
         
-        .squish-card { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; transform: translate3d(0,0,0); will-change: transform; }
+        .squish-card { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; transform: translate3d(0,0,0); will-change: transform; cursor: pointer; }
         .squish-card:hover { transform: scale3d(1.02, 1.02, 1) translateY(-2px); z-index: 10; box-shadow: 0 15px 35px var(--glass-shadow); }
         .squish-card:active { transform: scale3d(0.98, 0.98, 1); transition: transform 0.1s ease; }
 
@@ -228,6 +225,7 @@
         .chat-container { height: 0; flex: 1 1 auto; overscroll-behavior-y: contain; -webkit-overflow-scrolling: touch; }
         .safe-bottom { padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); }
         
+        /* --- GPU Accelerated Slide Transitions --- */
         .slide-transition { 
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease; 
             will-change: transform, opacity; transform: translate3d(0,0,0);
@@ -251,8 +249,8 @@
         
         .game-canvas { border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); background-color: #000; display: block; margin: 0 auto; max-width: 100%; touch-action: none; }
         
-        /* Line Clamp for long answers */
-        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        /* Smooth opacity transition for Live Q&A updates */
+        #sidebarPromptsContainer { transition: opacity 0.4s ease; }
     </style>
 </head>
 <body class="h-[100dvh] min-h-[100dvh] overflow-hidden flex flex-col font-sans" data-theme="default">
@@ -260,7 +258,7 @@
     <!-- Highly Optimized Base Background Layer -->
     <div class="bg-base-layer"></div>
 
-    <!-- ZERO-BLUR Optimized Refractive Backgrounds (Massive Performance Boost) -->
+    <!-- ZERO-BLUR Optimized Refractive Backgrounds -->
     <div class="glass-bg-mesh">
         <div class="absolute top-[-20%] left-[-10%] w-[100vw] h-[100vw] max-w-[1000px] max-h-[1000px] blob-p animate-blob-1"></div>
         <div class="absolute top-[10%] right-[-20%] w-[90vw] h-[90vw] max-w-[900px] max-h-[900px] blob-c animate-blob-2 animation-delay-2000"></div>
@@ -315,7 +313,7 @@
     <!-- Main Layout Grid -->
     <main class="flex-1 flex w-full h-full relative z-10">
         
-        <!-- Left Sidebar (Syllabus & Quick Prompts) -->
+        <!-- Left Sidebar (Syllabus & Dynamic Prompts) -->
         <aside class="hidden md:flex flex-col w-80 premium-glass rounded-r-3xl mt-[70px] mb-4 overflow-y-auto z-10 shadow-2xl border-l-0">
             <div class="p-5 border-b border-[var(--glass-border)]">
                 <h2 class="text-sm font-bold theme-text uppercase tracking-widest mb-5 flex items-center">
@@ -352,27 +350,35 @@
                 </div>
             </div>
 
-            <!-- Dynamic Live Exam Q&A -->
+            <!-- Dynamic Live Exam Q&A Feed -->
             <div class="p-5 flex-1 overflow-y-auto pb-6">
                 <h2 id="sidebarPromptsTitle" class="text-sm font-bold theme-text uppercase tracking-widest mb-4 flex items-center">
-                    <i class="fa-solid fa-bolt text-yellow-500 mr-2 drop-shadow-sm"></i> Exam Prompts
+                    <i class="fa-solid fa-bolt text-yellow-500 mr-2 drop-shadow-sm"></i> Quick Exam Prompts
                 </h2>
                 <div id="sidebarPromptsContainer" class="space-y-3">
-                    <button onclick="insertSnippet('bmc')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-orange-500">
+                    <button onclick="insertSnippet('bmc')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-orange-500 shadow-sm">
                         <span class="font-medium theme-text">Business Model Canvas</span>
                         <i class="fa-solid fa-arrow-right text-xs text-orange-500 opacity-0 group-hover:opacity-100 transition-transform transform translate-x-[-10px] group-hover:translate-x-0"></i>
                     </button>
-                    <button onclick="insertSnippet('design')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-rose-500">
+                    <button onclick="insertSnippet('design')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-rose-500 shadow-sm">
                         <span class="font-medium theme-text">Design Thinking Stages</span>
                         <i class="fa-solid fa-arrow-right text-xs text-rose-500 opacity-0 group-hover:opacity-100 transition-transform transform translate-x-[-10px] group-hover:translate-x-0"></i>
                     </button>
-                    <button onclick="insertSnippet('patent')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-blue-500">
+                    <button onclick="insertSnippet('patent')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-blue-500 shadow-sm">
                         <span class="font-medium theme-text">Patentability Criteria</span>
                         <i class="fa-solid fa-arrow-right text-xs text-blue-500 opacity-0 group-hover:opacity-100 transition-transform transform translate-x-[-10px] group-hover:translate-x-0"></i>
                     </button>
-                    <button onclick="insertSnippet('startup')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-emerald-500">
+                    <button onclick="insertSnippet('startup')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-emerald-500 shadow-sm">
                         <span class="font-medium theme-text">Startup Funding Stages</span>
                         <i class="fa-solid fa-arrow-right text-xs text-emerald-500 opacity-0 group-hover:opacity-100 transition-transform transform translate-x-[-10px] group-hover:translate-x-0"></i>
+                    </button>
+                    <button onclick="insertSnippet('trademark')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-purple-500 shadow-sm">
+                        <span class="font-medium theme-text">Trademark vs Copyright</span>
+                        <i class="fa-solid fa-arrow-right text-xs text-purple-500 opacity-0 group-hover:opacity-100 transition-transform transform translate-x-[-10px] group-hover:translate-x-0"></i>
+                    </button>
+                    <button onclick="insertSnippet('pitch')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-cyan-500 shadow-sm">
+                        <span class="font-medium theme-text">Pitch Deck Elements</span>
+                        <i class="fa-solid fa-arrow-right text-xs text-cyan-500 opacity-0 group-hover:opacity-100 transition-transform transform translate-x-[-10px] group-hover:translate-x-0"></i>
                     </button>
                 </div>
             </div>
@@ -645,7 +651,7 @@
 
     <!-- Arcade Hub Game Selector Modal -->
     <div id="arcadeHubModal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
-        <div class="premium-glass w-full max-w-4xl rounded-[2.5rem] shadow-[0_0_50px_rgba(249,115,22,0.2)] flex flex-col overflow-hidden transform scale-95 transition-transform duration-400 border border-slate-700" id="arcadeHubContent">
+        <div class="premium-glass w-full max-w-4xl rounded-[2.5rem] shadow-[0_0_50px_rgba(249,115,22,0.2)] flex flex-col overflow-hidden transform scale-95 transition-transform duration-400" id="arcadeHubContent">
             <div class="bg-gradient-to-r from-slate-800 to-slate-900 text-white px-8 py-6 flex justify-between items-center border-b border-slate-600/50 shadow-md z-10">
                 <div class="flex items-center space-x-4 font-bold text-2xl tracking-wide"><i class="fa-solid fa-gamepad text-orange-500 drop-shadow-md"></i> <span>KTU Arcade Hub</span></div>
                 <button onclick="closeModal('arcadeHubModal', 'arcadeHubContent')" class="text-white/60 hover:text-white bg-white/10 hover:bg-red-500/80 rounded-full w-12 h-12 flex justify-center items-center squish-btn transition-colors border border-white/10"><i class="fa-solid fa-xmark text-xl"></i></button>
@@ -730,7 +736,7 @@
                 localStorage.setItem('local_gemini_model', model);
                 closeModal('apiKeyModal', 'apiKeyContent');
                 alert("API Key & Model Saved Successfully."); 
-                startDynamicQA(); // Instantly start the dynamic Q&A if key is provided
+                startDynamicQA(); // Start live Q&A immediately
             } else {
                 const saveBtn = document.querySelector('button[onclick="saveApiKey()"]');
                 const origText = saveBtn.innerText;
@@ -802,7 +808,7 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
                 });
             }
             
-            // Try to start live Q&A if key exists on load
+            // Start Live Q&A if key is already saved
             startDynamicQA();
         });
 
@@ -867,14 +873,9 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
             localStorage.setItem('ktu_theme', themeName);
             document.getElementById('themeIcon').className = 'fa-solid ' + themeIcons[themeName];
             document.getElementById('themeText').innerText = themeTexts[themeName];
-            const btn = document.getElementById('themeCycleBtn');
-            if(themeName === 'dark') { btn.style.color = '#fbbf24'; } 
-            else if(themeName === 'liquid-glass') { btn.style.color = '#38bdf8'; } 
-            else if(themeName === 'liquid-crystal') { btn.style.color = '#ec4899'; }
-            else { btn.style.color = '#f59e0b'; } 
         }
 
-        // --- Auto-Hide Read Mode (Touch Only) ---
+        // --- GPU Accelerated Auto-Hide Read Mode ---
         const topNav = document.getElementById('topNav'), chatHeader = document.getElementById('chatHeader'), chatInputArea = document.getElementById('chatInputArea');
         let isReadMode = false;
         
@@ -919,7 +920,7 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
                 const url = `https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${currentKey}`;
                 
                 const payload = {
-                    contents: [{ role: "user", parts: [{ text: "Return a JSON array of 4 random, frequently asked short questions and 1-sentence answers for the KTU Engineering Entrepreneurship and IPR exam." }] }],
+                    contents: [{ role: "user", parts: [{ text: "Provide a JSON array containing exactly 4 random, frequently asked previous year questions (PYQs) and their detailed, complete answers for the KTU S2 Engineering Entrepreneurship and IPR exam (2024 Scheme). Modules cover Business Models, Design Thinking, Patents, Copyrights, Funding. Format: [{ 'q': 'Question text?', 'a': 'Detailed answer text.' }]" }] }],
                     generationConfig: { 
                         temperature: 0.9,
                         responseMimeType: "application/json",
@@ -951,21 +952,25 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
             const container = document.getElementById('sidebarPromptsContainer');
             document.getElementById('sidebarPromptsTitle').innerHTML = '<i class="fa-solid fa-rotate fa-spin text-yellow-500 mr-2 drop-shadow-sm"></i> Live Exam Q&A';
             
-            container.innerHTML = '';
-            // Pre-defined Tailwind border colors to ensure CDN doesn't purge them
-            const borderClasses = ['!border-l-orange-500', '!border-l-rose-500', '!border-l-blue-500', '!border-l-emerald-500', '!border-l-purple-500', '!border-l-cyan-500'];
-            
-            qaArray.forEach((item, index) => {
-                const borderClass = borderClasses[index % borderClasses.length];
-                const btn = document.createElement('button');
-                btn.className = `w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex flex-col group border-l-4 ${borderClass} shadow-sm`;
-                btn.onclick = () => { insertSnippet(item.q); };
-                btn.innerHTML = `
-                    <span class="font-bold theme-text mb-1.5 flex justify-between w-full leading-tight">Q: ${escapeHTML(item.q)}</span>
-                    <span class="font-medium theme-text-muted text-xs leading-relaxed line-clamp-3">A: ${escapeHTML(item.a)}</span>
-                `;
-                container.appendChild(btn);
-            });
+            // Smooth fade transition
+            container.style.opacity = '0';
+            setTimeout(() => {
+                container.innerHTML = '';
+                const borderClasses = ['!border-l-orange-500', '!border-l-rose-500', '!border-l-blue-500', '!border-l-emerald-500', '!border-l-purple-500', '!border-l-cyan-500'];
+                
+                qaArray.forEach((item, index) => {
+                    const borderClass = borderClasses[index % borderClasses.length];
+                    // Using a non-clickable div with full text content (No line-clamp)
+                    const card = document.createElement('div');
+                    card.className = `w-full text-left px-4 py-4 mb-3 text-sm premium-glass rounded-xl flex flex-col border-l-4 ${borderClass} shadow-sm`;
+                    card.innerHTML = `
+                        <span class="font-bold theme-text mb-2 w-full leading-tight text-[13px] border-b border-[var(--glass-border)] pb-2">Q: ${escapeHTML(item.q)}</span>
+                        <span class="font-medium theme-text-muted text-[12px] leading-relaxed break-words whitespace-pre-wrap">A: ${escapeHTML(item.a)}</span>
+                    `;
+                    container.appendChild(card);
+                });
+                container.style.opacity = '1';
+            }, 300);
         }
 
         function startDynamicQA() {
@@ -1375,21 +1380,14 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
             if (event.target.id === 'aboutModal') closeModal('aboutModal', 'aboutContent');
             if (event.target.id === 'notesModal') closeModal('notesModal', 'notesContent');
             if (event.target.id === 'arcadeHubModal') closeModal('arcadeHubModal', 'arcadeHubContent');
+            if (event.target.id === 'vaultModal') closeModal('vaultModal', 'vaultContent');
         }
 
         function handleEnter(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if(userInput.value.trim() !== '') chatForm.dispatchEvent(new Event('submit')); } }
         function clearInput() { userInput.value = ''; userInput.style.height = 'auto'; userInput.focus(); }
 
-        function insertSnippet(typeOrText) {
-            const snippets = {
-                bmc: "Explain the 9 blocks of the Business Model Canvas with a short example.",
-                patent: "What are the criteria for patentability under the Indian Patent Act 1970?",
-                design: "Describe the 5 stages of Design Thinking in product development.",
-                startup: "Explain the common funding stages for a startup (Bootstrapping to IPO).",
-                trademark: "What is the difference between a Trademark, Copyright, and a Patent?",
-                pitch: "How should I structure a good pitch deck for investors?"
-            };
-            userInput.value = snippets[typeOrText] || typeOrText; 
+        function insertSnippet(text) {
+            userInput.value = text; 
             userInput.style.height = 'auto';
             userInput.style.height = (userInput.scrollHeight) + 'px'; 
             userInput.focus();
