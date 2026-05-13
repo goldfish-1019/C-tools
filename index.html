@@ -37,139 +37,151 @@
     <style>
         /* --- Ultra-Premium Refractive Glass Theme Variables --- */
         :root {
+            /* Light Theme */
             --bg-body-1: linear-gradient(-45deg, #f8fafc, #e0f2fe, #f3e8ff, #ffffff);
             --bg-body-2: linear-gradient(135deg, #ffffff, #e0f2fe, #f8fafc, #f3e8ff);
-            --bg-panel: rgba(255, 255, 255, 0.45); 
-            --bg-sidebar: rgba(255, 255, 255, 0.35); 
-            --bg-input: rgba(255, 255, 255, 0.6);
-            --border-color: rgba(255, 255, 255, 0.6); 
+            --glass-bg-start: rgba(255, 255, 255, 0.5);
+            --glass-bg-end: rgba(255, 255, 255, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-highlight: rgba(255, 255, 255, 0.9);
+            --glass-lowlight: rgba(0, 0, 0, 0.03);
+            --glass-shadow: rgba(0, 0, 0, 0.08);
             --text-main: #1e293b; --text-muted: #64748b;
-            --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 1px 2px rgba(255, 255, 255, 0.8), inset 0 -1px 2px rgba(0, 0, 0, 0.05); 
-            --glass-filter: blur(16px) saturate(150%);
-            --user-bubble: rgba(13, 148, 136, 0.85); --user-text: #ffffff; 
-            --bot-bubble: rgba(255, 255, 255, 0.65);
-            --particle-opacity: 0.4; --particle-color: #0d9488;
+            --user-bubble: rgba(13, 148, 136, 0.9); --user-text: #ffffff; 
+            --bot-bubble: rgba(255, 255, 255, 0.75);
+            --particle-color: #0d9488; --particle-opacity: 0.3;
+            --glass-blur-amt: 20px;
         }
 
         [data-theme="dark"] {
+            /* Obsidian Smoked Glass Theme */
             --bg-body-1: linear-gradient(-45deg, #0f172a, #1e1b4b, #020617, #0f172a);
             --bg-body-2: linear-gradient(135deg, #020617, #0f172a, #1e1b4b, #0f172a);
-            --bg-panel: rgba(15, 23, 42, 0.4); 
-            --bg-sidebar: rgba(15, 23, 42, 0.3); 
-            --bg-input: rgba(30, 41, 59, 0.5);
-            --border-color: rgba(255, 255, 255, 0.12); 
+            --glass-bg-start: rgba(30, 41, 59, 0.6);
+            --glass-bg-end: rgba(15, 23, 42, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-highlight: rgba(255, 255, 255, 0.2);
+            --glass-lowlight: rgba(0, 0, 0, 0.4);
+            --glass-shadow: rgba(0, 0, 0, 0.5);
             --text-main: #f8fafc; --text-muted: #94a3b8;
-            --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15), inset 0 -1px 1px rgba(0, 0, 0, 0.3); 
-            --glass-filter: blur(20px) saturate(150%);
-            --user-bubble: rgba(13, 148, 136, 0.7); --user-text: #ffffff; 
-            --bot-bubble: rgba(30, 41, 59, 0.6);
-            --particle-opacity: 0.2; --particle-color: #ffffff;
+            --user-bubble: rgba(20, 184, 166, 0.8); --user-text: #ffffff; 
+            --bot-bubble: rgba(30, 41, 59, 0.8);
+            --particle-color: #ffffff; --particle-opacity: 0.15;
+            --glass-blur-amt: 24px;
         }
 
         [data-theme="liquid-glass"] {
+            /* High Refraction Water Theme */
             --bg-body-1: linear-gradient(-45deg, #ffecd2, #e0f2fe, #e0c3fc, #fcb69f);
             --bg-body-2: linear-gradient(135deg, #e0f2fe, #fcb69f, #ffecd2, #e0c3fc);
-            --bg-panel: rgba(255, 255, 255, 0.15); 
-            --bg-sidebar: rgba(255, 255, 255, 0.1);
-            --bg-input: rgba(255, 255, 255, 0.3); 
-            --border-color: rgba(255, 255, 255, 0.4);
+            --glass-bg-start: rgba(255, 255, 255, 0.25);
+            --glass-bg-end: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-highlight: rgba(255, 255, 255, 0.7);
+            --glass-lowlight: rgba(0, 0, 0, 0.05);
+            --glass-shadow: rgba(31, 38, 135, 0.15);
             --text-main: #0f172a; --text-muted: #475569; 
-            --shadow-panel: 0 10px 40px rgba(31, 38, 135, 0.15), inset 0 2px 4px rgba(255,255,255,0.6), inset 0 -1px 2px rgba(0,0,0,0.05);
-            --glass-filter: blur(24px) saturate(200%); 
             --user-bubble: rgba(15, 23, 42, 0.85); --user-text: #ffffff;
-            --bot-bubble: rgba(255, 255, 255, 0.35);
-            --particle-opacity: 0.5; --particle-color: #38bdf8;
+            --bot-bubble: rgba(255, 255, 255, 0.45);
+            --particle-color: #38bdf8; --particle-opacity: 0.4;
+            --glass-blur-amt: 28px;
         }
 
         [data-theme="liquid-crystal"] {
+            /* Prismatic RGB Theme */
             --bg-body-1: linear-gradient(-45deg, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff, #d0baff);
             --bg-body-2: linear-gradient(135deg, #baffc9, #bae1ff, #ffb3ba, #ffffba, #d0baff, #ffdfba);
-            --bg-panel: rgba(255, 255, 255, 0.1); 
-            --bg-sidebar: rgba(255, 255, 255, 0.05);
-            --bg-input: rgba(255, 255, 255, 0.25); 
-            --border-color: rgba(255, 255, 255, 0.3);
+            --glass-bg-start: rgba(255, 255, 255, 0.15);
+            --glass-bg-end: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.35);
+            --glass-highlight: rgba(255, 255, 255, 0.8);
+            --glass-lowlight: rgba(0, 0, 0, 0.1);
+            --glass-shadow: rgba(0, 0, 0, 0.1);
             --text-main: #0f172a; --text-muted: #475569; 
-            --shadow-panel: 0 12px 50px rgba(0, 0, 0, 0.1), inset 0 2px 5px rgba(255,255,255,0.7), inset 0 -2px 5px rgba(0,0,0,0.1);
-            --glass-filter: blur(30px) saturate(250%); 
-            --user-bubble: rgba(15, 23, 42, 0.75); --user-text: #ffffff;
-            --bot-bubble: rgba(255, 255, 255, 0.25);
-            --particle-opacity: 0.6; --particle-color: #ec4899;
+            --user-bubble: rgba(15, 23, 42, 0.8); --user-text: #ffffff;
+            --bot-bubble: rgba(255, 255, 255, 0.3);
+            --particle-color: #ec4899; --particle-opacity: 0.5;
+            --glass-blur-amt: 32px;
         }
 
         /* --- EXTREME GPU OPTIMIZED BACKGROUND --- */
         body { background-color: var(--text-main); color: var(--text-main); transition: color 0.5s ease; overflow: hidden; }
         
-        /* Opacity cross-fading is astronomically faster than animating background-position */
         .bg-base-layer { position: fixed; inset: 0; z-index: -3; background: var(--bg-body-1); }
         .bg-base-layer::after {
             content: ""; position: absolute; inset: 0; background: var(--bg-body-2);
             animation: optimizedFadeShift 15s infinite alternate ease-in-out;
+            will-change: opacity; transform: translate3d(0,0,0);
         }
         @keyframes optimizedFadeShift { 0% { opacity: 0; } 100% { opacity: 1; } }
 
-        /* --- Standardized Hardware Accelerated Glass Panels --- */
-        .theme-panel { 
-            background: var(--bg-panel); border: 1px solid var(--border-color); 
-            box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter); 
-            color: var(--text-main); transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease; 
+        /* --- UNIVERSAL LIQUID GLASS ENGINE --- */
+        .premium-glass {
+            background: linear-gradient(135deg, var(--glass-bg-start) 0%, var(--glass-bg-end) 100%);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px var(--glass-shadow), inset 1px 1px 2px var(--glass-highlight), inset -1px -1px 3px var(--glass-lowlight);
+            backdrop-filter: blur(var(--glass-blur-amt)) saturate(180%) contrast(1.05);
+            -webkit-backdrop-filter: blur(var(--glass-blur-amt)) saturate(180%) contrast(1.05);
+            color: var(--text-main);
+            transform: translate3d(0,0,0); 
         }
         
-        .liquid-nav {
-            background: var(--bg-panel); border-bottom: 1px solid var(--border-color);
-            box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter);
-            color: var(--text-main); transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.4s ease;
-            will-change: transform;
+        .premium-glass-pill {
+            background: linear-gradient(135deg, var(--glass-bg-start) 0%, transparent 100%);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 15px 35px var(--glass-shadow), inset 1px 2px 4px var(--glass-highlight), inset -1px -2px 4px var(--glass-lowlight);
+            backdrop-filter: blur(calc(var(--glass-blur-amt) + 10px)) saturate(200%) contrast(1.1);
+            -webkit-backdrop-filter: blur(calc(var(--glass-blur-amt) + 10px)) saturate(200%) contrast(1.1);
         }
 
-        .theme-sidebar { 
-            background: var(--bg-sidebar); border-right: 1px solid var(--border-color); 
-            backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter); transition: all 0.4s ease; 
-        }
-        
-        .theme-input { background: var(--bg-input); border-color: var(--border-color); color: var(--text-main); }
         .theme-text { color: var(--text-main); }
         .theme-text-muted { color: var(--text-muted); }
-        .theme-border { border-color: var(--border-color); }
+        .theme-input { background: rgba(0,0,0,0.05); border-color: var(--glass-border); color: var(--text-main); }
+        [data-theme="dark"] .theme-input { background: rgba(0,0,0,0.2); }
         
-        .bubble-user { background: var(--user-bubble); color: var(--user-text); border: 1px solid rgba(255,255,255,0.1); box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter); overflow-wrap: break-word; word-wrap: break-word; }
-        .bubble-bot { background: var(--bot-bubble); border: 1px solid var(--border-color); color: var(--text-main); box-shadow: var(--shadow-panel); backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter); overflow-wrap: break-word; word-wrap: break-word; }
+        .bubble-user { background: var(--user-bubble); color: var(--user-text); box-shadow: 0 8px 25px var(--glass-shadow); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); overflow-wrap: break-word; word-wrap: break-word; }
+        .bubble-bot { background: var(--bot-bubble); border: 1px solid var(--glass-border); color: var(--text-main); box-shadow: 0 8px 25px var(--glass-shadow); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); overflow-wrap: break-word; word-wrap: break-word; }
 
-        /* --- SQUISH PHYSICS ENGINE (Optimized - removed translateZ spam) --- */
-        .squish-btn { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease; cursor: pointer; display: inline-flex; }
-        .squish-btn:hover { transform: scale(1.04); }
-        .squish-btn:active { transform: scale(0.94); transition: transform 0.1s ease-out; }
+        /* --- SQUISH PHYSICS ENGINE --- */
+        .squish-btn { 
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease; 
+            cursor: pointer; display: inline-flex; transform: translate3d(0,0,0); will-change: transform;
+        }
+        .squish-btn:hover { transform: scale3d(1.05, 1.05, 1); }
+        .squish-btn:active { transform: scale3d(0.92, 0.92, 1); transition: transform 0.1s ease-out; }
         
-        .squish-card { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; }
-        .squish-card:hover { transform: scale(1.02) translateY(-2px); z-index: 10; box-shadow: var(--shadow-panel), 0 15px 30px rgba(0,0,0,0.1); }
-        .squish-card:active { transform: scale(0.98); transition: transform 0.1s ease; }
+        .squish-card { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; transform: translate3d(0,0,0); will-change: transform; }
+        .squish-card:hover { transform: scale3d(1.02, 1.02, 1) translateY(-2px); z-index: 10; box-shadow: 0 15px 35px var(--glass-shadow); }
+        .squish-card:active { transform: scale3d(0.98, 0.98, 1); transition: transform 0.1s ease; }
 
         .modal-enter { animation: modalBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-        @keyframes modalBounce { 0% { opacity: 0; transform: scale(0.8) translateY(20px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
+        @keyframes modalBounce { 0% { opacity: 0; transform: scale3d(0.8, 0.8, 1) translateY(20px); } 100% { opacity: 1; transform: scale3d(1, 1, 1) translateY(0); } }
 
-        /* --- ZERO-BLUR GPU OPTIMIZED BLOBS (Using Radial Gradients instead of heavy CSS blur filters) --- */
+        /* --- ZERO-BLUR GPU OPTIMIZED BLOBS --- */
         .glass-bg-mesh { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
         
-        /* These replace blur-[120px] which crashed mobile GPUs. These look identical but render instantly. */
-        .blob-p { background: radial-gradient(circle closest-side, rgba(192, 132, 252, 0.4), transparent 100%); }
-        .blob-c { background: radial-gradient(circle closest-side, rgba(34, 211, 238, 0.4), transparent 100%); }
-        .blob-pi { background: radial-gradient(circle closest-side, rgba(244, 114, 182, 0.4), transparent 100%); }
-        .blob-e { background: radial-gradient(circle closest-side, rgba(52, 211, 153, 0.3), transparent 100%); }
+        .blob-p { background: radial-gradient(circle closest-side, rgba(192, 132, 252, 0.5), transparent 100%); }
+        .blob-c { background: radial-gradient(circle closest-side, rgba(34, 211, 238, 0.5), transparent 100%); }
+        .blob-pi { background: radial-gradient(circle closest-side, rgba(244, 114, 182, 0.5), transparent 100%); }
+        .blob-e { background: radial-gradient(circle closest-side, rgba(52, 211, 153, 0.4), transparent 100%); }
         
-        [data-theme="dark"] .blob-p { background: radial-gradient(circle closest-side, rgba(192, 132, 252, 0.15), transparent 100%); }
-        [data-theme="dark"] .blob-c { background: radial-gradient(circle closest-side, rgba(34, 211, 238, 0.15), transparent 100%); }
-        [data-theme="dark"] .blob-pi { background: radial-gradient(circle closest-side, rgba(244, 114, 182, 0.15), transparent 100%); }
-        [data-theme="dark"] .blob-e { background: radial-gradient(circle closest-side, rgba(52, 211, 153, 0.1), transparent 100%); }
+        [data-theme="dark"] .blob-p { background: radial-gradient(circle closest-side, rgba(192, 132, 252, 0.2), transparent 100%); }
+        [data-theme="dark"] .blob-c { background: radial-gradient(circle closest-side, rgba(34, 211, 238, 0.2), transparent 100%); }
+        [data-theme="dark"] .blob-pi { background: radial-gradient(circle closest-side, rgba(244, 114, 182, 0.2), transparent 100%); }
+        [data-theme="dark"] .blob-e { background: radial-gradient(circle closest-side, rgba(52, 211, 153, 0.15), transparent 100%); }
 
-        @keyframes optimizedBlob { 
-            0% { transform: translate(0, 0) scale(1); } 
-            33% { transform: translate(15vw, -10vh) scale(1.1); } 
-            66% { transform: translate(-10vw, 15vh) scale(0.9); } 
-            100% { transform: translate(0, 0) scale(1); } 
+        @keyframes orb { 
+            0% { transform: translate3d(0, 0, 0) rotate(0deg); } 
+            50% { transform: translate3d(15vw, -15vh, 0) rotate(180deg); } 
+            100% { transform: translate3d(0, 0, 0) rotate(360deg); } 
         }
-        .animate-blob { animation: optimizedBlob 30s infinite alternate ease-in-out; will-change: transform; }
-        .animation-delay-2000 { animation-delay: 5s; }
-        .animation-delay-4000 { animation-delay: 10s; }
-        .animation-delay-6000 { animation-delay: 15s; }
+        @keyframes orb2 { 
+            0% { transform: translate3d(0, 0, 0) rotate(0deg); } 
+            50% { transform: translate3d(-15vw, 15vh, 0) rotate(-180deg); } 
+            100% { transform: translate3d(0, 0, 0) rotate(-360deg); } 
+        }
+        .animate-blob-1 { animation: orb 40s infinite linear; will-change: transform; transform-origin: center; }
+        .animate-blob-2 { animation: orb2 35s infinite linear; will-change: transform; transform-origin: center; }
 
         .particles-bg {
             position: fixed; inset: 0; z-index: -1; pointer-events: none;
@@ -177,23 +189,23 @@
             background-size: 50px 50px; opacity: var(--particle-opacity);
             animation: particleDrift 40s linear infinite; will-change: transform;
         }
-        @keyframes particleDrift { 0% { transform: translateY(0); } 100% { transform: translateY(-50px); } }
+        @keyframes particleDrift { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(0,-50px,0); } }
 
         /* --- GPU Accelerated Floating Menu Scanner --- */
         .menu-highlight { position: relative; overflow: hidden; }
         .menu-highlight::after {
             content: ''; position: absolute; top: 0; left: 0; width: 40%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-            transform: skewX(-25deg) translateX(-300%); 
+            transform: skewX(-25deg) translate3d(-300%,0,0); 
             animation: menuSweep 12s infinite ease-in-out; 
             pointer-events: none; z-index: 10; will-change: transform;
         }
-        @keyframes menuSweep { 0%, 20% { transform: skewX(-25deg) translateX(-300%); } 80%, 100% { transform: skewX(-25deg) translateX(400%); } }
+        @keyframes menuSweep { 0%, 20% { transform: skewX(-25deg) translate3d(-300%,0,0); } 80%, 100% { transform: skewX(-25deg) translate3d(400%,0,0); } }
 
         /* --- Custom Scrollbar & MARKDOWN FORMATTING --- */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.4); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.8); }
 
         .markdown-body { max-width: 100%; overflow-x: auto; word-wrap: break-word; overflow-wrap: break-word; }
@@ -210,58 +222,37 @@
         .markdown-body ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.75rem; }
         .markdown-body strong { font-weight: 700; color: inherit; }
         .markdown-body table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; border-radius: 0.5rem; overflow: hidden; }
-        .markdown-body th, .markdown-body td { border: 1px solid var(--border-color); padding: 0.75rem; text-align: left; }
+        .markdown-body th, .markdown-body td { border: 1px solid var(--glass-border); padding: 0.75rem; text-align: left; }
         .markdown-body th { background-color: rgba(125,125,125,0.15); }
         
         .chat-container { height: 0; flex: 1 1 auto; overscroll-behavior-y: contain; -webkit-overflow-scrolling: touch; }
         .safe-bottom { padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); }
         
         .slide-transition { 
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease; 
-            will-change: transform, opacity; 
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease; 
+            will-change: transform, opacity; transform: translate3d(0,0,0);
         }
         
-        /* --- Authentic Liquid Glass Input Pill --- */
-        .glass-pill {
-            background: rgba(255, 255, 255, 0.25); border: 1px solid rgba(255, 255, 255, 0.45);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1), inset 0 2px 10px rgba(255,255,255,0.7), inset 0 -2px 5px rgba(0,0,0,0.1);
-            backdrop-filter: blur(25px) saturate(200%); -webkit-backdrop-filter: blur(25px) saturate(200%);
-            border-radius: 2rem; overflow: hidden; 
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-radius 0.4s ease, background 0.4s ease;
-        }
-        [data-theme="dark"] .glass-pill {
-            background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 2px 5px rgba(255,255,255,0.2), inset 0 -2px 5px rgba(0,0,0,0.2);
-        }
-        
-        .glass-pill:focus-within { 
-            transform: scale(1.02) translateY(-4px); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15), inset 0 2px 8px rgba(255,255,255,0.8), inset 0 0 0 1px var(--particle-color); 
-            border-radius: 1.5rem; background: rgba(255, 255, 255, 0.35);
-        }
-        [data-theme="dark"] .glass-pill:focus-within { background: rgba(30, 41, 59, 0.7); }
-        
-        .liquid-capsule {
-            background: var(--bg-input); border: 1px solid var(--border-color);
-            box-shadow: inset 0 1px 2px rgba(255,255,255,0.5), inset 0 -1px 2px rgba(0,0,0,0.1);
-            backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter);
-            border-radius: 999px; cursor: pointer; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        .premium-glass-pill:focus-within { 
+            transform: scale3d(1.02, 1.02, 1) translate3d(0,-4px,0); 
+            box-shadow: 0 20px 40px var(--glass-shadow), inset 1px 3px 8px var(--glass-highlight), inset 0 0 0 1px var(--particle-color); 
+            border-radius: 1.5rem; background: var(--bg-panel);
         }
         
         .liquid-dropdown {
-            background: var(--bg-panel); border: 1px solid var(--border-color);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2), inset 0 1px 2px rgba(255,255,255,0.5);
-            backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter);
-            border-radius: 1rem; padding: 0.5rem;
+            border-radius: 1rem; padding: 0.5rem; transform: translate3d(0,0,0);
         }
-        .dropdown-item { padding: 0.75rem 1rem; border-radius: 0.75rem; cursor: pointer; transition: all 0.2s; }
-        .dropdown-item:hover { background: rgba(13,148,136,0.15); transform: translateX(4px); }
+        .dropdown-item { padding: 0.75rem 1rem; border-radius: 0.75rem; cursor: pointer; transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .dropdown-item:hover { background: rgba(13,148,136,0.15); transform: translate3d(4px,0,0); }
         [data-theme="dark"] .dropdown-item:hover { background: rgba(255,255,255,0.1); }
 
-        .animation-fade-in { animation: fadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .animation-fade-in { animation: fadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; will-change: transform, opacity; }
+        @keyframes fadeIn { from { opacity: 0; transform: translate3d(0, 20px, 0) scale3d(0.98, 0.98, 1); } to { opacity: 1; transform: translate3d(0, 0, 0) scale3d(1, 1, 1); } }
         
         .game-canvas { border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); background-color: #000; display: block; margin: 0 auto; max-width: 100%; touch-action: none; }
+        
+        /* Line Clamp for long answers */
+        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     </style>
 </head>
 <body class="h-[100dvh] min-h-[100dvh] overflow-hidden flex flex-col font-sans" data-theme="default">
@@ -269,17 +260,17 @@
     <!-- Highly Optimized Base Background Layer -->
     <div class="bg-base-layer"></div>
 
-    <!-- ZERO-BLUR Optimized Refractive Backgrounds -->
+    <!-- ZERO-BLUR Optimized Refractive Backgrounds (Massive Performance Boost) -->
     <div class="glass-bg-mesh">
-        <div class="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] blob-p animate-blob"></div>
-        <div class="absolute top-[10%] right-[-20%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] blob-c animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-[-20%] left-[10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] blob-pi animate-blob animation-delay-4000"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] blob-e animate-blob animation-delay-6000"></div>
+        <div class="absolute top-[-20%] left-[-10%] w-[100vw] h-[100vw] max-w-[1000px] max-h-[1000px] blob-p animate-blob-1"></div>
+        <div class="absolute top-[10%] right-[-20%] w-[90vw] h-[90vw] max-w-[900px] max-h-[900px] blob-c animate-blob-2 animation-delay-2000"></div>
+        <div class="absolute bottom-[-20%] left-[10%] w-[100vw] h-[100vw] max-w-[1000px] max-h-[1000px] blob-pi animate-blob-1 animation-delay-4000"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[90vw] h-[90vw] max-w-[900px] max-h-[900px] blob-e animate-blob-2 animation-delay-6000"></div>
     </div>
     <div class="particles-bg"></div>
 
     <!-- Main Navigation Menu -->
-    <nav id="topNav" class="fixed top-0 left-0 w-full text-white z-40 slide-transition menu-highlight liquid-nav">
+    <nav id="topNav" class="fixed top-0 left-0 w-full text-white z-40 slide-transition menu-highlight premium-glass rounded-b-2xl">
         <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex justify-between h-16 items-center">
                 
@@ -292,27 +283,27 @@
                 </div>
                 
                 <div class="flex items-center space-x-2 sm:space-x-3">
-                    <button onclick="cycleTheme()" id="themeCycleBtn" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl bg-white/10 border border-white/20 flex items-center justify-center space-x-2 squish-btn text-white" title="Change Theme">
+                    <button onclick="cycleTheme()" id="themeCycleBtn" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl premium-glass flex items-center justify-center space-x-2 squish-btn text-white" title="Change Theme">
                         <i class="fa-solid fa-sun drop-shadow-md" id="themeIcon"></i>
                         <span class="hidden sm:inline text-sm font-bold" id="themeText">Light</span>
                     </button>
 
-                    <button onclick="openModal('apiKeyModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl bg-yellow-500/90 border border-yellow-400 text-slate-900 flex items-center justify-center space-x-2 squish-btn shadow-[0_0_15px_rgba(234,179,8,0.5)]" title="API Key Settings">
+                    <button onclick="openModal('apiKeyModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl premium-glass flex items-center justify-center space-x-2 squish-btn !text-yellow-500 hover:!text-yellow-400" title="API Key Settings">
                         <i class="fa-solid fa-key"></i>
                         <span class="hidden sm:inline text-sm font-bold">API Key</span>
                     </button>
 
-                    <button onclick="openModal('notesModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl bg-pink-500/90 border border-pink-400 text-white flex items-center justify-center space-x-2 squish-btn shadow-[0_0_15px_rgba(236,72,153,0.6)]" title="Quick Notes">
+                    <button onclick="openModal('notesModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl premium-glass flex items-center justify-center space-x-2 squish-btn !text-pink-500 hover:!text-pink-400" title="Quick Notes">
                         <i class="fa-solid fa-note-sticky"></i>
                         <span class="hidden lg:inline text-sm font-bold">Notes</span>
                     </button>
 
-                    <button onclick="openModal('vaultModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl bg-emerald-500/90 border border-emerald-400 text-white flex items-center justify-center space-x-2 squish-btn shadow-[0_0_15px_rgba(16,185,129,0.5)]" title="Knowledge Vault">
+                    <button onclick="openModal('vaultModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl premium-glass flex items-center justify-center space-x-2 squish-btn !text-emerald-500 hover:!text-emerald-400" title="Knowledge Vault">
                         <i class="fa-solid fa-scale-balanced"></i>
                         <span class="hidden lg:inline text-sm font-bold">Vault</span>
                     </button>
 
-                    <button onclick="openModal('arcadeHubModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl bg-orange-500/90 border border-orange-400 text-white flex items-center justify-center space-x-2 squish-btn shadow-[0_0_15px_rgba(249,115,22,0.5)]" title="Play Games">
+                    <button onclick="openModal('arcadeHubModal')" class="w-10 h-10 sm:w-auto sm:px-4 sm:py-2 rounded-full sm:rounded-xl premium-glass flex items-center justify-center space-x-2 squish-btn !text-orange-500 hover:!text-orange-400" title="Play Games">
                         <i class="fa-solid fa-gamepad"></i>
                         <span class="hidden lg:inline text-sm font-bold">Arcade</span>
                     </button>
@@ -325,8 +316,8 @@
     <main class="flex-1 flex w-full h-full relative z-10">
         
         <!-- Left Sidebar (Syllabus & Quick Prompts) -->
-        <aside class="hidden md:flex flex-col w-80 theme-sidebar overflow-y-auto z-10 pt-[80px]">
-            <div class="p-5 theme-border border-b">
+        <aside class="hidden md:flex flex-col w-80 premium-glass rounded-r-3xl mt-[70px] mb-4 overflow-y-auto z-10 shadow-2xl border-l-0">
+            <div class="p-5 border-b border-[var(--glass-border)]">
                 <h2 class="text-sm font-bold theme-text uppercase tracking-widest mb-5 flex items-center">
                     <i class="fa-solid fa-briefcase text-ktu-600 mr-2"></i> 4-Module Tracker
                 </h2>
@@ -348,12 +339,12 @@
                         <span class="text-sm theme-text group-hover:text-ktu-600 transition-colors font-medium">Mod 4: IPR & Patents</span>
                     </label>
                 </div>
-                <div class="mt-6 pt-5 theme-border border-t">
+                <div class="mt-6 pt-5 border-t border-[var(--glass-border)]">
                     <div class="flex justify-between mb-2">
                         <span class="text-[10px] font-bold theme-text-muted uppercase tracking-widest">Progress</span>
                         <span class="text-xs font-bold text-ktu-600" id="progressText">0%</span>
                     </div>
-                    <div class="w-full bg-slate-200 dark:bg-slate-700/50 rounded-full h-2.5 overflow-hidden shadow-inner border theme-border">
+                    <div class="w-full bg-slate-200/50 dark:bg-slate-700/50 rounded-full h-2.5 overflow-hidden shadow-inner border border-white/10">
                         <div class="bg-gradient-to-r from-ktu-400 to-ktu-600 h-full rounded-full transition-all duration-700 ease-out relative" id="progressBar" style="width: 0%">
                             <div class="absolute inset-0 bg-white/20 w-full h-full animate-pulse"></div>
                         </div>
@@ -361,35 +352,27 @@
                 </div>
             </div>
 
-            <!-- Enhanced Entrepreneurship Quick Prompts -->
-            <div class="p-5 flex-1 overflow-y-auto pb-24">
-                <h2 class="text-sm font-bold theme-text uppercase tracking-widest mb-4 flex items-center">
-                    <i class="fa-solid fa-bolt text-yellow-500 mr-2 drop-shadow-sm"></i> Quick Exam Prompts
+            <!-- Dynamic Live Exam Q&A -->
+            <div class="p-5 flex-1 overflow-y-auto pb-6">
+                <h2 id="sidebarPromptsTitle" class="text-sm font-bold theme-text uppercase tracking-widest mb-4 flex items-center">
+                    <i class="fa-solid fa-bolt text-yellow-500 mr-2 drop-shadow-sm"></i> Exam Prompts
                 </h2>
-                <div class="space-y-3">
-                    <button onclick="insertSnippet('bmc')" class="w-full text-left px-4 py-3 text-sm theme-panel squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-orange-500 shadow-sm">
+                <div id="sidebarPromptsContainer" class="space-y-3">
+                    <button onclick="insertSnippet('bmc')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-orange-500">
                         <span class="font-medium theme-text">Business Model Canvas</span>
-                        <i class="fa-solid fa-arrow-right text-xs text-orange-500 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
+                        <i class="fa-solid fa-arrow-right text-xs text-orange-500 opacity-0 group-hover:opacity-100 transition-transform transform translate-x-[-10px] group-hover:translate-x-0"></i>
                     </button>
-                    <button onclick="insertSnippet('design')" class="w-full text-left px-4 py-3 text-sm theme-panel squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-rose-500 shadow-sm">
+                    <button onclick="insertSnippet('design')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-rose-500">
                         <span class="font-medium theme-text">Design Thinking Stages</span>
-                        <i class="fa-solid fa-arrow-right text-xs text-rose-500 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
+                        <i class="fa-solid fa-arrow-right text-xs text-rose-500 opacity-0 group-hover:opacity-100 transition-transform transform translate-x-[-10px] group-hover:translate-x-0"></i>
                     </button>
-                    <button onclick="insertSnippet('patent')" class="w-full text-left px-4 py-3 text-sm theme-panel squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-blue-500 shadow-sm">
+                    <button onclick="insertSnippet('patent')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-blue-500">
                         <span class="font-medium theme-text">Patentability Criteria</span>
-                        <i class="fa-solid fa-arrow-right text-xs text-blue-500 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
+                        <i class="fa-solid fa-arrow-right text-xs text-blue-500 opacity-0 group-hover:opacity-100 transition-transform transform translate-x-[-10px] group-hover:translate-x-0"></i>
                     </button>
-                    <button onclick="insertSnippet('startup')" class="w-full text-left px-4 py-3 text-sm theme-panel squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-emerald-500 shadow-sm">
+                    <button onclick="insertSnippet('startup')" class="w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-emerald-500">
                         <span class="font-medium theme-text">Startup Funding Stages</span>
-                        <i class="fa-solid fa-arrow-right text-xs text-emerald-500 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
-                    </button>
-                    <button onclick="insertSnippet('trademark')" class="w-full text-left px-4 py-3 text-sm theme-panel squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-purple-500 shadow-sm">
-                        <span class="font-medium theme-text">Trademark vs Copyright</span>
-                        <i class="fa-solid fa-arrow-right text-xs text-purple-500 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
-                    </button>
-                    <button onclick="insertSnippet('pitch')" class="w-full text-left px-4 py-3 text-sm theme-panel squish-card rounded-xl flex justify-between items-center group border-l-4 !border-l-cyan-500 shadow-sm">
-                        <span class="font-medium theme-text">Pitch Deck Elements</span>
-                        <i class="fa-solid fa-arrow-right text-xs text-cyan-500 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i>
+                        <i class="fa-solid fa-arrow-right text-xs text-emerald-500 opacity-0 group-hover:opacity-100 transition-transform transform translate-x-[-10px] group-hover:translate-x-0"></i>
                     </button>
                 </div>
             </div>
@@ -399,9 +382,9 @@
         <section class="flex-1 flex flex-col relative min-w-0 z-0 h-full w-full">
             
             <!-- Chat Header -->
-            <div id="chatHeader" class="absolute top-[64px] left-0 w-full z-30 liquid-nav slide-transition flex justify-between items-center px-4 sm:px-6 py-3">
+            <div id="chatHeader" class="absolute top-[64px] left-0 w-full z-30 premium-glass border-t-0 border-l-0 border-r-0 rounded-b-2xl slide-transition flex justify-between items-center px-4 sm:px-6 py-3">
                 <div>
-                    <h1 class="text-lg font-bold theme-text">AI Startup & IPR Hub</h1>
+                    <h1 class="text-lg font-bold theme-text drop-shadow-sm">AI Startup & IPR Hub</h1>
                     <p class="text-[10px] sm:text-xs theme-text-muted">EEE & IPR • Kerala Syllabus aligned</p>
                 </div>
                 
@@ -411,13 +394,13 @@
                     </button>
                     
                     <div class="relative z-50">
-                        <div class="liquid-capsule squish-btn flex items-center px-4 py-2 space-x-2 select-none" onclick="togglePersonaMenu()">
+                        <div class="premium-glass squish-btn flex items-center px-4 py-2 space-x-2 select-none rounded-full" onclick="togglePersonaMenu()">
                             <i class="fa-solid fa-lightbulb text-ktu-500"></i>
                             <span id="personaLabel" class="text-xs sm:text-sm font-bold theme-text whitespace-nowrap">🎓 Friendly Mentor</span>
                             <i id="personaIcon" class="fa-solid fa-chevron-down text-xs ml-1 theme-text-muted transition-transform duration-300"></i>
                         </div>
                         
-                        <div id="personaDropdown" class="absolute right-0 top-full mt-3 w-56 liquid-dropdown opacity-0 pointer-events-none transition-all duration-300 transform origin-top scale-95">
+                        <div id="personaDropdown" class="absolute right-0 top-full mt-3 w-56 premium-glass opacity-0 pointer-events-none transition-all duration-300 transform origin-top scale-95 rounded-2xl p-2 shadow-2xl">
                             <div onclick="setPersona('friendly', '🎓 Friendly Mentor')" class="dropdown-item theme-text flex items-center font-medium squish-btn w-full text-left"><span class="w-6 text-center mr-2">🎓</span> Friendly Mentor</div>
                             <div onclick="setPersona('strict', '👨‍🏫 Strict Evaluator')" class="dropdown-item theme-text flex items-center mt-1 font-medium squish-btn w-full text-left"><span class="w-6 text-center mr-2">👨‍🏫</span> Strict Evaluator</div>
                             <div onclick="setPersona('debugger', '⚖️ IPR Lawyer')" class="dropdown-item theme-text flex items-center mt-1 font-medium squish-btn w-full text-left"><span class="w-6 text-center mr-2">⚖️</span> IPR Lawyer</div>
@@ -435,15 +418,16 @@
                     <div class="ml-4 bubble-bot rounded-3xl rounded-tl-none px-6 py-5 max-w-[90%] sm:max-w-[80%] min-w-0">
                         <h3 class="font-bold text-lg mb-2">Startup & IPR Engine Online ⚡</h3>
                         <p class="text-sm leading-relaxed mb-4 theme-text">
-                            Hello! I am your AI assistant specialized in Engineering Entrepreneurship and IPR. My logic is synced with the <strong>KTU 2024 Scheme Kerala Syllabus</strong>. I structure answers perfectly for your exams.
+                            Hello! I am your AI assistant specialized in Engineering Entrepreneurship and IPR. My logic is synced with the <strong>KTU 2024 Scheme Kerala Syllabus</strong>.
                         </p>
                         <div class="bg-yellow-500/10 border border-yellow-500/30 text-yellow-700 dark:text-yellow-400 p-3.5 rounded-2xl text-xs mb-4 shadow-inner">
                             <i class="fa-solid fa-triangle-exclamation mr-1 text-yellow-500"></i> <strong>First step:</strong><br>
                             Click the <i class="fa-solid fa-key"></i> <strong>API Key</strong> button above to save your Gemini API key and activate the chat!
                         </div>
                         <ul class="text-sm theme-text space-y-2.5">
-                            <li class="flex items-center"><i class="fa-solid fa-scale-balanced text-emerald-500 mr-2 w-4 text-center"></i>Click <strong>Vault</strong> for standard IPR and Business formulas/structures.</li>
+                            <li class="flex items-center"><i class="fa-solid fa-memory text-emerald-500 mr-2 w-4 text-center"></i>I automatically remember your chat history!</li>
                             <li class="flex items-center"><i class="fa-solid fa-hand-pointer text-pink-500 mr-2 w-4 text-center"></i>Tap any empty space to completely hide the menus!</li>
+                            <li class="flex items-center"><i class="fa-solid fa-bolt text-blue-500 mr-2 w-4 text-center"></i><strong>New:</strong> Add your API Key to unlock Live Exam Q&A on the sidebar!</li>
                         </ul>
                     </div>
                 </div>
@@ -451,7 +435,7 @@
 
             <!-- Loading Indicator -->
             <div id="typingIndicator" class="hidden absolute bottom-32 left-6 z-20">
-                <div class="theme-panel inline-flex items-center space-x-3 px-5 py-2.5 rounded-full shadow-lg border theme-border">
+                <div class="premium-glass inline-flex items-center space-x-3 px-5 py-2.5 rounded-full shadow-lg">
                     <i class="fa-solid fa-circle-notch fa-spin text-ktu-500 text-lg"></i>
                     <span class="font-bold text-sm theme-text tracking-wide" id="loadingText">Processing...</span>
                 </div>
@@ -459,14 +443,14 @@
 
             <!-- Floating Liquid Glass Input Pill -->
             <div id="chatInputArea" class="absolute bottom-0 w-full p-4 sm:p-6 safe-bottom z-30 slide-transition">
-                <form id="chatForm" class="flex items-end space-x-2 sm:space-x-3 max-w-5xl mx-auto relative glass-pill">
+                <form id="chatForm" class="flex items-end space-x-2 sm:space-x-3 max-w-5xl mx-auto relative premium-glass-pill">
                     <div class="flex-1 relative transition-all">
                         <textarea id="userInput" rows="1" class="w-full bg-transparent border-none py-4 pl-6 pr-12 focus:ring-0 resize-none text-sm font-mono theme-text placeholder-gray-500 dark:placeholder-gray-400 font-medium" placeholder="Ask about patents, business models, startups..." onkeydown="handleEnter(event)"></textarea>
                         <button type="button" onclick="clearInput()" class="absolute right-4 top-3.5 opacity-40 hover:opacity-100 hover:text-red-500 theme-text squish-btn p-1 text-lg">
                             <i class="fa-solid fa-eraser"></i>
                         </button>
                     </div>
-                    <button type="submit" id="sendBtn" class="bg-gradient-to-r from-ktu-500 to-ktu-600 hover:from-ktu-400 hover:to-ktu-500 text-white rounded-full mx-2 my-2 w-12 h-12 sm:w-auto sm:px-6 sm:h-12 flex items-center justify-center squish-btn shadow-[0_4px_15px_rgba(13,148,136,0.6)] disabled:opacity-50">
+                    <button type="submit" id="sendBtn" class="bg-gradient-to-r from-ktu-500 to-ktu-600 hover:from-ktu-400 hover:to-ktu-500 text-white rounded-full mx-2 my-2 w-12 h-12 sm:w-auto sm:px-6 sm:h-12 flex items-center justify-center squish-btn shadow-[0_4px_15px_rgba(13,148,136,0.6)] disabled:opacity-50 border border-white/20">
                         <i class="fa-solid fa-paper-plane sm:mr-2 text-lg"></i>
                         <span class="font-bold hidden sm:inline tracking-wide">Send</span>
                     </button>
@@ -479,12 +463,12 @@
 
     <!-- Notes Modal -->
     <div id="notesModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
-        <div class="theme-panel w-full max-w-lg rounded-[2rem] shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-400 border theme-border" id="notesContent">
-            <div class="bg-gradient-to-r from-pink-500 to-rose-600 text-white px-6 py-5 flex justify-between items-center shadow-md z-10">
+        <div class="premium-glass w-full max-w-lg rounded-[2rem] shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-400" id="notesContent">
+            <div class="bg-gradient-to-r from-pink-500 to-rose-600 text-white px-6 py-5 flex justify-between items-center shadow-md z-10 border-b border-pink-400/50">
                 <div class="font-bold flex items-center text-xl tracking-wide"><i class="fa-solid fa-note-sticky mr-3 text-pink-200"></i> Quick Scratchpad</div>
-                <button onclick="closeModal('notesModal', 'notesContent')" class="text-white/80 hover:text-white bg-black/20 rounded-full w-10 h-10 flex justify-center items-center squish-btn"><i class="fa-solid fa-xmark text-lg"></i></button>
+                <button onclick="closeModal('notesModal', 'notesContent')" class="text-white/80 hover:text-white bg-black/20 rounded-full w-10 h-10 flex justify-center items-center squish-btn border border-white/10"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
-            <div class="p-6 flex-1 flex flex-col">
+            <div class="p-6 flex-1 flex flex-col bg-slate-50/10 dark:bg-slate-900/10">
                 <p class="text-xs theme-text-muted mb-4 italic font-medium">Use this to temporarily store startup ideas or definitions. Auto-saves locally.</p>
                 <textarea id="notesArea" class="flex-1 w-full min-h-[300px] theme-input border theme-border rounded-2xl p-5 text-sm font-mono theme-text focus:outline-none focus:ring-2 focus:ring-pink-400 resize-none shadow-inner" placeholder="Idea: Smart IoT Helmet... Key features..."></textarea>
                 <div class="flex justify-between items-center mt-5">
@@ -497,24 +481,24 @@
 
     <!-- About Author Modal -->
     <div id="aboutModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
-        <div class="bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-2xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-500 border border-slate-200 dark:border-slate-700" id="aboutContent">
-            <button onclick="closeModal('aboutModal', 'aboutContent')" class="absolute top-5 right-5 text-white hover:text-red-400 bg-black/20 hover:bg-black/40 rounded-full w-10 h-10 flex items-center justify-center squish-btn z-20"><i class="fa-solid fa-xmark text-xl"></i></button>
-            <div class="bg-gradient-to-br from-ktu-500 via-ktu-700 to-slate-900 h-40 relative overflow-hidden">
+        <div class="premium-glass w-full max-w-md rounded-[2.5rem] shadow-2xl overflow-hidden transform scale-95 transition-transform duration-500" id="aboutContent">
+            <button onclick="closeModal('aboutModal', 'aboutContent')" class="absolute top-5 right-5 text-white hover:text-red-400 bg-black/20 hover:bg-black/40 rounded-full w-10 h-10 flex items-center justify-center squish-btn z-20 border border-white/10"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="bg-gradient-to-br from-ktu-500 via-ktu-700 to-slate-900 h-40 relative overflow-hidden border-b border-ktu-400/30">
                 <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
                 <div class="absolute -bottom-10 -right-10 text-9xl text-white/10"><i class="fa-solid fa-briefcase"></i></div>
             </div>
-            <div class="px-8 pb-10 pt-0 text-center relative">
-                <div class="w-32 h-32 mx-auto -mt-16 rounded-full p-2 bg-white dark:bg-slate-800 shadow-[0_0_30px_rgba(20,184,166,0.6)] relative z-10 squish-btn">
+            <div class="px-8 pb-10 pt-0 text-center relative bg-slate-50/20 dark:bg-slate-900/20 backdrop-blur-sm">
+                <div class="w-32 h-32 mx-auto -mt-16 rounded-full p-2 bg-white dark:bg-slate-800 shadow-[0_0_30px_rgba(20,184,166,0.6)] relative z-10 squish-btn border border-white/20">
                     <img src="https://ui-avatars.com/api/?name=Jiyon+Sebastian&background=0d9488&color=fff&size=200&bold=true" class="rounded-full w-full h-full object-cover">
                 </div>
                 <h2 class="text-3xl font-bold text-slate-800 dark:text-white mt-5">Hi, I'm Jiyon! 👋</h2>
                 <p class="text-xs font-bold text-ktu-500 uppercase tracking-widest mb-6 mt-1">Creator & Developer</p>
-                <div class="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 text-sm text-slate-600 dark:text-slate-300 text-left shadow-inner border border-slate-100 dark:border-slate-700 leading-relaxed font-medium">
+                <div class="bg-white/40 dark:bg-slate-900/40 rounded-2xl p-6 text-sm text-slate-700 dark:text-slate-200 text-left shadow-inner border border-white/30 dark:border-white/10 leading-relaxed font-medium">
                     <p class="mb-4">Engineering Entrepreneurship and IPR under the KTU S2 syllabus is vast and highly theoretical. I built this AI Hub, Knowledge Vault, and Arcade to make learning the frameworks much easier (and fun) for us.</p>
                     <p>Whether you're stuck on Patent laws or need to blow off steam in the Arcade, I hope this helps you absolutely crush your exams. Happy studying! 🚀</p>
                 </div>
                 <div class="mt-8 flex justify-center space-x-4">
-                    <button onclick="closeModal('aboutModal', 'aboutContent')" class="bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white text-slate-800 px-8 py-3 rounded-xl font-bold squish-btn text-base shadow-sm">Close Profile</button>
+                    <button onclick="closeModal('aboutModal', 'aboutContent')" class="bg-slate-800/10 dark:bg-white/10 hover:bg-slate-800/20 dark:hover:bg-white/20 theme-text px-8 py-3 rounded-xl font-bold squish-btn text-base border border-slate-800/10 dark:border-white/10 shadow-sm">Close Profile</button>
                 </div>
             </div>
         </div>
@@ -522,19 +506,19 @@
 
     <!-- API Key Setting Modal -->
     <div id="apiKeyModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
-        <div class="theme-panel rounded-[2.5rem] shadow-2xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-300 border theme-border" id="apiKeyContent">
-            <div class="bg-gradient-to-r from-slate-800 to-slate-900 text-white px-8 py-5 flex justify-between items-center border-b border-slate-700">
+        <div class="premium-glass rounded-[2.5rem] shadow-2xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-300" id="apiKeyContent">
+            <div class="bg-gradient-to-r from-slate-800 to-slate-900 text-white px-8 py-5 flex justify-between items-center border-b border-slate-600/50 shadow-md">
                 <div class="font-bold flex items-center text-xl tracking-wide"><i class="fa-solid fa-key text-yellow-400 mr-3"></i> API Configuration</div>
-                <button onclick="closeModal('apiKeyModal', 'apiKeyContent')" class="text-white/60 hover:text-white bg-white/10 rounded-full w-10 h-10 flex justify-center items-center squish-btn"><i class="fa-solid fa-xmark text-xl"></i></button>
+                <button onclick="closeModal('apiKeyModal', 'apiKeyContent')" class="text-white/60 hover:text-white bg-white/10 rounded-full w-10 h-10 flex justify-center items-center squish-btn border border-white/10"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
-            <div class="p-8">
+            <div class="p-8 bg-slate-50/10 dark:bg-slate-900/10 backdrop-blur-sm">
                 <p class="text-sm theme-text-muted mb-6 font-medium">
                     To run this AI platform on GitHub Pages, provide your own free Gemini API key. Keys are saved securely in your browser.
                 </p>
                 <div class="mb-6 bg-blue-500/10 border border-blue-500/30 p-5 rounded-2xl shadow-inner">
                     <label class="block text-xs font-bold text-blue-600 dark:text-blue-400 mb-3 uppercase tracking-wider">1. Get a Free Key</label>
                     <div class="flex shadow-sm rounded-xl overflow-hidden border border-blue-500/30">
-                        <input type="text" readonly value="https://aistudio.google.com/app/apikey" class="flex-1 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm px-4 py-3 text-xs theme-text focus:outline-none" id="apiUrlToCopy">
+                        <input type="text" readonly value="https://aistudio.google.com/app/apikey" class="flex-1 bg-white/30 dark:bg-slate-900/30 backdrop-blur-sm px-4 py-3 text-xs theme-text focus:outline-none" id="apiUrlToCopy">
                         <button onclick="copyApiUrl()" id="copyBtn" class="bg-blue-600 hover:bg-blue-500 px-5 py-3 text-xs font-bold text-white transition whitespace-nowrap squish-btn">Copy Link</button>
                     </div>
                 </div>
@@ -551,16 +535,16 @@
                     </select>
                 </div>
                 <div class="flex justify-end">
-                    <button onclick="saveApiKey()" class="bg-gradient-to-r from-ktu-500 to-ktu-600 text-white px-10 py-4 rounded-xl text-sm font-bold squish-btn glow-primary w-full shadow-lg tracking-wide">Save Settings</button>
+                    <button onclick="saveApiKey()" class="bg-gradient-to-r from-ktu-500 to-ktu-600 text-white px-10 py-4 rounded-xl text-sm font-bold squish-btn glow-primary w-full shadow-lg tracking-wide border border-white/20">Save Settings</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- KTU Knowledge Vault (Entrepreneurship & IPR) -->
+    <!-- KTU Knowledge Vault -->
     <div id="vaultModal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-md z-50 flex items-center justify-center p-0 sm:p-6 opacity-0 transition-opacity duration-300">
-        <div class="theme-panel w-full h-full max-w-7xl sm:rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-400" id="vaultContent">
-            <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-6 sm:px-8 py-5 flex justify-between items-center shadow-lg z-10 border-b border-emerald-500/50">
+        <div class="premium-glass w-full h-full max-w-7xl sm:rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-400" id="vaultContent">
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-6 sm:px-8 py-5 flex justify-between items-center shadow-lg z-10 border-b border-emerald-400/50">
                 <div class="flex items-center space-x-4">
                     <div class="bg-white/20 p-3 rounded-xl backdrop-blur-md shadow-inner border border-white/20"><i class="fa-solid fa-scale-balanced text-2xl"></i></div>
                     <div>
@@ -570,10 +554,10 @@
                 </div>
                 <button onclick="closeModal('vaultModal', 'vaultContent')" class="text-white/80 hover:text-white transition bg-black/20 hover:bg-red-500/80 rounded-full w-12 h-12 flex justify-center items-center squish-btn border border-white/10 shadow-sm"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
-            <div class="flex-1 overflow-y-auto p-4 sm:p-8 bg-slate-50/30 dark:bg-slate-900/30 backdrop-blur-sm">
+            <div class="flex-1 overflow-y-auto p-4 sm:p-8 bg-slate-50/10 dark:bg-slate-900/10 backdrop-blur-sm">
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
                     
-                    <div class="formula-card squish-card">
+                    <div class="premium-glass squish-card p-6 rounded-2xl">
                         <h3 class="text-emerald-600 dark:text-emerald-400 font-bold mb-4 uppercase tracking-wider text-sm border-b border-emerald-200 dark:border-emerald-800/50 pb-3"><i class="fa-solid fa-clipboard-list mr-2"></i> Business Model Canvas</h3>
                         <div class="space-y-3 theme-text text-sm leading-relaxed font-medium">
                             <p><strong>1. Value Proposition:</strong> What exact problem are you solving?</p>
@@ -588,10 +572,10 @@
                         </div>
                     </div>
 
-                    <div class="formula-card squish-card">
+                    <div class="premium-glass squish-card p-6 rounded-2xl">
                         <h3 class="text-blue-600 dark:text-blue-400 font-bold mb-4 uppercase tracking-wider text-sm border-b border-blue-200 dark:border-blue-800/50 pb-3"><i class="fa-solid fa-brain mr-2"></i> Design Thinking Process</h3>
                         <div class="space-y-4 theme-text text-sm font-medium">
-                            <div class="bg-white/50 dark:bg-slate-800/50 p-4 rounded-xl border theme-border shadow-inner backdrop-blur-sm">
+                            <div class="bg-white/30 dark:bg-slate-800/30 p-4 rounded-xl border theme-border shadow-inner backdrop-blur-sm">
                                 <p class="mb-2"><span class="font-bold text-blue-500">1. Empathize:</span> Deeply understand user needs and pain points.</p>
                                 <p class="mb-2"><span class="font-bold text-blue-500">2. Define:</span> State user needs and problems clearly.</p>
                                 <p class="mb-2"><span class="font-bold text-blue-500">3. Ideate:</span> Challenge assumptions, brainstorm creative solutions.</p>
@@ -601,7 +585,7 @@
                         </div>
                     </div>
 
-                    <div class="formula-card squish-card">
+                    <div class="premium-glass squish-card p-6 rounded-2xl">
                         <h3 class="text-orange-600 dark:text-orange-400 font-bold mb-4 uppercase tracking-wider text-sm border-b border-orange-200 dark:border-orange-800/50 pb-3"><i class="fa-solid fa-file-contract mr-2"></i> Types of IPR</h3>
                         <div class="space-y-3 theme-text text-sm font-medium leading-relaxed">
                             <p><strong>Patent:</strong> Protects inventions/functionality (Valid for 20 yrs).</p>
@@ -612,10 +596,10 @@
                         </div>
                     </div>
 
-                    <div class="formula-card squish-card">
+                    <div class="premium-glass squish-card p-6 rounded-2xl">
                         <h3 class="text-purple-600 dark:text-purple-400 font-bold mb-4 uppercase tracking-wider text-sm border-b border-purple-200 dark:border-purple-800/50 pb-3"><i class="fa-solid fa-certificate mr-2"></i> Patentability Criteria (India)</h3>
                         <div class="space-y-4 theme-text text-sm font-medium">
-                            <div class="bg-white/50 dark:bg-slate-800/50 p-4 rounded-xl border theme-border shadow-inner backdrop-blur-sm">
+                            <div class="bg-white/30 dark:bg-slate-800/30 p-4 rounded-xl border theme-border shadow-inner backdrop-blur-sm">
                                 <p class="mb-2"><span class="font-bold text-purple-500">1. Novelty:</span> Must be entirely new globally, not published anywhere.</p>
                                 <p class="mb-2"><span class="font-bold text-purple-500">2. Non-Obviousness:</span> Must involve an inventive step not obvious to someone skilled in that specific technical art.</p>
                                 <p class="mb-2"><span class="font-bold text-purple-500">3. Industrial Applicability:</span> Must have practical utility and be manufacturable.</p>
@@ -624,7 +608,7 @@
                         </div>
                     </div>
 
-                    <div class="formula-card squish-card bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 !border-green-200 dark:!border-emerald-700/50">
+                    <div class="premium-glass squish-card p-6 rounded-2xl">
                         <h3 class="text-emerald-700 dark:text-emerald-400 font-bold mb-4 uppercase tracking-wider text-sm border-b border-emerald-200 dark:border-emerald-700/50 pb-3"><i class="fa-solid fa-money-bill-trend-up mr-2"></i> Startup Funding Stages</h3>
                         <div class="space-y-3 theme-text text-sm font-medium text-slate-700 dark:text-slate-300">
                             <p><strong>1. Bootstrapping:</strong> Self-funding by founders without external help.</p>
@@ -635,7 +619,7 @@
                         </div>
                     </div>
                     
-                    <div class="formula-card squish-card bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 !border-cyan-200 dark:!border-blue-700/50">
+                    <div class="premium-glass squish-card p-6 rounded-2xl">
                         <h3 class="text-cyan-700 dark:text-cyan-400 font-bold mb-4 uppercase tracking-wider text-sm border-b border-cyan-200 dark:border-blue-700/50 pb-3"><i class="fa-solid fa-person-chalkboard mr-2"></i> Pitch Deck Structure</h3>
                         <div class="space-y-3 theme-text text-sm font-medium text-slate-700 dark:text-slate-300">
                             <p>A standard 10-slide Pitch Deck (Guy Kawasaki format):</p>
@@ -661,48 +645,48 @@
 
     <!-- Arcade Hub Game Selector Modal -->
     <div id="arcadeHubModal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
-        <div class="bg-[#0f172a] w-full max-w-4xl rounded-[2.5rem] shadow-[0_0_50px_rgba(249,115,22,0.2)] flex flex-col overflow-hidden transform scale-95 transition-transform duration-400 border border-slate-700" id="arcadeHubContent">
-            <div class="bg-gradient-to-r from-slate-800 to-slate-900 text-white px-8 py-6 flex justify-between items-center border-b border-slate-700 shadow-md z-10">
+        <div class="premium-glass w-full max-w-4xl rounded-[2.5rem] shadow-[0_0_50px_rgba(249,115,22,0.2)] flex flex-col overflow-hidden transform scale-95 transition-transform duration-400 border border-slate-700" id="arcadeHubContent">
+            <div class="bg-gradient-to-r from-slate-800 to-slate-900 text-white px-8 py-6 flex justify-between items-center border-b border-slate-600/50 shadow-md z-10">
                 <div class="flex items-center space-x-4 font-bold text-2xl tracking-wide"><i class="fa-solid fa-gamepad text-orange-500 drop-shadow-md"></i> <span>KTU Arcade Hub</span></div>
                 <button onclick="closeModal('arcadeHubModal', 'arcadeHubContent')" class="text-white/60 hover:text-white bg-white/10 hover:bg-red-500/80 rounded-full w-12 h-12 flex justify-center items-center squish-btn transition-colors border border-white/10"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
 
-            <div class="p-8 md:p-10 bg-slate-900 overflow-y-auto max-h-[80vh]">
-                <h3 class="text-slate-400 font-bold tracking-widest text-sm mb-8 text-center uppercase">Select a game to unwind</h3>
+            <div class="p-8 md:p-10 bg-slate-50/10 dark:bg-slate-900/10 overflow-y-auto max-h-[80vh]">
+                <h3 class="text-slate-500 dark:text-slate-400 font-bold tracking-widest text-sm mb-8 text-center uppercase">Select a game to unwind</h3>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div onclick="launchGame('flappy')" class="bg-slate-800 rounded-3xl border border-slate-700 hover:border-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-all cursor-pointer squish-card group overflow-hidden">
-                        <div class="h-40 bg-[#70c5ce] flex items-center justify-center relative border-b border-slate-700">
+                    <div onclick="launchGame('flappy')" class="premium-glass rounded-3xl hover:border-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-all cursor-pointer squish-card group overflow-hidden border border-white/20">
+                        <div class="h-40 bg-[#70c5ce] flex items-center justify-center relative border-b border-white/20">
                             <i class="fa-solid fa-kiwi-bird text-6xl text-yellow-400 drop-shadow-lg group-hover:scale-110 transition-transform duration-300"></i>
                         </div>
-                        <div class="p-6 text-center">
-                            <h4 class="text-white font-bold text-xl mb-2 group-hover:text-orange-400 transition-colors">Flappy Arcade</h4>
-                            <p class="text-slate-400 text-sm font-medium">Classic floaty physics dodger.</p>
+                        <div class="p-6 text-center bg-black/10">
+                            <h4 class="theme-text font-bold text-xl mb-2 group-hover:text-orange-500 transition-colors">Flappy Arcade</h4>
+                            <p class="theme-text-muted text-sm font-medium">Classic floaty physics dodger.</p>
                         </div>
                     </div>
 
-                    <div onclick="launchGame('runner3d')" class="bg-slate-800 rounded-3xl border border-slate-700 hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all cursor-pointer squish-card group overflow-hidden">
-                        <div class="h-40 bg-slate-900 flex items-center justify-center relative overflow-hidden border-b border-slate-700">
+                    <div onclick="launchGame('runner3d')" class="premium-glass rounded-3xl hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all cursor-pointer squish-card group overflow-hidden border border-white/20">
+                        <div class="h-40 bg-slate-900 flex items-center justify-center relative overflow-hidden border-b border-white/20">
                             <div class="absolute inset-0 opacity-50" style="background-image: linear-gradient(0deg, transparent 24%, rgba(6, 182, 212, .3) 25%, rgba(6, 182, 212, .3) 26%, transparent 27%, transparent 74%, rgba(6, 182, 212, .3) 75%, rgba(6, 182, 212, .3) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(6, 182, 212, .3) 25%, rgba(6, 182, 212, .3) 26%, transparent 27%, transparent 74%, rgba(6, 182, 212, .3) 75%, rgba(6, 182, 212, .3) 76%, transparent 77%, transparent); background-size: 30px 30px; transform: perspective(200px) rotateX(60deg) scale(2);"></div>
                             <i class="fa-solid fa-cube text-6xl text-cyan-400 drop-shadow-[0_0_15px_rgba(6,182,212,0.8)] group-hover:scale-110 transition-transform duration-300 relative z-10"></i>
                         </div>
-                        <div class="p-6 text-center">
-                            <h4 class="text-white font-bold text-xl mb-2 group-hover:text-cyan-400 transition-colors">3D Neon Runner</h4>
-                            <p class="text-slate-400 text-sm font-medium">Hardware accelerated 3D action.</p>
+                        <div class="p-6 text-center bg-black/10">
+                            <h4 class="theme-text font-bold text-xl mb-2 group-hover:text-cyan-500 transition-colors">3D Neon Runner</h4>
+                            <p class="theme-text-muted text-sm font-medium">Hardware accelerated 3D action.</p>
                         </div>
                     </div>
 
-                    <div onclick="launchGame('breakout')" class="bg-slate-800 rounded-3xl border border-slate-700 hover:border-pink-500 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all cursor-pointer squish-card group overflow-hidden">
-                        <div class="h-40 bg-slate-900 flex items-center justify-center relative border-b border-slate-700">
+                    <div onclick="launchGame('breakout')" class="premium-glass rounded-3xl hover:border-pink-500 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all cursor-pointer squish-card group overflow-hidden border border-white/20">
+                        <div class="h-40 bg-slate-900 flex items-center justify-center relative border-b border-white/20">
                             <div class="flex space-x-3 relative z-10">
                                 <div class="w-5 h-5 bg-pink-500 rounded shadow-[0_0_15px_#ec4899] group-hover:-translate-y-3 transition-transform duration-300"></div>
                                 <div class="w-5 h-5 bg-purple-500 rounded shadow-[0_0_15px_#a855f7] group-hover:translate-y-3 transition-transform duration-300 delay-75"></div>
                                 <div class="w-5 h-5 bg-blue-500 rounded shadow-[0_0_15px_#3b82f6] group-hover:-translate-y-3 transition-transform duration-300 delay-150"></div>
                             </div>
                         </div>
-                        <div class="p-6 text-center">
-                            <h4 class="text-white font-bold text-xl mb-2 group-hover:text-pink-400 transition-colors">Particle Breakout</h4>
-                            <p class="text-slate-400 text-sm font-medium">High-performance 2D physics.</p>
+                        <div class="p-6 text-center bg-black/10">
+                            <h4 class="theme-text font-bold text-xl mb-2 group-hover:text-pink-500 transition-colors">Particle Breakout</h4>
+                            <p class="theme-text-muted text-sm font-medium">High-performance 2D physics.</p>
                         </div>
                     </div>
                 </div>
@@ -734,9 +718,7 @@
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
         // --- Core Variables ---
-        const apiKey = ""; 
-
-        function getEffectiveApiKey() { return apiKey || localStorage.getItem('local_gemini_api_key') || ""; }
+        function getEffectiveApiKey() { return localStorage.getItem('local_gemini_api_key') || ""; }
         function getEffectiveModel() { return localStorage.getItem('local_gemini_model') || "gemini-2.5-flash"; }
 
         function saveApiKey() {
@@ -748,16 +730,15 @@
                 localStorage.setItem('local_gemini_model', model);
                 closeModal('apiKeyModal', 'apiKeyContent');
                 alert("API Key & Model Saved Successfully."); 
+                startDynamicQA(); // Instantly start the dynamic Q&A if key is provided
             } else {
                 const saveBtn = document.querySelector('button[onclick="saveApiKey()"]');
                 const origText = saveBtn.innerText;
                 saveBtn.innerText = "Please enter a key!";
                 saveBtn.classList.replace('bg-ktu-600', 'bg-red-500');
-                saveBtn.classList.replace('glow-primary', 'shadow-none');
                 setTimeout(() => {
                     saveBtn.innerText = origText;
                     saveBtn.classList.replace('bg-red-500', 'bg-ktu-600');
-                    saveBtn.classList.add('glow-primary');
                 }, 2000);
             }
         }
@@ -770,11 +751,9 @@
                 document.execCommand('copy');
                 copyBtn.innerText = "Copied!";
                 copyBtn.classList.replace('bg-blue-600', 'bg-green-600');
-                copyBtn.classList.replace('border-blue-600', 'border-green-600');
                 setTimeout(() => {
                     copyBtn.innerText = "Copy Link";
                     copyBtn.classList.replace('bg-green-600', 'bg-blue-600');
-                    copyBtn.classList.replace('border-green-600', 'border-blue-600');
                 }, 2000);
             } catch(e) { copyBtn.innerText = "Failed"; }
         }
@@ -787,12 +766,12 @@
         
         const ktuContext = `CRITICAL SYSTEM PROMPT: You are a specialized AI Tutor for KTU (Kerala) S2 Engineering Entrepreneurship and IPR (2024 Scheme). Modules: 1. Entrep & Ideation 2. Business Models & Finance 3. Innovation & Product 4. IPR & Patents.
 CRITICAL FORMAT RULE 1: Use plain text, bullet points, and markdown tables. NO LATEX.
-CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Patent Act 1970). Provide clear, concise examples for business models (e.g. Swiggy, Ola).`;
+CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Patent Act 1970). Provide clear, concise examples for business models.`;
         
         const personas = {
             friendly: ktuContext + " Be a friendly mentor. Explain startup concepts and IPR step-by-step using modern real-world examples.",
-            strict: ktuContext + " Be a strict KTU examiner. Focus on standard definitions, exact steps of Design Thinking, and IPR legal criteria. Point out common student mistakes.",
-            debugger: ktuContext + " You are an expert IPR Lawyer and Business Analyst. If given a startup idea or patent concept, analyze it critically for flaws in the business model or patentability."
+            strict: ktuContext + " Be a strict KTU examiner. Focus on standard definitions, exact steps of Design Thinking, and IPR legal criteria.",
+            debugger: ktuContext + " You are an expert IPR Lawyer and Business Analyst. Critically analyze startup ideas or patent concepts."
         };
 
         const chatForm = document.getElementById('chatForm');
@@ -822,6 +801,9 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
                     uiHistory.push(msg);
                 });
             }
+            
+            // Try to start live Q&A if key exists on load
+            startDynamicQA();
         });
 
         notesArea.addEventListener('input', () => {
@@ -842,12 +824,31 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
         function setPersona(id, label) {
             currentPersona = id;
             document.getElementById('personaLabel').innerText = label;
-            
             const dropdown = document.getElementById('personaDropdown');
             dropdown.style.display = 'none';
             setTimeout(() => { dropdown.style.display = ''; }, 100);
-            
             document.activeElement.blur();
+        }
+
+        function togglePersonaMenu() {
+            const dropdown = document.getElementById('personaDropdown');
+            const icon = document.getElementById('personaIcon');
+            if(dropdown.style.opacity === '1') {
+                dropdown.style.opacity = '0';
+                dropdown.style.pointerEvents = 'none';
+                dropdown.style.transform = 'scale(0.95)';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                dropdown.style.opacity = '1';
+                dropdown.style.pointerEvents = 'auto';
+                dropdown.style.transform = 'scale(1)';
+                icon.style.transform = 'rotate(-180deg)';
+                
+                clearTimeout(menuTimeout);
+                menuTimeout = setTimeout(() => {
+                    if(dropdown.style.opacity === '1') togglePersonaMenu();
+                }, 5000);
+            }
         }
 
         // --- 1. Premium One-Tap Theme Cycler ---
@@ -873,11 +874,12 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
             else { btn.style.color = '#f59e0b'; } 
         }
 
-        // --- GPU Accelerated Auto-Hide Read Mode (RAF Optimized) ---
+        // --- Auto-Hide Read Mode (Touch Only) ---
         const topNav = document.getElementById('topNav'), chatHeader = document.getElementById('chatHeader'), chatInputArea = document.getElementById('chatInputArea');
         let isReadMode = false;
         
         function setReadMode(active) {
+            if(isReadMode === active) return;
             isReadMode = active;
             if (active) {
                 topNav.style.transform = 'translate3d(0, -100%, 0)';
@@ -897,25 +899,82 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
         chatBox.addEventListener('click', (e) => {
             const isInteractive = e.target.closest('button') || e.target.closest('a') || e.target.closest('.liquid-capsule') || e.target.closest('textarea') || e.target.closest('input') || e.target.closest('.markdown-body');
             if (!isInteractive) { setReadMode(!isReadMode); }
+            
+            const isClickInsideMenu = e.target.closest('.relative.z-50');
+            const dropdown = document.getElementById('personaDropdown');
+            if (!isClickInsideMenu && dropdown.style.opacity === '1') {
+                togglePersonaMenu();
+            }
         });
 
-        let isScrolling = false;
-        let lastScrollTop = 0;
-        chatBox.addEventListener('scroll', () => {
-            if (!isScrolling) {
-                window.requestAnimationFrame(() => {
-                    let st = chatBox.scrollTop;
-                    if (st > lastScrollTop && st > 50) {
-                        if(!isReadMode) setReadMode(true);
-                    } else if (st < lastScrollTop - 5 || st <= 0) {
-                        if(isReadMode) setReadMode(false);
+        // --- LIVE DYNAMIC EXAM Q&A (Updates Sidebar every 30s) ---
+        let qaInterval = null;
+
+        async function fetchDynamicQA() {
+            const currentKey = getEffectiveApiKey();
+            if (!currentKey) return;
+
+            try {
+                const selectedModel = getEffectiveModel();
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${currentKey}`;
+                
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: "Return a JSON array of 4 random, frequently asked short questions and 1-sentence answers for the KTU Engineering Entrepreneurship and IPR exam." }] }],
+                    generationConfig: { 
+                        temperature: 0.9,
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "ARRAY",
+                            items: {
+                                type: "OBJECT",
+                                properties: {
+                                    q: { type: "STRING" },
+                                    a: { type: "STRING" }
+                                }
+                            }
+                        }
                     }
-                    lastScrollTop = st <= 0 ? 0 : st;
-                    isScrolling = false;
-                });
-                isScrolling = true;
+                };
+                
+                const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                if (!res.ok) return;
+                
+                const data = await res.json();
+                const qaArray = JSON.parse(data.candidates[0].content.parts[0].text);
+                updateSidebarQA(qaArray);
+            } catch (err) {
+                console.error("Live Q&A Fetch Error:", err);
             }
-        }, { passive: true });
+        }
+
+        function updateSidebarQA(qaArray) {
+            const container = document.getElementById('sidebarPromptsContainer');
+            document.getElementById('sidebarPromptsTitle').innerHTML = '<i class="fa-solid fa-rotate fa-spin text-yellow-500 mr-2 drop-shadow-sm"></i> Live Exam Q&A';
+            
+            container.innerHTML = '';
+            // Pre-defined Tailwind border colors to ensure CDN doesn't purge them
+            const borderClasses = ['!border-l-orange-500', '!border-l-rose-500', '!border-l-blue-500', '!border-l-emerald-500', '!border-l-purple-500', '!border-l-cyan-500'];
+            
+            qaArray.forEach((item, index) => {
+                const borderClass = borderClasses[index % borderClasses.length];
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left px-4 py-3 text-sm premium-glass squish-card rounded-xl flex flex-col group border-l-4 ${borderClass} shadow-sm`;
+                btn.onclick = () => { insertSnippet(item.q); };
+                btn.innerHTML = `
+                    <span class="font-bold theme-text mb-1.5 flex justify-between w-full leading-tight">Q: ${escapeHTML(item.q)}</span>
+                    <span class="font-medium theme-text-muted text-xs leading-relaxed line-clamp-3">A: ${escapeHTML(item.a)}</span>
+                `;
+                container.appendChild(btn);
+            });
+        }
+
+        function startDynamicQA() {
+            if (getEffectiveApiKey()) {
+                fetchDynamicQA(); 
+                if (qaInterval) clearInterval(qaInterval);
+                qaInterval = setInterval(fetchDynamicQA, 30000); 
+            }
+        }
 
         // --- 2. MULTI-GAME ARCADE HUB ENGINE ---
         let currentGameMode = null;
@@ -1321,7 +1380,7 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
         function handleEnter(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if(userInput.value.trim() !== '') chatForm.dispatchEvent(new Event('submit')); } }
         function clearInput() { userInput.value = ''; userInput.style.height = 'auto'; userInput.focus(); }
 
-        function insertSnippet(type) {
+        function insertSnippet(typeOrText) {
             const snippets = {
                 bmc: "Explain the 9 blocks of the Business Model Canvas with a short example.",
                 patent: "What are the criteria for patentability under the Indian Patent Act 1970?",
@@ -1330,8 +1389,10 @@ CRITICAL FORMAT RULE 2: When explaining IPR, cite specific Indian laws (like Pat
                 trademark: "What is the difference between a Trademark, Copyright, and a Patent?",
                 pitch: "How should I structure a good pitch deck for investors?"
             };
-            userInput.value = snippets[type]; userInput.style.height = 'auto';
-            userInput.style.height = (userInput.scrollHeight) + 'px'; userInput.focus();
+            userInput.value = snippets[typeOrText] || typeOrText; 
+            userInput.style.height = 'auto';
+            userInput.style.height = (userInput.scrollHeight) + 'px'; 
+            userInput.focus();
         }
 
         function saveChatToLocal() { localStorage.setItem('ktu_chat_memory', JSON.stringify(uiHistory)); }
